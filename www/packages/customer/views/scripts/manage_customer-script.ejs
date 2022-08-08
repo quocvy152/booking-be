@@ -1,0 +1,111 @@
+<script>
+	$(document).ready(function () {
+		$('#tableListCustomer').DataTable({
+			'iDisplayLength': 100,
+			...languageDataTable,
+			"processing": true,
+            "serverSide": true,
+            'ajax': {
+                'url': '<%= CF_ROUTINGS_CUSTOMER.LIST_CUSTOMER_PAGINATION %>',
+                type: 'POST',
+                'data': function (data) {
+					// console.log({
+					// 	data
+					// });
+                    return data
+                },
+                "dataSrc": function (json){
+					console.log({
+						json
+					});
+                    return json.data;
+                }
+            },
+            "columns": [
+                { "data": "indexChange" },
+                { "data": "nameCustomer" },
+                { "data": "emailCustomer" },
+                { "data": "phoneCustomer" },
+                { "data": "genderCustomer" },
+                { "data": "pointCustomer" },
+                { "data": "pointRankingCustomer" },
+                { "data": "avatarCustomer" },
+                { "data": "createAt" },
+                { "data": "status" },
+                { "data": "action" },
+            ],
+		});
+
+		$('.btnRemoveCustomer').on('click', function () {
+			let customerID 	= $(this).attr('_customerID');
+			let accept 		= confirm('Bạn có thực sự muốn xóa khách hàng không?');
+			if(!customerID || !accept) return;
+
+			$.ajax({
+				type: "GET",
+				url: `<%= CF_ROUTINGS_CUSTOMER.DELETE_CUSTOMER %>/?customerID=${customerID}`
+			}).done(resp => {
+				let { error, message } = resp;
+
+				if(error){
+					return toastr.warning(`Xóa thất bại: ${message}`, 'THÔNG BÁO');
+				}
+                toastr.success('Xóa thành công', 'THÔNG BÁO');
+				$(this).closest('tr').remove();
+			}).fail(err => toastr.error(`Xóa thất bại: ${message}`, 'THÔNG BÁO'))
+		});
+
+		$('body').on('click', '.btnUpdatePoint', function () {
+			$(".model-update-point-customer").modal("show");
+			let customerID = $(this).attr("_customerID");
+			$(".btnConfirmUpdatePoint").attr("_customerID", customerID );
+			$.ajax({
+				url: `/api/info-customer-role-admin/${customerID}`,
+				method: 'GET',
+				success: function(resp) {
+					if (resp.error){
+						toastr.error('Thất Bại', 'Thông báo');
+					}else{
+						let { point, pointRanking, fullname, phone } = resp.data;
+						$("#txtPointRankingUpdate").val(pointRanking);
+						$("#txtPointUpdate").val(point);
+						$("#txtFullnameCustomerUpdate").html(fullname);
+						$("#txtPhoneCustomerUpdate").html(phone);
+					}
+				},
+				error: function(error){
+					console.log({ error })
+				}
+			});
+		})
+
+		$('.btnConfirmUpdatePoint').on('click', function () {
+			let customerID = $(this).attr("_customerID");
+			let point = $("#txtPointUpdate").val();
+			let pointRanking = $("#txtPointRankingUpdate").val();
+
+			if(!point || !pointRanking)
+				return toastr.warning("Vui lòng nhập đầy đủ thông tin", "Thông báo");
+			$(".model-update-point-customer").modal("hide");
+			$.ajax({
+				url: `/api/update-point/${customerID}`,
+				method: 'POST',
+				data: { point, pointRanking },
+				success: function(resp) {
+					if (resp.error){
+						toastr.error('Thất Bại', 'Thông báo');
+					}else{
+						toastr.info('Cập nhật thành công', 'Thông báo');
+						setTimeout(() => {
+							window.location.reload();
+						}, 500);
+					}
+				},
+				error: function(error){
+					console.log({ error })
+				}
+			});
+			
+		})
+	});
+</script>

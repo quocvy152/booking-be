@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui">
+		<title>TRANG QUẢN TRỊ | NANDIO</title>
+		<meta content="Admin Dashboard" name="description">
+		<meta content="Themesbrand" name="author">
+		<link rel="shortcut icon" href="../../../template/admin/vertical/assets/images/favicon.ico">
+		<link href="../../../template/admin/vertical/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<link href="../../../template/admin/vertical/assets/css/metismenu.min.css" rel="stylesheet" type="text/css">
+		<link href="../../../template/admin/vertical/assets/css/icons.css" rel="stylesheet" type="text/css">
+		<link href="../../../template/admin/vertical/assets/css/style.css" rel="stylesheet" type="text/css">
+		<link href="../../../template/toastr/toastr.min.css" rel="stylesheet">
+
+	</head>
+	<body>
+		<!-- Begin page -->
+		<div class="wrapper-page">
+			<div class="card">
+				<div class="card-body">
+					<h3 class="text-center m-0">
+					
+					</h3>
+					<div class="p-3">
+						<h4 class="text-muted font-18 m-b-5 text-center">
+							Đăng Nhập Hệ Thống NANDIO
+						</h4>
+						<p class="text-muted text-center">
+							Đăng Nhập để tiếp tục
+						</p>
+						<form class="form-horizontal m-t-30" action="index.html">
+							<div class="form-group">
+								<label for="username">Tài Khoản</label>
+								<input type="email" class="form-control" id="txtEmail" placeholder="nhập email">
+								</div>
+								<div class="form-group">
+									<label for="userpassword">Mật Khẩu</label>
+									<input type="password" class="form-control" id="txtPassword" placeholder="nhập mật khẩu">
+								</div>
+								<div class="form-group row m-t-20">
+									<div style="margin: 0 auto;">
+										<button id="btnLogin" class="btn btn-primary w-md waves-effect waves-light" type="submit">
+											Đăng Nhập
+										</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="../../../template/admin/vertical/assets/js/jquery.min.js"></script>
+		<script src="../../../template/admin/vertical/assets/js/bootstrap.bundle.min.js"></script>
+		<script src="../../../template/admin/vertical/assets/js/metisMenu.min.js"></script>
+		<script src="../../../template/admin/vertical/assets/js/jquery.slimscroll.js"></script>
+		<script src="../../../template/admin/vertical/assets/js/waves.min.js"></script>
+		<script src="../../../template/admin/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
+
+		<!-- App js -->
+		<script src="../../../template/admin/vertical/assets/js/app.js"></script>
+		<script src="../../../template/toastr/toastr.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('#btnLogin').on('click', function(e){
+					e.preventDefault();
+					let email 	 = $('#txtEmail').val();
+					let password = $('#txtPassword').val();
+
+					$.ajax({
+						url: `<%= CF_ROUTINGS_COMMON.LOGIN %>`,
+						method: `POST`,
+						data: { email, password },
+						success: function(resp) {
+							if(resp.error)
+								return toastr.error("Đăng Nhập Thất Bại", "THÔNG BÁO");
+
+							const { token } = resp.data;
+							localStorage.setItem('token_admin', token);
+							toastr.success("Đăng Nhập Thành Công", "THÔNG BÁO");
+
+							setTimeout(() => location.href = `/product/list-product`, 1000);
+						}, error: function(err) {
+							toastr.error("Đăng Nhập Thất Bại", "THÔNG BÁO");
+						}
+					})
+				});
+			})
+		</script>
+	</body>
+</html>

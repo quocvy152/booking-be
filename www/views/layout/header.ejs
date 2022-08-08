@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+          
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui"/>
+    <title>NANDIO - Admin Dashboard</title>
+    <meta content="Admin Dashboard" name="description"/>
+    <meta content="Themesbrand" name="author"/>
+ 
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <meta name="robots" content="noindex"/>
+    
+    <!-- alternate -->
+    <link rel="alternate" hreflang="vi-VN" href="https://nandio/" />
+    <link rel="alternate" hreflang="x-default" href="https://nandio/" />
+    <!-- alternate end  -->
+    <link href="../../../../template/admin/plugins/dropzone/dist/dropzone.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="../../../../template/admin/vertical/assets/images/favicon.ico"/>
+    <link href="../../../../template/admin/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet"/>
+    <link href="../../../../template/admin/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../../../../template/admin/plugins/morris/morris.css"/>
+    <link href="../../../../template/admin/vertical/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../../template/admin/vertical/assets/css/metismenu.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../../template/admin/vertical/assets/css/icons.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../../template/admin/vertical/assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../../template/admin/plugins/ion-rangeslider/ion.rangeSlider.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../../template/admin/plugins/ion-rangeslider/ion.rangeSlider.skinModern.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../../template/admin/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css"/>
+    <!-- <link href="../../../../template/Summernote/summernote.css" type="text/css" rel="stylesheet" > -->
+	<link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"
+    />
+    <!-- <link rel="stylesheet" href="../../../../template/admin/fancybox/jquery.fancybox.css" type="text/css" media="screen" /> -->
+    <link type="text/css" href="../../../../template/admin/plugins/x-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<!-- Data Tables -->
+	<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css"> -->
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"> -->
+	<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+
+	<!-- <link rel="stylesheet" href="../../../../template/new-admin/vendor/datatables/dataTables.bs4.css" />
+	<link rel="stylesheet" href="../../../../template/new-admin/vendor/datatables/dataTables.bs4-custom.css" /> -->
+    <!-- lightgallery -->
+            
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.10.0/css/lg-transitions.css" integrity="sha512-pspbvYsqlfHdwBTYE7cIR0QMGpaIrDE1vyZ6mqho3bniC1NRO0RJyHWXiW0wkoVqczxsMb3DaI7glSLqdx3G+w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.10.0/css/lightgallery.css" integrity="sha512-I/g40Mx7U2Oepd3iHIpQRqdQGJ3vgdw0ix8LxGxX9zKv1MDizjD6dRcJ3PC1qpyfkj4rikVNcpBKcnmuJWUaTQ==" crossorigin="anonymous" />
+    <!-- FILE POND GALLERY -->
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">        
+
+    <link rel="stylesheet" href="../../../../template/admin/custom/index-table.css"/>
+    <link rel="stylesheet" href="../../../../template/toastr/index.admin.css"/>
+    <link rel="stylesheet" href="../../../../template/admin/css/avatar-upload.css">
+    <link rel="stylesheet" href="../../../../template/admin/css/main.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.10.0/css/lg-transitions.css" integrity="sha512-pspbvYsqlfHdwBTYE7cIR0QMGpaIrDE1vyZ6mqho3bniC1NRO0RJyHWXiW0wkoVqczxsMb3DaI7glSLqdx3G+w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.10.0/css/lightgallery.css" integrity="sha512-I/g40Mx7U2Oepd3iHIpQRqdQGJ3vgdw0ix8LxGxX9zKv1MDizjD6dRcJ3PC1qpyfkj4rikVNcpBKcnmuJWUaTQ==" crossorigin="anonymous" />
+
+</head>
+ <% moment.locale('vi') %>
+<body>
+    <input type="password" name="pwd" autocomplete="new-password" style="display:none;">
+    <!-- Begin page -->
+    <div id="wrapper">
+        <!-- Top Bar Start -->
+        <div class="topbar">
+            <!-- LOGO -->
+            <div class="topbar-left">
+                <a href="/product/list-product" class="logo" id="logo-admin">
+                <span>
+                    <img width="85%" height="100%" src="../../../files/logos/logo-thien-viet.png" alt="">
+                </span>
+                <i id="show-menu" class="fa fa-chevron-right" aria-hidden="true" style="color: #fff !important;"></i>
+                </a>
+                <!-- <i id="hidden-menu" style="display: none;" class="fa fa-chevron-left admin-back-icon" aria-hidden="true"></i> -->
+            </div>
+            <nav class="navbar-custom">
+                
+                <ul class="navbar-right d-flex list-inline float-right mb-0">
+                    <!-- <li class="dropdown notification-list"><a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"><i class="ti-bell noti-icon"></i> <span class="badge badge-pill badge-danger noti-icon-badge"></span></a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg">
+                        <h6 class="dropdown-item-text">Thông Báo </h6>
+                        <div class="slimscroll notification-item-list">
+                        <a href="/admin/list-notis" class="dropdown-item text-center text-primary">Xem tất cả <i class="fi-arrow-right"></i></a></div>
+                    </li> -->
+
+                    <li class="dropdown notification-list">
+                        <div class="dropdown notification-list nav-pro-img">
+                            <a class="dropdown-toggle nav-link arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"><img src="/files/users/avatar-default.png" alt="user" class="rounded-circle"></a>
+                            <div class="dropdown-menu dropdown-menu-right profile-dropdown">
+                                <!-- item-->
+								<!-- <a class="dropdown-item" href="#">
+									<i class="mdi mdi-account-circle m-r-5"></i> Profile
+								</a> 
+								<a class="dropdown-item" href="#">
+									<i class="mdi mdi-wallet m-r-5"></i> My Wallet
+								</a>  -->
+								<!-- <a class="dropdown-item d-block" href="/admin/settings">
+									<i class="mdi mdi-settings m-r-5"></i> Settings
+								</a>  -->
+								<!-- <a class="dropdown-item" href="#">
+									<i class="mdi mdi-lock-open-outline m-r-5"></i> Lock screen
+								</a> -->
+                                <!-- <div class="dropdown-divider"></div> -->
+                                <a class="dropdown-item text-danger" href="/logout">
+									<i class="mdi mdi-power text-danger"></i> Đăng xuất
+								</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="list-inline menu-left mb-0">
+                    <li class="float-left">
+                        <button class="button-menu-mobile open-left waves-effect"><i class="mdi mdi-menu"></i></button>
+                    </li>
+                    <!-- <li class="d-none d-sm-block">
+                        <div class="dropdown pt-3 d-inline-block"><a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Create</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"><a class="dropdown-item" href="#">Action</a> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a>
+                                <div class="dropdown-divider"></div><a class="dropdown-item" href="#">Separated link</a></div>
+                        </div>
+                    </li> -->
+                </ul>
+            </nav>
+        </div>
+        <!-- Top Bar End -->
+        <!-- ========== Left Sidebar Start ========== -->
+        <%- include ../inc/admin/utils/leftbar.ejs%>
+        <!-- ========== Left Sidebar End ========== -->

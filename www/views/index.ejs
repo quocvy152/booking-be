@@ -1,0 +1,149 @@
+<%- include('layout/header') %>
+<%- include(render.inc) %>
+<%- include('layout/footer') %>
+
+<%- include('./inc/admin/scripts/main-script.ejs') %>
+
+<!-- ==================== QUẢN LÝ THƯƠNG HIỆU ==================== -->
+<% if (render.code === CF_ROUTINGS_BRAND.LIST_BRAND ||
+	   render.code === CF_ROUTINGS_BRAND.ADD_BRAND ||
+	   render.code === CF_ROUTINGS_BRAND.UPDATE_BRAND) { %>
+	<%- include('../packages/brand/views/scripts/manage_brand-script.ejs') %>
+<% } %>
+
+<!-- ==================== QUẢN LÝ DANH MỤC ==================== -->
+<% if (render.code === CF_ROUTINGS_CATEGORY.LIST_CATEGORY || 
+	   render.code === CF_ROUTINGS_CATEGORY.UPDATE_CATEGORY || 
+	   render.code === CF_ROUTINGS_CATEGORY.ADD_CATEGORY) { %>
+	<%- include('../packages/category/views/scripts/manage_category-script.ejs') %>
+<% } %>
+
+<!-- ==================== QUẢN LÝ BÀI VIÉT ==================== -->
+<% if (render.code === CF_ROUTINGS_BLOG.LIST_POST ||
+		render.code === CF_ROUTINGS_BLOG.ADD_POST ||
+		render.code === CF_ROUTINGS_BLOG.UPDATE_POST) { %>
+	<%- include("../packages/blog/views/scripts/manage_blog-script.ejs") %>
+<% } %>
+
+<!-- ==================== QUẢN LÝ DANH MỤC BÀI VIẾT ==================== -->
+<% if (render.code === CF_ROUTINGS_BLOG.LIST_CATEGORY_BLOG) { %>
+	<%- include("../packages/blog/views/scripts/manage_category_blog-script.ejs") %>
+<% } %>
+
+<!-- ==================== QUẢN LÝ TAGGING BÀI VIẾT ==================== -->
+<% if (render.code === CF_ROUTINGS_BLOG.LIST_TAGGING) { %>
+	<%- include("../packages/blog/views/scripts/manage_tagging-script.ejs") %>
+<% } %>
+
+<!-- ==================== QUẢN LÝ COMMENT ==================== -->
+<% if (render.code === CF_ROUTINGS_BLOG.LIST_COMMENT) { %>
+	<%- include("../packages/blog/views/scripts/manage_comment-script.ejs") %>
+<% } %>
+
+<!-- ==================== QUẢN LÝ USER ==================== -->
+<% if (render.code === CF_ROUTINGS_USER.LIST_USER) { %>
+	<%- include("../packages/users/views/scripts/manage_user-script.ejs") %>
+<% } %>
+
+<!-- ==================== QUẢN LÝ BIGSALE ==================== -->
+<% if (render.code === CF_ROUTINGS_PROMOTION.ADD_BIG_SALE ||
+	   render.code === CF_ROUTINGS_PROMOTION.BIG_SALE || 
+	   render.code === CF_ROUTINGS_PROMOTION.UPDATE_BIG_SALE || 
+	   render.code === CF_ROUTINGS_PROMOTION.INFO_BIG_SALE) { %>
+	<%- include("../packages/promotion/views/scripts/manage_big_sale-script.ejs") %>
+<% } %>
+
+<!-- ==================== QUẢN LÝ FLASH SALE ==================== -->
+<% if (render.code === CF_ROUTINGS_PROMOTION.ADD_FLASH_SALE ||
+	   render.code === CF_ROUTINGS_PROMOTION.FLASH_SALE || 
+	   render.code === CF_ROUTINGS_PROMOTION.UPDATE_FLASH_SALE || 
+	   render.code === CF_ROUTINGS_PROMOTION.INFO_FLASH_SALE) { %>) { %>
+	<%- include("../packages/promotion/views/scripts/manage_flash_sale-script.ejs") %>
+<% } %>
+
+<!-- ==================== QUẢN LÝ SẢN PHẨM ==================== -->
+<% if (render.code === CF_ROUTINGS_PRODUCT.ADD_PRODUCT) { %>
+	<%- include("../packages/product/views/scripts/add_product-script.ejs") %>
+<% } %>
+<% if (render.code === CF_ROUTINGS_PRODUCT.LIST_PRODUCT) { %>
+	<%- include("../packages/product/views/scripts/list_product-script.ejs") %>
+<% } %>
+<% if (render.code === CF_ROUTINGS_PRODUCT.INFO_PRODUCT) { %>
+	<%- include("../packages/product/views/scripts/info_product-script.ejs") %>
+<% } %>
+<% if (render.code === CF_ROUTINGS_PRODUCT.UPDATE_PRODUCT) { %>
+	<%- include("../packages/product/views/scripts/update_product-script.ejs") %>
+<% } %>
+
+<!-- ==================== QUẢN LÝ KHÁCH HÀNG ==================== -->
+<% if (render.code === CF_ROUTINGS_CUSTOMER.LIST_CUSTOMER) { %>
+	<%- include("../packages/customer/views/scripts/manage_customer-script.ejs") %>
+<% } %>
+
+<!-- ==================== QUẢN LÝ SEGMENT ==================== -->
+<% if (render.code === CF_ROUTINGS_SEGMENT.ADD_SEGMENT) { %>
+	<%- include("../packages/segment/views/scripts/add_segment-script.ejs") %>
+<% } %>
+<% if (render.code === CF_ROUTINGS_SEGMENT.LIST_SEGMENT) { %>
+	<%- include("../packages/segment/views/scripts/list_segment-script.ejs") %>
+<% } %>
+<% if (render.code === CF_ROUTINGS_SEGMENT.UPDATE_SEGMENT) { %>
+	<%- include("../packages/segment/views/scripts/update_segment-script.ejs") %>
+<% } %>
+<% if (render.code === CF_ROUTINGS_SEGMENT.INFO_SEGMENT) { %>
+	<%- include("../packages/segment/views/scripts/info_segment-script.ejs") %>
+<% } %>
+
+<!-- ==================== QUẢN LÝ ĐƠN HÀNG ==================== -->
+<% if (render.code === CF_ROUTINGS_ORDER.LIST_ORDER) { %>
+	<%- include("../packages/order/views/scripts/manage_order-script.ejs") %>
+<% } %>
+
+<!-- ==================== QUẢN LÝ GIAO DỊCH ==================== -->
+<% if (render.code === CF_ROUTINGS_TRANSACTION.LIST_TRANSACTION_FILTER) { %>
+	<%- include("../packages/transaction/views/scripts/manage_transaction-script.ejs") %>
+<% } %>
+
+<!-- ==================== QUẢN LÝ LỊCH SỬ ĐỔI ĐIỂM ==================== -->
+<% if (render.code === CF_ROUTINGS_HISTORY_POINT.LIST_HISTORY_POINT) { %>
+	<%- include("../packages/history_point/views/scripts/manage_history_point-script.ejs") %>
+<% } %>
+
+<!-- ==================== QUẢN LÝ SLIDE ==================== -->
+<% if (render.code === CF_ROUTINGS_SLIDE.LIST_SLIDE) { %>
+	<%- include("../packages/slide/views/scripts/list_slide-script.ejs") %>
+<% } %>
+
+<!-- ==================== QUẢN LÝ CỬA HÀNG ==================== -->
+<% if (render.code === CF_ROUTINGS_STORE.LIST_STORE_ADMIN) { %>
+	<%- include("../packages/store/views/scripts/list_store-script.ejs") %>
+<% } %>
+
+<!-- ==================== QUẢN LÝ RANKING ==================== -->
+<% if (render.code === CF_ROUTINGS_RANKING.LIST_RANKING) { %>
+	<%- include("../packages/ranking/views/scripts/list_ranking-script.ejs") %>
+<% } %>
+
+<!-- ==================== QUẢN LÝ REWARD ==================== -->
+<% if (render.code === CF_ROUTINGS_REWARD.LIST_REWARD) { %>
+	<%- include("../packages/reward/views/scripts/list_reward-script.ejs") %>
+<% } %>
+
+<!-- ==================== QUẢN LÝ PRODUCT QR ==================== -->
+<% if (render.code ===CF_ROUTINGS_PRODUCT_QR.LIST_PRODUCT_QR) { %>
+	<%- include("../packages/product_qr/views/scripts/list_product_qr-script.ejs") %>
+<% } %>
+
+
+<!-- ==================== QUẢN LÝ TRIAL PROGRAM ==================== -->
+<% if (render.code ===CF_ROUTINGS_TRIAL_PROGRAM.LIST_TRIAL_PROGRAM_ADMIN) { %>
+	<%- include("../packages/trial_program/views/scripts/list_trial_program-script.ejs") %>
+<% } %>
+
+<% if (render.code ===CF_ROUTINGS_TRIAL_PROGRAM.LIST_REGISTER_TRIAL_PROGRAM_ADMIN) { %>
+	<%- include("../packages/trial_program/views/scripts/list_register_trial_program-script.ejs") %>
+<% } %>
+
+
+
+

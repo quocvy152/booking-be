@@ -1,0 +1,321 @@
+<script>
+
+	const languageDataTable = {
+		"language": {
+			"lengthMenu": "Hiển thị _MENU_ kết quả",
+			"search": "Tìm kiếm",
+			"zeroRecords": "Không tìm thấy kết quả trùng khớp",
+			"info": "Trang _PAGE_ tổng _PAGES_ kết quả",
+			"infoEmpty": "Không tìm thấy kết quả",
+			"infoFiltered": "(lọc từ _MAX_ kết quả hiện có)",
+			"paginate": {
+				"first":      "Trang đầu tiên",
+				"last":       "Trang cuối cùng",
+				"next":       "Trang tiếp",
+				"previous":   "Trang trước"
+			},
+		},
+	}
+
+	let disableAndLoading = (that) => {
+		$(that).text('').html(`
+			<img style="height: 25px;" src="/template/admin/img/icon-loading.gif" > Vui lòng chờ</img>
+		`);
+		$(that).attr("disabled", true);
+	}
+
+	let enableAndStopLoading = (that) => {
+		$(that).text('Xác Nhận');
+		$(that).attr("disabled", false);
+	}
+
+	let enableAndStopLoading2 = (that, text) => {
+		$(that).text(text);
+		$(that).attr("disabled", false);
+	}
+	// Giới hạn số lượng hình ảnh
+	// author: SonLP
+	function limitImage(input){
+		var $fileUpload = $(input);
+		return parseInt($fileUpload.get(0).files.length);
+	};
+	// Set error input
+	// Auhtor: SonLP
+	function setError( input, errorMessage){
+		// console.log({input})
+		$(input).addClass("error");
+		// console.log($(input).parent().find('small'));
+		$(input).parent().find('small').addClass("errors");
+		$(input).parent().find('small').text(errorMessage);
+		$(input).parent().find('small').css("display", "block");
+	};
+	// Set success input
+	// Auhtor: SonLP
+	function setSuccess( input ){
+		$(input).removeClass("error");
+		$(input).parent().find('small').removeClass("errors");
+	};
+	// xóa ký tự
+	// Auhtor: SonLP
+	function replaceAll(str, find, replace) {
+		return str.replace(new RegExp(find, 'g'), replace);
+	}
+	// cleavejs
+	// Auhtor: SonLP
+	function runCleave(input) {
+		$(input).toArray().forEach(function(field){
+			new Cleave(field, {
+				numeral: true,
+				numeralThousandsGroupStyle: 'thousand'
+			});
+		});
+	}
+	/*
+		FILE POND để show gallery
+	*/
+	FilePond.registerPlugin(
+		// encodes the file as base64 data
+		FilePondPluginFileEncode,
+		
+		// validates the size of the file
+		
+		// corrects mobile image orientation
+		FilePondPluginImageExifOrientation,
+		
+		// previews dropped images
+		FilePondPluginImagePreview
+	);
+
+	// GENERATE SỐ NGẪU NHIÊN
+	function randomStringFixLengthCode(count){
+		let text = "";
+		let possible = "012345678987654321";
+		for (let i = 0; i < count; i++)
+			text += possible.charAt(Math.floor(Math.random() * possible.length));
+		return text;
+	}
+
+	function removeVietnameseTones(str) {
+		str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a"); 
+		str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e"); 
+		str = str.replace(/ì|í|ị|ỉ|ĩ/g,"i"); 
+		str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o"); 
+		str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u"); 
+		str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y"); 
+		str = str.replace(/đ/g,"d");
+		str = str.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/g, "A");
+		str = str.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/g, "E");
+		str = str.replace(/Ì|Í|Ị|Ỉ|Ĩ/g, "I");
+		str = str.replace(/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/g, "O");
+		str = str.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "U");
+		str = str.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "Y");
+		str = str.replace(/Đ/g, "D");
+		// Some system encode vietnamese combining accent as individual utf-8 characters
+		// Một vài bộ encode coi các dấu mũ, dấu chữ như một kí tự riêng biệt nên thêm hai dòng này
+		str = str.replace(/\u0300|\u0301|\u0303|\u0309|\u0323/g, ""); // ̀ ́ ̃ ̉ ̣  huyền, sắc, ngã, hỏi, nặng
+		str = str.replace(/\u02C6|\u0306|\u031B/g, ""); // ˆ ̆ ̛  Â, Ê, Ă, Ơ, Ư
+		// Remove extra spaces
+		// Bỏ các khoảng trắng liền nhau
+		str = str.replace(/ + /g," ");
+		str = str.trim();
+		// Remove punctuations
+		// Bỏ dấu câu, kí tự đặc biệt
+		str = str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g," ");
+		return str;
+	}
+
+	function getDateNow() {
+		var now = new Date();
+		var day = ("0" + now.getDate()).slice(-2);
+		var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+		var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+		return today;
+	}
+	
+	function setFilePond({ inputElement, classAppend, arr }) {
+		return FilePond.create(inputElement, {
+			// imageResizeTargetWidth: 256,
+			// imageResizeMode: 'contain',
+			onaddfile: function(error, file) {
+				// console.log('File added: [' + error + ']   file: [' + file.id + '] filename: [' + file.filename + ']');
+				arr[arr.length] = file.file
+			},
+
+			// add onpreparefile callback
+			onpreparefile: (fileItem, output) => {
+				// create a new image object
+				const img = new Image();
+
+				// set the image source to the output of the Image Transform plugin
+				img.src = URL.createObjectURL(output);
+				// add it to the DOM so we can see the result
+				// console.log({ fileItem })
+				// $(".isMain").append(`
+				// 	<div class="col-2">
+				// 		<div class="img-wrap">
+				// 			<span class="close deleteImage ${fileItem.id} ${fileItem.filename}" _imageFPID="${fileItem.filename}" >&times;</span>
+				// 			<img src="${img.src}" width="150px" height="150px" data-id="123">
+				// 		</div>
+				// 		<br/>
+				// 		<input _fileName="${img.src}" type="radio" id="radAnswer" name="radAnswer" value="${fileItem.filename}" >
+				// 	</div> 
+				// `);
+			},
+
+			onremovefile: (error, file) => {
+				let arrAfterDelete = arr.filter( image => image.name != file.filename );
+				arr = arrAfterDelete;
+				// $(`.${file.filename}`).closest('.col-2').remove();
+			}
+
+		});
+	}
+	
+	//formatter thêm dấu phẩy
+	// example : formatter.format(200000) =  200,000
+	// Auhtor: SonLP
+	let formatter = new Intl.NumberFormat('en-US');
+
+	// function ajax (data) {
+	// 	console.log({ data });
+	// 	console.log(new Date().toLocaleTimeString() + ' - ' + data)
+	// }
+
+	// function debounce (fn, delay) {
+	// 	return args => {
+	// 		clearTimeout(fn.id)
+	// 		// console.log({ id: fn.id });s
+	// 		fn.id = setTimeout(() => {
+	// 			fn.call(this, args)
+	// 		}, delay)
+	// 	}
+	// }
+	// const debounceAjax = debounce(ajax, 1000)
+
+	function debounce(func, timeout = 300){
+		let timer;
+		return (...args) => {
+			clearTimeout(timer);
+			timer = setTimeout(() => { func.apply(this, args); }, timeout);
+		};
+	}
+	function saveInput(){
+		console.log('Saving data');
+	}
+	// const processChange = debounce(() => saveInput());
+	
+
+	// document.querySelector('#debounce').addEventListener('keyup', e => {
+	// 	debounceAjax(e.target.value)
+	// })
+	function readURL(input, idImage, type) {
+		if ( input.files && input.files[0] ) {
+			for (let  i = 0; i < input.files.length; i++){
+				let src = URL.createObjectURL(input.files[i]);
+				// $(idImage).append(`
+					// <div class="img-wraps" data-src="${src}">
+					// 	<span class="close deleteImage" _type="${type}" _imgName="${input.files[i].name}" _imageID = "">&times;</span>
+
+					// 	<a data-src="${src}" href="${src}" class="effects khongtrung">
+					// 		<img style="object-fit: contain;" src="${src}" value="${input.files[i].name}" width="120px" height="120px  class="img-responsive" alt="Unify Admin">
+					// 		<div class="overlay">
+					// 		</div>
+					// 	</a>
+					// </div>
+				// `);
+			}
+		}
+	}
+	/*
+		FUNCTION: LẤY CHỮ CÁI ĐẦU TIÊN
+	*/
+	function titleCase(str) {
+		var splitStr = str.toLowerCase().split(' ');
+		for (var i = 0; i < splitStr.length; i++) {
+			// You do not need to check if i is larger than splitStr length, as your for does that for you
+			// Assign it back to the array
+			
+			// LẤY KÍ TỰ ĐẦU TIÊN
+			splitStr[i] = splitStr[i].charAt(0).toUpperCase();
+
+			// IN HOA KÍ TỰ ĐẦU TIÊN
+			// splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+		}
+		// Directly return the joined string
+		// return splitStr.join(' '); 
+		return replaceAll( splitStr.join(' '), " ", ""); 
+	}
+
+	function readURLAvatar(input) {
+		if ( input.files && input.files[0] ) {
+			for (let  i = 0; i < input.files.length; i++){
+				let src = URL.createObjectURL(input.files[i]);
+				return src;
+			}
+		}
+	}
+
+	function changeLightGallery({ lightGallery, input }){
+		if ( lightGallery ){
+			$(".lg-backdrop").remove();
+			$(".lg-outer").remove();
+			
+			$(input).data('lightGallery').destroy(true);
+		}
+
+		lightGallery = $(input).lightGallery({
+			thumbnail:true,
+		});
+	}
+
+
+	$(document).ready(function () {
+		Fancybox.bind(".fancybox", {
+			on: {
+				ready: (fancybox) => {
+					console.log(`fancybox #${fancybox.id} is ready!`);
+				}
+			}
+		});
+
+		if($(window).width() < 1025){
+			$(".admin-back-icon").css({
+			display: "none"
+			})
+		}else{
+			$(".admin-back-icon").css({
+			display: "block"
+			})
+		}
+		$("#hidden-menu").on("click", (e)=> {
+			e.preventDefault();
+			$("#hidden-menu").hide();
+			$("body").addClass("enlarged")
+		})
+
+		$("#show-menu").on("click", (e)=> {
+			e.preventDefault();
+			$("#hidden-menu").show();
+			$("body").removeClass("enlarged")
+		})
+
+		toastr.options = {
+			"closeButton": false,
+			"debug": false,
+			"newestOnTop": false,
+			"progressBar": false,
+			"positionClass": "toast-top-right",
+			"preventDuplicates": false,
+			"onclick": null,
+			"showDuration": "300",
+			"hideDuration": "1000",
+			"timeOut": "3000",
+			"extendedTimeOut": "1000",
+			"showEasing": "swing",
+			"hideEasing": "linear",
+			"showMethod": "fadeIn",
+			"hideMethod": "fadeOut"
+		}
+	});
+</script>

@@ -1,0 +1,96 @@
+.cd-gallery {
+	padding: 0;
+	margin: 0 -7px 20px -7px;
+}
+.cd-gallery li {
+	display: none;
+	width: 25%;
+	padding: 15px 7px 0 7px;
+	box-sizing: border-box;
+	margin: 0;
+	float: left;
+}
+@media only screen and (max-width: 768px) {
+	.cd-gallery li {
+		width: 50%;
+	}
+}
+.cd-gallery li .test-block {
+	padding: 50px;
+	text-align: center;
+}
+.cd-gallery .cd-fail-message {
+	display: none;
+	text-align: center;
+}
+
+.gallery a {
+	border: 3px solid #53555c;
+	position: relative;
+	overflow: hidden;
+	-moz-box-shadow: 0 0 10px #0a0a0d;
+	/* FF3.5+ */
+	-webkit-box-shadow: 0 0 10px #0a0a0d;
+	/* Saf3.0+, Chrome */
+	box-shadow: 0 0 10px #0a0a0d;
+	/* Opera 10.5, IE9 */
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-ms-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+	display: block;
+	margin: 0 0 15px 0;
+	opacity: 1; 
+}
+.gallery a img {
+	max-height: 150px; 
+}
+.gallery a .overlay {
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	opacity: 0;
+	position: absolute;
+	z-index: 20;
+	background: rgba(0, 0, 0, 0.8);
+	overflow: hidden;
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-ms-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out; 
+}
+.gallery a .expand {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 100;
+	border: 2px solid #8a7c65;
+	text-align: center;
+	color: #8a7c65;
+	line-height: 44px;
+	font-size: 30px;
+	margin-left: -20px;
+	margin-top: -20px;
+	width: 48px;
+	height: 48px;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s; 
+}
+.gallery a:hover {
+	opacity: 1; 
+}
+.gallery a:hover .overlay {
+	opacity: 1;
+}
+.gallery a:hover span.expand {
+	width: 48px;
+	height: 48px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px; 
+}

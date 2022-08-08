@@ -1,0 +1,180 @@
+<div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                   <div class="page-title-box">
+                      <h4 class="page-title">Chi Tiết Khách Hàng</h4>
+                      <ol class="breadcrumb">
+                         <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                         <li class="breadcrumb-item"><a href="javascript:void(0);">Customer</a></li>
+                         <li class="breadcrumb-item active">Chi Tiết Khách Hàng</li>
+                      </ol>
+                   </div>
+                </div>
+            </div>
+
+			<% infoCustomer = infoCustomer.data || {} %>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card m-b-20">
+						<div class="card-header">
+							<h5>
+								<% if (infoCustomer.avatar) { %>
+									<img class="rounded-circle" src="<%= infoCustomer.avatar.path %>" alt="Avatar" style="width: 50px;height: 50px;">
+								<% } %>
+								<strong>Thông tin khách hàng</strong>
+							</h5>
+						</div>
+                        <div class="card-body">
+
+							<div class="row">
+								<div class="col-6">
+									<div class="form-group">
+										<label for="example-text-input"><b>Mã khách hàng</b></label>
+										<input class="form-control" type="text" placeholder="..." value="<%= infoCustomer.customerID %>" disabled>
+									</div>
+								</div>
+
+								<div class="col-6">
+									<div class="form-group">
+										<label for="example-text-input"><b>Họ và Tên</b></label>
+										<input class="form-control" type="text" placeholder="..." value="<%= infoCustomer.fullname %>" disabled>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-6">
+									<div class="form-group pt-3">
+										<label for="example-text-input"><b>Email</b></label>
+										<input class="form-control" type="email" placeholder="..." value="<%= infoCustomer.email %>" disabled>
+									</div>
+								</div>
+
+								<div class="col-6">
+									<div class="form-group pt-3">
+										<label for="example-text-input"><b>Số điện thoại</b></label>
+										<input class="form-control" type="number" placeholder="..." value="<%= infoCustomer.phone %>" disabled>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-6">
+									<div class="form-group pt-3">
+										<label for="example-text-input"><b>Giới tính</b></label>
+										<input class="form-control" type="text" placeholder="..." value="<%= GENDER_TYPE[infoCustomer.gender] && GENDER_TYPE[infoCustomer.gender].text %>" disabled>
+									</div>
+								</div>
+
+								<div class="col-6">
+									<div class="form-group pt-3">
+										<label for="example-text-input"><b>Trạng thái</b></label>
+										<input class="form-control" type="text" placeholder="..." value="<%= infoCustomer.status === 1 ? 'Hoạt động' : 'Không hoạt động' %>" disabled>
+									</div>
+								</div>
+							</div>
+
+                        </div>
+                    </div>
+
+					<button class="btn btn-success" onclick="history.back()">
+						<i class="fas fa-chevron-left"></i>
+						<b>Quay lại</b>
+					</button>
+
+                </div>
+
+				<div class="col-lg-6">
+
+					<div class="card">
+						<div class="card-header">
+							<h5>
+								<strong>Xếp hạng</strong>
+							</h5>
+						</div>
+						<div class="card-body">
+							<div class="row">
+								<% 
+									let point 		 	 	 = infoCustomer.point;
+									let pointRanking 	 	 = infoCustomer.pointRanking;
+									let bgProgressPoint	 	 = point > 100 ? 'bg-success' : 'bg-warning';
+									let bgProgressPointRank	 = pointRanking > 100 ? 'bg-success' : 'bg-warning';
+									let isZeroPoint			 = point <= 0 && 'text-dark pl-2';
+									let isZeroPointRank		 = pointRanking <= 0 && 'text-dark pl-2';
+								%>
+
+								<div class="col-6">
+									<div class="form-group">
+										<label for="example-text-input"><b>Point</b></label>
+										<div class="progress <%= isZeroPoint %>" style="height:20px">
+											<div class="progress-bar <%= bgProgressPoint %> " 
+												 style="height:20px; width: <%= point %>%">
+												<span class="<%= isZeroPoint %>">
+													<%= point %> point
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-6">
+									<div class="form-group">
+										<label for="example-text-input"><b>Point Ranking</b></label>
+										<div class="progress <%= isZeroPointRank %>" style="height:20px">
+											<div class="progress-bar <%= bgProgressPointRank %>" 
+												 style="height:20px; width: <%= pointRanking %>%">
+												<span class="<%= isZeroPointRank %>">
+													<%= pointRanking %> point
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="card">
+						<div class="card-header">
+							<h5>
+								<strong>Khác</strong>
+							</h5>
+						</div>
+						<div class="card-body">
+
+							<div class="row">
+								<div class="col-6">
+									<div class="form-group">
+										<label for="example-text-input"><b>Loại tài khoản</b></label>
+										<input class="form-control" type="text" placeholder="..." value="<%= CUSTOMER_ACCOUNT_TYPE[infoCustomer.type] && CUSTOMER_ACCOUNT_TYPE[infoCustomer.type].text %>" disabled>
+									</div>
+								</div>
+
+								<div class="col-6">
+									<div class="form-group">
+										<label for="example-text-input" style="display: block;"><b>Mã QR</b></label>
+										<% if (infoCustomer.qrCode && infoCustomer.qrCode.image) { %>
+										 	<img src="<%= loadPathImage(infoCustomer.qrCode.image.path) %>" style="margin-top:-10px" />
+										<% } else{ %>
+											<input class="form-control" type="text" placeholder="..." value="<%= infoCustomer.qrCode %>" disabled>
+										<% } %>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+                <!-- </div> -->
+            </div>
+			
+
+        </div>
+        <!-- container-fluid -->
+    </div>
+</div>

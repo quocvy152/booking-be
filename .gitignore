@@ -1,0 +1,4 @@
+node_modules
+.env
+www/config/cf_host.js
+www/config/cf_mode.js

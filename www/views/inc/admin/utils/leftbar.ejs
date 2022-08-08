@@ -1,0 +1,178 @@
+<div class="left side-menu">
+    <div class="slimscroll-menu" id="remove-scroll">
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+            <!-- Left Menu Start -->
+            <ul class="metismenu" id="side-menu">
+                <!-- <li class="menu-title">
+					<% if (infoUser) { %>
+						<%= infoUser.role === 0 ? 'ADMIN' : (
+							infoUser.role === 1 ? 'OWNER' : 'EDITER'
+						) %>
+					<% } %>
+                </li> -->
+
+				<li class="menu-title">Quản trị</li>
+				<% if (infoUser && infoUser.role === 0) { %>
+					<li>
+						<a href="/admin/list-user" class="waves-effect">
+							<i class="fas fa-users-cog"></i>
+							<span> Quản lý tài khoản 
+								<span class="float-right menu-arrow"></span>
+							</span>
+						</a>
+					</li>
+				<% } %>
+				<!-- Dùng lại sau này -->
+				<!-- <li> 
+					<a href="/slide/list-slide" class="waves-effect">
+						<i class="ti-layout-slider-alt"></i>
+						<span> Quản lý slide
+							<span class="float-right menu-arrow"></span>
+						</span>
+					</a>
+				</li> -->
+				<li class="menu-title">Quản lý sản phẩm</li>
+				<li><a href="javascript:void(0);" class="waves-effect"><i class="fab fa-product-hunt"></i><span>Quản lý sản phẩm <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span></a>
+                    <ul class="submenu">
+                        <li><a href="/product/list-product">Danh sách sản phẩm</a></li>
+                        <li><a href="/product/add-product">Tạo sản phẩm</a></li>
+                    </ul>
+                </li>
+
+				<li><a href="javascript:void(0);" class="waves-effect"><i class="fas fa-boxes"></i><span>Quản lý danh mục <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span></a>
+                    <ul class="submenu">
+                        <li><a href="/category/list-category">Danh sách danh mục</a></li>
+                        <li><a href="/category/add-category">Tạo danh mục</a></li>
+                    </ul>
+                </li>
+
+				<li><a href="javascript:void(0);" class="waves-effect"><i class="fa fa-kaaba"></i><span>Quản lý thương hiệu <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span></a>
+                    <ul class="submenu">
+                        <li><a href="/brand/list-brand">Danh sách thương hiệu</a></li>
+                        <li><a href="/brand/add-brand">Tạo thương hiệu</a></li>
+                    </ul>
+                </li>
+            
+                <li><a href="javascript:void(0);" class="waves-effect"><i class="fas fa-band-aid"></i><span>Quản lý phân khúc<span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span></a>
+                    <ul class="submenu">
+                        <li><a href="/segment/list-segment">Danh sách phân khúc</a></li>
+                        <li><a href="/segment/add-segment">Tạo phân khúc</a></li>
+                    </ul>
+                </li>
+
+				<li class="menu-title">Quản lý bài viết</li>
+				<% if (infoUser && [0,1,2].includes(infoUser.role)) { %>
+					<li><a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-clipboard-outline"></i><span>Quản lý bài viết <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span></a>
+						<ul class="submenu">
+							<li><a href="/category-blog/list-category-blog">Quản lý danh mục</a></li>
+							<li><a href="/tagging/list-tagging">Quản lý tagging</a></li>
+							<li><a href="/admin/list-post">Danh sách bài viết</a></li>
+							<li><a href="/admin/add-post">Tạo bài viết</a></li>
+						</ul>
+					</li>
+				<% } %>
+
+				<li class="menu-title">Quản lý đơn hàng</li>
+				<li>
+					<a href="/order/list-order" class="waves-effect">
+						<i class="fas fa-shopping-cart"></i>
+						<span> Danh sách đơn hàng
+							<span class="float-right menu-arrow"></span>
+						</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="/transaction/list-transaction" class="waves-effect">
+						<i class="fas fa-hand-holding-usd"></i>
+						<!-- <i class="fas fa-funnel-dollar"></i> -->
+						<span> Danh sách giao dịch
+							<span class="float-right menu-arrow"></span>
+						</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="/history/list-history-point?typePoint=1" class="waves-effect">
+						<i class="fas fa-history"></i>
+						<span> Lịch sử tích/đổi điểm
+							<span class="float-right menu-arrow"></span>
+						</span>
+					</a>
+				</li>
+					
+				<li class="menu-title">Quản lý Thông tin app</li>
+
+				<li>
+					<a href="/admin/list-ranking" class="waves-effect">
+						<i class="fas fa-random"></i>
+						<span> Quản lý thứ hạng
+							<span class="float-right menu-arrow"></span>
+						</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="/admin/list-reward" class="waves-effect">
+						<i class="fa fa-trophy"></i>
+						<span> Quản lý quà tặng
+							<span class="float-right menu-arrow"></span>
+						</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="/admin/list-store" class="waves-effect">
+						<i class="fas fa-store"></i>
+						<span> Quản lý cửa hàng
+							<span class="float-right menu-arrow"></span>
+						</span>
+					</a>
+				</li>
+               
+				<!-- <li>
+					<a href="/admin/list-comments" class="waves-effect">
+						<i class="far fa-address-card"></i>
+						<span> Khách hàng đánh giá
+							<span class="float-right menu-arrow"></span>
+						</span>
+					</a>
+                </li> -->
+                <li>
+					<a href="/customer/list-customer" class="waves-effect">
+						<i class="fas fa-users"></i>
+						<span> Danh sách khách hàng 
+							<span class="float-right menu-arrow"></span>
+						</span>
+					</a>
+                </li>
+              
+				<li><a href="javascript:void(0);" class="waves-effect"><i class="fas fa-satellite-dish"></i><span>Khuyến mãi <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span></a>
+                    <ul class="submenu">
+                        <li><a href="/promotion/bigsales">Big sale</a></li>
+                        <li><a href="/promotion/flashsales">Flash sale</a></li>
+                    </ul>
+                </li>
+				<li>
+					<a href="/admin/list-product-qr" class="waves-effect">
+						<i class="fas fa-qrcode"></i>
+						<span> Quản lý QR sản phẩm
+							<span class="float-right menu-arrow"></span>
+						</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="/admin/list-trial-program" class="waves-effect">
+						<i class="mdi mdi-auto-fix"></i>
+						<span> Trial Program
+							<span class="float-right menu-arrow"></span>
+						</span>
+					</a>
+				</li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
