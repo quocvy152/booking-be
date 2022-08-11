@@ -33,10 +33,10 @@ module.exports = class Auth extends ChildRouter {
 
 			/**
              * Function: Tạo user (permission: admin) (API)
-             * Date: 14/06/2021
-             * Dev: MinhVH
+             * Date: 10/08/2022
+             * Dev: VyPQ
              */
-             [CF_ROUTINGS_USER.ADD_USER]: {
+            [CF_ROUTINGS_USER.ADD_USER]: {
                 config: {
                     auth: [ roles.role.all.bin ],
                     type: 'json',
@@ -55,8 +55,8 @@ module.exports = class Auth extends ChildRouter {
 
 			/**
              * Function: Danh sách user (permission: admin) (API, VIEW)
-             * Date: 14/06/2021
-             * Dev: MinhVH
+             * Date: 10/08/2022
+             * Dev: VyPQ
              */
 			[CF_ROUTINGS_USER.LIST_USER]: {
                 config: {
@@ -83,8 +83,8 @@ module.exports = class Auth extends ChildRouter {
 
 			/**
 			 * Function: Xóa user (permission: admin) (API)
-			 * Date: 14/06/2021
-			 * Dev: MinhVH
+			 * Date: 10/08/2022
+			 * Dev: VyPQ
 			 */
 			[CF_ROUTINGS_USER.DELETE_USER]: {
                 config: {
@@ -103,8 +103,8 @@ module.exports = class Auth extends ChildRouter {
 
              /**
              * Function: Cập nhật tài khoản cá nhân (permission: admin) (API)
-             * Date: 14/06/2021
-             * Dev: MinhVH
+             * Date: 10/08/2022
+             * Dev: VyPQ
              */
 			[CF_ROUTINGS_USER.UPDATE_PERSONAL_USER]: {
                 config: {
@@ -125,8 +125,8 @@ module.exports = class Auth extends ChildRouter {
 
 			/**
              * Function: Cập nhật user (permission: admin) (API)
-             * Date: 14/06/2021
-             * Dev: MinhVH
+             * Date: 10/08/2022
+             * Dev: VyPQ
              */
 			 [CF_ROUTINGS_USER.UPDATE_USER]: {
                 config: {
@@ -147,8 +147,8 @@ module.exports = class Auth extends ChildRouter {
 
             /**
              * Function: Thông tin user (permission: admin) (API)
-             * Date: 14/06/2021
-             * Dev: MinhVH
+             * Date: 10/08/2022
+             * Dev: VyPQ
              */
 			[CF_ROUTINGS_USER.INFO_USER]: {
                 config: {

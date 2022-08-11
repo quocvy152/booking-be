@@ -1,5 +1,6 @@
 "use strict";
 
+const Schema 	= require('mongoose');
 const BASE_COLL = require('../../../database/intalize/base-coll');
 
 /**
@@ -16,8 +17,21 @@ module.exports = BASE_COLL('user', {
 		trim: true,
 		unique : true
 	},
+	phone: {
+		type: String,
+		trim: true,
+		unique : true
+	},
 	password: {
 		type: String
+	},
+	firstName: {
+		type: String,
+		trim: true,
+	},
+	lastName: {
+		type: String,
+		trim: true,
 	},
 	/**
 	 * Trạng thái hoạt động.
@@ -31,12 +45,18 @@ module.exports = BASE_COLL('user', {
 	/**
 	 * Phân quyền truy cập.
 	 * 0. ADMIN
-	 * 1. OWNER BRAND
-	 * 2. EDITER
+	 * 1. USER
 	 */
 	role: {
 		type: Number,
-		default: 0
+		default: 1
 	},
-	
+	avatar: {
+		type: Schema.Types.ObjectId,
+		ref: 'image'
+	},
+	address: {
+		type: String,
+		trim: true,
+	},
 });
