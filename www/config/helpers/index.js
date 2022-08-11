@@ -61,6 +61,7 @@ exports.getParams = req => {
     let session         = USER_SESSION.getUser(req.session);
     let token           = null;
     let envAccess       = BROWSER_ACCESS; // default assign evnAccess BROWSER
+    let { url, method } = req;
 
     let isMobile = this.isCallerMobile(req);
 
@@ -84,6 +85,8 @@ exports.getParams = req => {
         token           = session.token;
         envAccess       = BROWSER_ACCESS;
     }
+
+    console.log(`Method: ${method} - url: ${url}`)
 
     return {
         token, envAccess

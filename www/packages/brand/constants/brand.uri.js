@@ -1,11 +1,8 @@
-const BASE_ROUTE = '/brand';
+const BASE_ROUTE = '/brands';
 
 const CF_ROUTINGS_BRAND = {
-	ADD_BRAND: `${BASE_ROUTE}/add-brand`,
-	UPDATE_BRAND: `${BASE_ROUTE}/update-brand/:brandID`,
-	REMOVE_BRAND: `${BASE_ROUTE}/remove-brand/:brandID`,
-	INFO_BRAND: `${BASE_ROUTE}/info-brand/:brandID`,
-	LIST_BRAND: `${BASE_ROUTE}/list-brand`,
+	BRANDS: `${BASE_ROUTE}`,
+	BRANDS_BRANDID: `${BASE_ROUTE}/:brandID`,
 
 	ORIGIN_APP: BASE_ROUTE
 }

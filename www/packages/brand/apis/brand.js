@@ -36,16 +36,22 @@ module.exports = class Auth extends ChildRouter {
              */
 
 			/**
-             * Function: Add brand (API)
+             * Function: 
+             *      + Add brand (API)
+             *      + List brand (API)
              * Date: 10/08/2022
              * Dev: VyPQ
              */
-            [CF_ROUTINGS_BRAND.ADD_BRAND]: {
+            [CF_ROUTINGS_BRAND.BRANDS]: {
                 config: {
                     auth: [ roles.role.all.bin ],
                     type: 'json',
                 },
                 methods: {
+                    get: [ async (req, res) => {
+                        const resultListBrand = await BRAND_MODEL.getList();
+                        res.json(resultListBrand);
+                    }],
                     post: [ async (req, res) => {
                         const { name, icon } = req.body;
                         const resultAddBrand = await BRAND_MODEL.insert({ 
@@ -57,33 +63,14 @@ module.exports = class Auth extends ChildRouter {
             },
 
             /**
-             * Function: Update brand (API)
+             * Function: 
+             *      + Info brand (API)
+             *      + Update brand (API)
+             *      + Remove brand (API)
              * Date: 10/08/2022
              * Dev: VyPQ
              */
-            [CF_ROUTINGS_BRAND.UPDATE_BRAND]: {
-                config: {
-                    auth: [ roles.role.all.bin ],
-                    type: 'json',
-                },
-                methods: {
-                    put: [ async (req, res) => {
-                        const { brandID } = req.params;
-                        const { name, icon, status } = req.body;
-                        const resultAddBrand = await BRAND_MODEL.update({ 
-                            brandID, name, status, icon
-                        });
-                        res.json(resultAddBrand);
-                    }]
-                },
-            },
-
-            /**
-             * Function: Info brand (API)
-             * Date: 10/08/2022
-             * Dev: VyPQ
-             */
-            [CF_ROUTINGS_BRAND.INFO_BRAND]: {
+            [CF_ROUTINGS_BRAND.BRANDS_BRANDID]: {
                 config: {
                     auth: [ roles.role.all.bin ],
                     type: 'json',
@@ -93,43 +80,19 @@ module.exports = class Auth extends ChildRouter {
                         const { brandID } = req.params;
                         const resultInfoBrand = await BRAND_MODEL.getInfo({ brandID });
                         res.json(resultInfoBrand);
-                    }]
-                },
-            },
-
-            /**
-             * Function: Remove brand (API)
-             * Date: 10/08/2022
-             * Dev: VyPQ
-             */
-            [CF_ROUTINGS_BRAND.REMOVE_BRAND]: {
-                config: {
-                    auth: [ roles.role.all.bin ],
-                    type: 'json',
-                },
-                methods: {
+                    }],
+                    put: [ async (req, res) => {
+                        const { brandID } = req.params;
+                        const { name, icon, status } = req.body;
+                        const resultAddBrand = await BRAND_MODEL.update({ 
+                            brandID, name, status, icon
+                        });
+                        res.json(resultAddBrand);
+                    }],
                     delete: [ async (req, res) => {
                         const { brandID } = req.params;
                         const resultRemoveBrand = await BRAND_MODEL.remove({ brandID });
                         res.json(resultRemoveBrand);
-                    }]
-                },
-            },
-
-            /**
-             * Function: List brand (API)
-             * Date: 10/08/2022
-             * Dev: VyPQ
-             */
-            [CF_ROUTINGS_BRAND.LIST_BRAND]: {
-                config: {
-                    auth: [ roles.role.all.bin ],
-                    type: 'json',
-                },
-                methods: {
-                    get: [ async (req, res) => {
-                        const resultListBrand = await BRAND_MODEL.getList();
-                        res.json(resultListBrand);
                     }]
                 },
             },
