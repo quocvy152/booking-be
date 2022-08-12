@@ -132,7 +132,7 @@ module.exports = class Auth extends ChildRouter {
              */
             [CF_ROUTINGS_COMMON.HOME]: {
                 config: {
-					auth: [ roles.role.editer.bin ],
+					auth: [ roles.role.all.bin ],
 					type: 'view',
 					title: 'Home - NANDIO',
 					code: CF_ROUTINGS_COMMON.HOME,

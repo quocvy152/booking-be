@@ -7,13 +7,15 @@ const { USER_ROUTES  } 	    	= require('../packages/users');
 const { BRAND_ROUTES  } 	    = require('../packages/brand');
 const { CUSTOMER_ROUTES }   	= require('../packages/customer');
 const { S3_ROUTES } 	    	= require('../packages/upload-s3');
+const { TOKEN_ROUTES } 	    	= require('../packages/token');
 
 const initAuths = [
     COMMON_ROUTES,
 	S3_ROUTES,
 	USER_ROUTES,
 	CUSTOMER_ROUTES,
-    BRAND_ROUTES
+    BRAND_ROUTES,
+    TOKEN_ROUTES
 ];
 
 let allAuths = {};

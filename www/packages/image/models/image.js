@@ -21,7 +21,7 @@ class Model extends BaseModel {
             try {
                 let resultInsert = await this.insertData({ name, size, path, userCreate });
                 if(!resultInsert)
-                    return resolve({ error: true, message: 'params_invalid' });
+                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
                 return resolve({ error: false, data : resultInsert });
             }catch(error){
                 return resolve({ error: true, message: error.message });

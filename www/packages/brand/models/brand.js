@@ -48,6 +48,10 @@ class Model extends BaseModel {
 				if(!name)
 					return resolve({ error: true, message: 'Tham số không hợp lệ' });
 
+                let isExistBrandName = await BRAND_COLL.findOne({ name });
+                if(isExistBrandName)
+                    return resolve({ error: true, message: 'Thương hiệu đã tồn tại' });
+
                 let dataInsert = {
                     name, 
                     icon

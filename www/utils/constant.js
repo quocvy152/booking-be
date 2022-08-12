@@ -4,8 +4,7 @@ exports._base_logo1_url = "";
 exports.webName 		= "AST - Voucher";
 
 exports.ADMIN_ACCESS    = [0];
-exports.OWNER_ACCESS   	= [0,1];
-exports.EDITER_ACCESS   = [0,1,2];
+exports.USER_ACCESS   	= [0,1];
 
 exports.BROWSER_ACCESS 	= 1;
 exports.MOBILE_ACCESS  	= 2;

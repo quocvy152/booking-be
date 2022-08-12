@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /**
  * EXTERNAL PACKAGES
@@ -22,52 +22,78 @@ const BaseModel 					= require('../../../models/intalize/base_model');
  */
 const USER_COLL  					= require('../databases/user-coll');
 
-
+/**
+ * MODELS
+ */
+const { IMAGE_MODEL }                = require('../../image/models/image').MODEL;
+const TOKEN_MODEL                    = require('../../token/models/token').MODEL;
 class Model extends BaseModel {
     constructor() {
         super(USER_COLL);
+        this.ADMIN_ROLE = 0;
+        this.USER_ROLE  = 1;
+        this.STATUS_ACTIVE = 1;
+        this.STATUS_INACTIVE = 0;
+        this.STATUS_DELETED = 2;
     }
 
-	insert({ username, email, password, role, status = 1 }) {
+	insert({ username, email, password, confirmPass, role, status = 1, firstName, lastName, address, phone, avatar }) {
         return new Promise(async resolve => {
             try {
-                if(!username || !email)
-                    return resolve({ error: true, message: 'params_invalid' });
+                if(!username || !email || !phone || !password || !role)
+                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
 
                 let emailValid 	  = email.toLowerCase().trim();
                 let usernameValid = username.toLowerCase().trim();
+                let phoneValid    = phone.toLowerCase().trim();
 
                 let checkExists = await USER_COLL.findOne({
                     $or: [
                         { username: usernameValid },
                         { email: emailValid },
+                        { phone: phoneValid },
                     ]
                 });
                 if(checkExists)
-                    return resolve({ error: true, message: "name_or_email_existed" });
+                    return resolve({ error: true, message: 'Tên người dùng hoặc email hoặc số điện thoại đã tồn tại' });
 
-				if(![0,1,2].includes(+role))
-					return resolve({ error: true, message: "role_invalid" });
+				if(![this.ADMIN_ROLE, this.USER_ROLE].includes(+role))
+					return resolve({ error: true, message: 'Quyền không hợp lệ' });
 
-				if(![0,1].includes(+status))
-					return resolve({ error: true, message: "status_invalid" });
+				if(![this.STATUS_ACTIVE, this.STATUS_INACTIVE].includes(+status))
+					return resolve({ error: true, message: 'Trạng thái không hợp lệ' });
 
                 let dataInsert = {
                     username: usernameValid, 
                     email: emailValid,
+                    phone: phoneValid,
 					status,
 					role
                 }
 
+                if(confirmPass !== password)
+					return resolve({ error: true, message: 'Mật khẩu xác nhận không hợp lệ' });
+
                 let hashPassword = await hash(password, 8);
 				if (!hashPassword)
-					return resolve({ error: true, message: 'cannot_hash_password' });
+					return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình hash mật khẩu' });
 
 				dataInsert.password = hashPassword;
-                let infoAfterInsert = await this.insertData(dataInsert);
+				dataInsert.firstName = firstName;
+				dataInsert.lastName = lastName;
+				dataInsert.address = address;
 
+                if(avatar) {
+                    let resultInsertImage = await IMAGE_MODEL.insert(dataInsert);
+                    if(resultInsertImage.error)
+					    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình thêm ảnh đại diện' });
+                    
+				    dataInsert.avatar = resultInsertImage.data._id;
+                }
+
+                let infoAfterInsert = await this.insertData(dataInsert);
                 if(!infoAfterInsert)
-                    return resolve({ error: true, message: 'create_user_failed' });
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình tạo người dùng' });
 
                 return resolve({ error: false, data: infoAfterInsert });
             } catch (error) {
@@ -80,11 +106,11 @@ class Model extends BaseModel {
         return new Promise(async resolve => {
             try {
                 if(!ObjectID.isValid(userID))
-                    return resolve({ error: true, message: "params_invalid" });
+                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
 
                 let infoUser = await USER_COLL.findById(userID);
                 if(!infoUser)
-                    return resolve({ error: true, message: "user_is_not_exists" });
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy thông tin người dùng' });
 
                 return resolve({ error: false, data: infoUser });
             } catch (error) {
@@ -93,37 +119,80 @@ class Model extends BaseModel {
         })
     }
 
-	update({ userID, username, password, status, role }) {
+	update({ userID, username, email, currentPass, newPass, confirmPass, status, role, firstName, lastName, address, phone, avatar }) {
         return new Promise(async resolve => {
             try {
                 if(!ObjectID.isValid(userID))
-                    return resolve({ error: true, message: "params_invalid" });
+                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
 
-                let checkExists = await USER_COLL.findById(userID);
-                if(!checkExists)
-                    return resolve({ error: true, message: "user_is_not_exists" });
+                let infoUser = await USER_COLL.findById(userID);
+                if(!infoUser)
+                    return resolve({ error: true, message: 'Mã ID người dùng không hợp lệ' });
 
-                let checkUsernameExists = await USER_COLL.findOne({ username, _id: { $nin: [userID] } });
-                if(checkUsernameExists) {
-                    return resolve({ error: true, message: 'username_is_exists' });
+                let emailValid 	  = email.toLowerCase().trim();
+                let usernameValid = username.toLowerCase().trim();
+                let phoneValid    = phone.toLowerCase().trim();
+
+                let checkExists = await USER_COLL.findOne({
+                    _id: { $ne: userID },
+                    $or: [
+                        { username: usernameValid },
+                        { email: emailValid },
+                        { phone: phoneValid },
+                    ]
+                });
+                if(checkExists)
+                    return resolve({ error: true, message: 'Tên người dùng hoặc email hoặc số điện thoại đã tồn tại' });
+
+				if(role && ![this.ADMIN_ROLE, this.USER_ROLE].includes(+role))
+					return resolve({ error: true, message: 'Quyền không hợp lệ' });
+
+				if(status && ![this.STATUS_ACTIVE, this.STATUS_INACTIVE].includes(+status))
+					return resolve({ error: true, message: 'Trạng thái không hợp lệ' });
+
+                let dataUpdate = {};
+
+                username && (dataUpdate.username = username);
+                email    && (dataUpdate.email = email);
+                phone    && (dataUpdate.phone = phone);
+                role     && (dataUpdate.role = +role);
+                status   && (dataUpdate.status = +status);
+
+                // Bước kiểm tra và đổi mật khẩu
+                if(!confirmPass || !currentPass || !newPass)
+					return resolve({ error: true, message: 'Vui lòng nhập đẩy đủ các thông tin về mật khẩu để tiến hành thay đổi mật khẩu' });
+                else {
+                    let isCorrectPass = await compare(currentPass, infoUser.password);
+                    if(!isCorrectPass)
+					    return resolve({ error: true, message: 'Mật khẩu không chính xác. Vui lòng thử lại' });
+                    
+                    if(confirmPass !== newPass)
+					    return resolve({ error: true, message: 'Mật khẩu xác nhận không chính xác. Vui lòng thử lại' });
+
+                    let hashPassword = await hash(newPass, 8);
+                    if (!hashPassword)
+                        return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình hash mật khẩu' });
+
+                    dataUpdate.password = hashPassword;
                 }
 
-                let dataUpdateUser = {};
-                username && (dataUpdateUser.username    = username.trim());
-                password && (dataUpdateUser.password    = hashSync(password, 8));
+				firstName && (dataUpdate.firstName = firstName);
+				lastName  && (dataUpdate.lastName = lastName);
+				address   && (dataUpdate.address = address);
 
-                if([0,1,2].includes(+role)){
-                    dataUpdateUser.role = role;
+                if(avatar) {
+                    let resultInsertImage = await IMAGE_MODEL.insert(dataUpdate);
+                    if(resultInsertImage.error)
+					    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình thêm ảnh đại diện' });
+                    
+				    dataUpdate.avatar = resultInsertImage.data._id;
                 }
 
-				if([0,1].includes(+status)){
-					dataUpdateUser.status = status;
-				}
+                let infoAfterUpdate = await USER_COLL.findByIdAndUpdate(userID, dataUpdate, { new: true });
+                if(!infoAfterUpdate)
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình cập nhật người dùng' });
 
-                await this.updateWhereClause({ _id: userID }, dataUpdateUser);
-                password && delete dataUpdateUser.password;
-
-                return resolve({ error: false, data: dataUpdateUser });
+                return resolve({ error: false, data: infoAfterUpdate });
             } catch (error) {
                 return resolve({ error: true, message: error.message });
             }
@@ -134,11 +203,11 @@ class Model extends BaseModel {
         return new Promise(async resolve => {
             try {
                 if(!ObjectID.isValid(userID))
-                    return resolve({ error: true, message: "params_invalid" });
+                    return resolve({ error: true, message: 'params_invalid' });
 
                 let checkExists = await USER_COLL.findById(userID);
                 if(!checkExists)
-                    return resolve({ error: true, message: "user_is_not_exists" });
+                    return resolve({ error: true, message: 'user_is_not_exists' });
 
 				if(oldPassword){
 					let isMatchPass = await compare(oldPassword, checkExists.password);
@@ -167,16 +236,19 @@ class Model extends BaseModel {
         })
     }
 
-    delete({ userID }) {
+    remove({ userID }) {
         return new Promise(async resolve => {
             try {
                 if(!ObjectID.isValid(userID))
-                    return resolve({ error: true, message: "param_invalid" });
+                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
 
-				let infoAfterDelete = await USER_COLL.findByIdAndRemove(userID);
+                let dataUpdate = {
+                    status: this.STATUS_DELETED
+                };
 
+				let infoAfterDelete = await USER_COLL.findByIdAndUpdate(userID, dataUpdate, { new: true });
                 if(!infoAfterDelete) 
-                    return resolve({ error: true, message: "cannot_delete_user" });
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình xóa người dùng' });
 
                 return resolve({ error: false, data: infoAfterDelete });
             } catch (error) {
@@ -188,39 +260,57 @@ class Model extends BaseModel {
 	getList(){
         return new Promise(async resolve => {
             try {
-                let listUsers = await USER_COLL.find({}).lean();
-                if(!listUsers)
-                    return resolve({ error: true, message: "not_found_users_list" });
+                let listUser = await USER_COLL.find({}).lean();
+                if(!listUser)
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách người dùng' });
 
-                return resolve({ error: false, data: listUsers });
+                return resolve({ error: false, data: listUser });
             } catch (error) {
                 return resolve({ error: true, message: error.message });
             }
         })
     }
 
-    signIn({ email, password }) {
+    login({ username, email, password }) {
         return new Promise(async resolve => {
             try {
-                let checkExists = await USER_COLL.findOne({ email: email.toLowerCase().trim() });
+                let checkExists = await USER_COLL.findOne({ 
+                    $or: [
+                        { username: username && username.toLowerCase().trim() },
+                        { email: email && email.toLowerCase().trim() }
+                    ]
+                });
                 if (!checkExists) 
-                    return resolve({ error: true, message: 'email_not_exist' });
+                    return resolve({ error: true, message: 'Username hoặc Email không tồn tại' });
 
                 let isMatchPass = await compare(password, checkExists.password);
                 if (!isMatchPass) 
-                    return resolve({ error: true, message: 'password_is_wrong' });
+                    return resolve({ error: true, message: 'Mật khẩu không chính xác' });
 
-                if (checkExists.status == 0) 
-                    return resolve({ error: true, message: 'user_blocked' });
+                if (checkExists.status == this.STATUS_INACTIVE) 
+                    return resolve({ error: true, message: 'Người dùng đang bị khóa. Vui lòng liên hệ quản trị viên' });
 
                 let infoUser = {
                     _id: checkExists._id,
                     username: checkExists.username,
+                    firstName: checkExists.firstName,
+                    lastName: checkExists.lastName,
                     email: checkExists.email,
+                    phone: checkExists.phone,
+                    address: checkExists.address,
                     status: checkExists.status,
                     role: checkExists.role,
                 }
-                let token = jwt.sign(infoUser, cfJWS.secret);
+
+                let isExistToken = await TOKEN_MODEL.getInfo({ userID: checkExists._id });
+                let token;
+                if(isExistToken.error) {
+                    token = jwt.sign(infoUser, cfJWS.secret);
+
+                    let resultInsertToken = await TOKEN_MODEL.insert({ userID: checkExists._id, token });
+                    if(resultInsertToken.error) 
+                        return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình cấp TOKEN' });
+                } else token = isExistToken.data.token;
 
                 return resolve({
                     error: false,

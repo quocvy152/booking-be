@@ -35,6 +35,7 @@ module.exports = BASE_COLL('user', {
 	},
 	/**
 	 * Trạng thái hoạt động.
+	 * 2. Đã xóa
 	 * 1. Hoạt động
 	 * 0. Khóa
 	 */

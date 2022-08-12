@@ -62,7 +62,7 @@ module.exports = class Auth extends ChildRouter {
 			 */
             [CF_ROUTINGS_CUSTOMER.UPDATE_CUSTOMER]: {
                 config: {
-                    auth: [ roles.role.customer.bin ],
+                    auth: [ roles.role.all.bin ],
                     type: 'json',
                 },
                 methods: {
@@ -91,7 +91,7 @@ module.exports = class Auth extends ChildRouter {
 			 */
             [CF_ROUTINGS_CUSTOMER.SEND_OTP_CHANGE_EMAIL]: {
                 config: {
-                    auth: [ roles.role.customer.bin ],
+                    auth: [ roles.role.all.bin ],
                     type: 'json',
                 },
                 methods: {
@@ -115,7 +115,7 @@ module.exports = class Auth extends ChildRouter {
 			 */
             [CF_ROUTINGS_CUSTOMER.CHECK_CODE_CHANGE_EMAIL]: {
                 config: {
-                    auth: [ roles.role.customer.bin ],
+                    auth: [ roles.role.all.bin ],
                     type: 'json',
                 },
                 methods: {
@@ -139,7 +139,7 @@ module.exports = class Auth extends ChildRouter {
 			 */
             [CF_ROUTINGS_CUSTOMER.UPDATE_PASSWORD]: {
                 config: {
-                    auth: [ roles.role.customer.bin ],
+                    auth: [ roles.role.all.bin ],
                     type: 'json',
                 },
                 methods: {
@@ -201,7 +201,7 @@ module.exports = class Auth extends ChildRouter {
              */
             [CF_ROUTINGS_CUSTOMER.INFO_CUSTOMER_API]: {
                 config: {
-					auth: [ roles.role.customer.bin ],
+					auth: [ roles.role.all.bin ],
                     type: 'json',
                 },
                 methods: {
@@ -282,7 +282,7 @@ module.exports = class Auth extends ChildRouter {
              */
             [CF_ROUTINGS_CUSTOMER.INFO_CUSTOMER_API]: {
                 config: {
-                    auth: [ roles.role.customer.bin ],
+                    auth: [ roles.role.all.bin ],
                     type: 'json',
                 },
                 methods: {
@@ -301,7 +301,7 @@ module.exports = class Auth extends ChildRouter {
              */
 			[CF_ROUTINGS_CUSTOMER.INFO_CUSTOMER]: {
                 config: {
-					auth: [ roles.role.owner.bin ],
+					auth: [ roles.role.all.bin ],
 					title: 'Detail Customer - NANDIO',
                     type: 'view',
                     view: 'index.ejs',
@@ -329,7 +329,7 @@ module.exports = class Auth extends ChildRouter {
              */
 			[CF_ROUTINGS_CUSTOMER.LIST_CUSTOMER_API]: {
                 config: {
-                    auth: [ roles.role.customer.bin ],
+                    auth: [ roles.role.all.bin ],
                     type: 'json',
                 },
                 methods: {
@@ -349,7 +349,7 @@ module.exports = class Auth extends ChildRouter {
              */
 			[CF_ROUTINGS_CUSTOMER.LIST_CUSTOMER_SORT_SEGMENT_API]: {
                 config: {
-                    auth: [ roles.role.customer.bin ],
+                    auth: [ roles.role.all.bin ],
                     type: 'json',
                 },
                 methods: {
@@ -370,7 +370,7 @@ module.exports = class Auth extends ChildRouter {
              */
 			[CF_ROUTINGS_CUSTOMER.LIST_CUSTOMER]: {
                 config: {
-                    auth: [ roles.role.owner.bin ],
+                    auth: [ roles.role.all.bin ],
 					title: 'List Customer - NANDIO',
                     type: 'view',
                     view: 'index.ejs',
@@ -394,7 +394,7 @@ module.exports = class Auth extends ChildRouter {
              */
 			[CF_ROUTINGS_CUSTOMER.LIST_CUSTOMER_PAGINATION]: {
                 config: {
-                    auth: [ roles.role.owner.bin ],
+                    auth: [ roles.role.all.bin ],
                     type: 'json',
                 },
                 methods: {
