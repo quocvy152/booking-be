@@ -2,12 +2,13 @@
 
 const roleCf = require('./../config/cf_role');
 
-const { COMMON_ROUTES }     	= require('../packages/common');
-const { USER_ROUTES  } 	    	= require('../packages/users');
-const { BRAND_ROUTES  } 	    = require('../packages/brand');
-const { CUSTOMER_ROUTES }   	= require('../packages/customer');
-const { S3_ROUTES } 	    	= require('../packages/upload-s3');
-const { TOKEN_ROUTES } 	    	= require('../packages/token');
+const { COMMON_ROUTES }     	            = require('../packages/common');
+const { USER_ROUTES  } 	    	            = require('../packages/users');
+const { BRAND_ROUTES  } 	                = require('../packages/brand');
+const { CUSTOMER_ROUTES }   	            = require('../packages/customer');
+const { S3_ROUTES } 	    	            = require('../packages/upload-s3');
+const { TOKEN_ROUTES } 	    	            = require('../packages/token');
+const { CHARACTERISTIC_ROUTES } 	    	= require('../packages/characteristic');
 
 const initAuths = [
     COMMON_ROUTES,
@@ -15,7 +16,8 @@ const initAuths = [
 	USER_ROUTES,
 	CUSTOMER_ROUTES,
     BRAND_ROUTES,
-    TOKEN_ROUTES
+    TOKEN_ROUTES,
+    CHARACTERISTIC_ROUTES
 ];
 
 let allAuths = {};

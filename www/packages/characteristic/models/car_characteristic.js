@@ -20,18 +20,17 @@ const BaseModel 					= require('../../../models/intalize/base_model');
 /**
  * COLLECTIONS
  */
-const CAR_COLL  					= require('../databases/car-coll');
+const CAR_CHARACTERISTIC_COLL  		= require('../databases/car_characteristic-coll');
 
 /**
  * MODELS
  */
 const IMAGE_MODEL                = require('../../image/models/image').MODEL;
 const TOKEN_MODEL                = require('../../token/models/token').MODEL;
+
 class Model extends BaseModel {
     constructor() {
-        super(CAR_COLL);
-        this.ADMIN_ROLE = 0;
-        this.USER_ROLE  = 1;
+        super(CAR_CHARACTERISTIC_COLL);
         this.STATUS_ACTIVE = 1;
         this.STATUS_INACTIVE = 0;
         this.STATUS_DELETED = 2;

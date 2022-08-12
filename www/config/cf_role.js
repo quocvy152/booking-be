@@ -6,7 +6,8 @@ const { networkInterfaces } = require('os');
 
 const { 
 	ADMIN_ACCESS, 
-	USER_ACCESS
+	USER_ACCESS,
+	TYPE_RESPONSE
 } = require('../utils/constant');
 
 const { checkAndResponseForEachEnv, getParams, getData } = require('./helpers');

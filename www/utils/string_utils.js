@@ -103,7 +103,7 @@ exports.validEmail = function (email) {
     return re.test(String(email).toLowerCase());
 };
 
-exports.removeUtf8 = function (str) {
+let removeUtf8 = function (str) {
     str = str.toLowerCase();
     str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, 'a');
     str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, 'e');
@@ -126,6 +126,7 @@ exports.removeUtf8 = function (str) {
     }
     return str;
 };
+exports.removeUtf8 = removeUtf8;
 
 exports.listCharacter = function () {
     return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
@@ -139,4 +140,12 @@ exports.randomStringOnlyNumber = function (count) {
         text += possible.charAt(Math.floor(Math.random() * possible.length));
 
     return text;
+};
+
+exports.GENERATE_CODE_CHARACTERISTIC = function (name) {
+    let nameAfterRemoveUTF8 = removeUtf8(name);
+
+    let code = nameAfterRemoveUTF8.toUpperCase().split('_').join('');
+
+    return code;
 };

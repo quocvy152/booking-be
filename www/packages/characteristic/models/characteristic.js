@@ -20,7 +20,7 @@ const BaseModel 					= require('../../../models/intalize/base_model');
 /**
  * COLLECTIONS
  */
-const USER_COLL  					= require('../databases/user-coll');
+const CHARACTERISTIC_COLL  		 = require('../databases/characteristic-coll');
 
 /**
  * MODELS
@@ -29,7 +29,7 @@ const IMAGE_MODEL                = require('../../image/models/image').MODEL;
 const TOKEN_MODEL                = require('../../token/models/token').MODEL;
 class Model extends BaseModel {
     constructor() {
-        super(USER_COLL);
+        super(CHARACTERISTIC_COLL);
         this.ADMIN_ROLE = 0;
         this.USER_ROLE  = 1;
         this.STATUS_ACTIVE = 1;
