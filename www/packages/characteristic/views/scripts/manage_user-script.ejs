@@ -1,0 +1,121 @@
+<script>
+	$(document).ready(function () {
+		$('#tableListUser').DataTable({
+			'iDisplayLength': 100,
+			...languageDataTable
+		});
+
+		let checkValidate = params => {
+            let { username, email, password, role, status } = params;
+
+            if(!username) 					return { error: true, msg: 'Bạn cần nhập username cho user' };
+            if(!validEmail(email)) 			return { error: true, msg: 'Email không hợp lệ' };
+            if(!password) 					return { error: true, msg: 'Bạn cần nhập password cho user' };
+            if(![0,1,2].includes(+role)) 	return { error: true, msg: 'Quyền hạn không hợp lệ' };
+            if(![0,1].includes(+status)) 	return { error: true, msg: 'Trạng thái không hợp lệ' };
+
+            return { error: false, msg: 'validate_done' };
+        }
+
+		let getFormUser = () => {
+            const username 	= $('#txtUsername').val().trim();
+			const email 	= $('#txtEmail').val().trim();
+			const password 	= $('#txtPassword').val().trim();
+			const role 		= $('#slUserRole').val();
+			const status 	= $('#switchUserStatus')[0].checked ? 1 : 0;
+
+            return { username, email, password, role, status };
+        }
+
+		$('.btn-show-modal-create-user').on('click', function () {
+			$('.modal-create-user').modal('show');
+		});
+
+		$('#btnConfirmCreateUser').on('click', function () {
+			const dataCreate 	 = getFormUser();
+			const { error, msg } = checkValidate(dataCreate);
+			if(error){
+				return toastr.warning(msg, 'THÔNG BÁO');
+			}
+
+			$.ajax({
+				type: "POST",
+				url: `<%= CF_ROUTINGS_USER.ADD_USER %>`,
+				data: dataCreate
+			}).done(resp => {
+				let { error, message } = resp;
+
+				if(error){
+					switch (message) {
+						case 'name_or_email_existed':
+							return toastr.warning('Username hoặc email đã tồn tại', 'THÔNG BÁO');
+							break;
+						default:
+							return toastr.warning(`Tạo thất bại: ${message}`, 'THÔNG BÁO');
+							break;
+					}
+				}
+				$('.modal-create-user').modal('hide');
+
+				toastr.success('Tạo thành công', 'THÔNG BÁO');
+				setTimeout(() => location.reload(), 2000);
+			}).fail(err => toastr.error(`Tạo thất bại: ${message}`, 'THÔNG BÁO'))
+		});
+		
+		$('.btn-show-modal-update-user').on('click', function () {
+			const userID = $(this).attr('_userID');
+			const role 	 = $(this).attr('_role');
+			const status = $(this).attr('_status');
+
+			$('.modal-update-user #btnConfirmUpdateUser').attr('_userID', userID);
+			$('.modal-update-user #switchUserStatusUpdate').attr('checked', +status === 1 ? true : false);
+			$('.modal-update-user #slUserRoleUpdate').val(role);
+
+			$('.modal-update-user').modal('show');
+		});
+
+		$('#btnConfirmUpdateUser').on('click', function () {
+			const userID 		= $(this).attr('_userID');
+			const role	 		= $('#slUserRoleUpdate').val();
+			const newPassword 	= $('#txtNewPasswordUpdate').val();
+			const status 		= $('#switchUserStatusUpdate')[0].checked ? 1 : 0;
+
+			$('.modal-update-user').modal('hide');
+			$.ajax({
+				type: "POST",
+				url: `<%= CF_ROUTINGS_USER.UPDATE_USER %>`,
+				data: { userID, password: newPassword, role, status }
+			}).done(resp => {
+				let { error, message } = resp;
+
+				if(error){
+					return toastr.warning(`Cập nhật thất bại: ${message}`, 'THÔNG BÁO');
+				}
+
+                toastr.success('Cập nhật thành công', 'THÔNG BÁO');
+				setTimeout(() => location.reload(), 2000);
+			}).fail(err => toastr.error(`Cập nhật thất bại: ${message}`, 'THÔNG BÁO'))
+		});
+
+		$('.btnRemoveUser').on('click', function () {
+			let userID = $(this).attr('_userID');
+			let accept = confirm('Bạn có thực sự muốn xóa user không?');
+			if(!userID || !accept) return;
+
+			$.ajax({
+				type: "GET",
+				url: `<%= CF_ROUTINGS_USER.DELETE_USER %>/?userID=${userID}`
+			}).done(resp => {
+				let { error, message } = resp;
+
+				if(error){
+					return toastr.warning(`Xóa thất bại: ${message}`, 'THÔNG BÁO');
+				}
+
+                toastr.success('Xóa thành công', 'THÔNG BÁO');
+				$(this).closest('tr').remove();
+			}).fail(err => toastr.error(`Xóa thất bại: ${message}`, 'THÔNG BÁO'))
+		});
+
+	});
+</script>

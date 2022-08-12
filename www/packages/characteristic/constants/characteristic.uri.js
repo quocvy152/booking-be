@@ -1,0 +1,11 @@
+const BASE_ROUTE = '/users';
+
+const CF_ROUTINGS_USER = {
+	USERS: `${BASE_ROUTE}`,
+	USERS_USERID: `${BASE_ROUTE}/:userID`,
+	LOGIN: `${BASE_ROUTE}/login`,
+
+    ORIGIN_APP: BASE_ROUTE
+}
+
+exports.CF_ROUTINGS_USER = CF_ROUTINGS_USER;
