@@ -25,7 +25,7 @@ module.exports = class Auth extends ChildRouter {
         return {
             /**
              * ========================== ************************ ================================
-             * ========================== QUẢN LÝ USER PERMISSION  ================================
+             * =============================== QUẢN LÝ ĐẶC ĐIỂM  ==================================
              * ========================== ************************ ================================
              */
 
@@ -54,6 +54,42 @@ module.exports = class Auth extends ChildRouter {
                         });
                         res.json(resultInsertCharacteristicType);
                     }]
+                },
+            },
+
+            /**
+             * Function: 
+             *      + Info user (API)
+             *      + Remove user (API)
+             *      + Update user (API)
+             * Date: 11/08/2022
+             * Dev: VyPQ
+             */
+             [CF_ROUTINGS_CHARACTERISTIC.CHARACTERISTIC_TYPES_CHARACTERISTICTYPESID]: {
+                config: {
+                    auth: [ roles.role.user.bin ],
+                    type: 'json',
+                },
+                methods: {
+                    get: [ async function (req, res) {
+                        const { characteristicTypeID } = req.params;
+                        const resultInfoCharacteristicType = await CHARACTERISTIC_TYPE_MODEL.getInfo({ characteristicTypeID });
+                        res.json(resultInfoCharacteristicType);
+                    }],
+                    put: [ async function (req, res) {
+                        const { characteristicTypeID } = req.params;
+                        const { name, icon } = req.body;
+
+                        const resultUpdateCharacteristicType = await CHARACTERISTIC_TYPE_MODEL.update({ 
+                            characteristicTypeID, name, icon
+                        });
+                        res.json(resultUpdateCharacteristicType);
+                    }],
+                    delete: [ async function (req, res) {
+                        const { characteristicTypeID } = req.params;
+                        const resultRemoveCharacteristicType = await CHARACTERISTIC_TYPE_MODEL.remove({ characteristicTypeID });
+                        res.json(resultRemoveCharacteristicType);
+                    }],
                 },
             },
         }
