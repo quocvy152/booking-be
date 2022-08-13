@@ -11,6 +11,9 @@ const { hash, hashSync, compare }   = require('bcryptjs');
  * INTERNAL PACKAGES
  */
 const cfJWS                         = require('../../../config/cf_jws');
+const { 
+    GENERATE_CODE_CHARACTERISTIC
+}                                   = require('../../../utils/string_utils');
 
 /**
  * BASES
@@ -20,80 +23,45 @@ const BaseModel 					= require('../../../models/intalize/base_model');
 /**
  * COLLECTIONS
  */
-const CHARACTERISTIC_COLL  		 = require('../databases/characteristic-coll');
+const CHARACTERISTIC_COLL      = require('../databases/characteristic-coll');
 
 /**
  * MODELS
  */
 const IMAGE_MODEL                = require('../../image/models/image').MODEL;
 const TOKEN_MODEL                = require('../../token/models/token').MODEL;
+
 class Model extends BaseModel {
     constructor() {
         super(CHARACTERISTIC_COLL);
-        this.ADMIN_ROLE = 0;
-        this.USER_ROLE  = 1;
         this.STATUS_ACTIVE = 1;
         this.STATUS_INACTIVE = 0;
         this.STATUS_DELETED = 2;
     }
 
-	insert({ username, email, password, confirmPass, role, status = 1, firstName, lastName, address, phone, avatar }) {
+	insert({ characteristicTypeID, value, icon, status = 1 }) {
         return new Promise(async resolve => {
             try {
-                if(!username || !email || !phone || !password || !role)
+                if(!value)
                     return resolve({ error: true, message: 'Tham số không hợp lệ' });
 
-                let emailValid 	  = email.toLowerCase().trim();
-                let usernameValid = username.toLowerCase().trim();
-                let phoneValid    = phone.toLowerCase().trim();
+                if(!ObjectID.isValid(characteristicTypeID))
+                    return resolve({ error: true, message: 'Vui lòng chọn loại đặc điểm' });
 
-                let checkExists = await USER_COLL.findOne({
-                    $or: [
-                        { username: usernameValid },
-                        { email: emailValid },
-                        { phone: phoneValid },
-                    ]
-                });
-                if(checkExists)
-                    return resolve({ error: true, message: 'Tên người dùng hoặc email hoặc số điện thoại đã tồn tại' });
-
-				if(![this.ADMIN_ROLE, this.USER_ROLE].includes(+role))
-					return resolve({ error: true, message: 'Quyền không hợp lệ' });
-
-				if(![this.STATUS_ACTIVE, this.STATUS_INACTIVE].includes(+status))
-					return resolve({ error: true, message: 'Trạng thái không hợp lệ' });
+                if(![this.STATUS_ACTIVE, this.STATUS_INACTIVE, this.STATUS_DELETED].includes(+status))
+                    return resolve({ error: true, message: 'Trạng thái không hợp lệ' });
 
                 let dataInsert = {
-                    username: usernameValid, 
-                    email: emailValid,
-                    phone: phoneValid,
-					status,
-					role
+                    characteristicTypeID,
+                    value, 
+                    status
                 }
 
-                if(confirmPass !== password)
-					return resolve({ error: true, message: 'Mật khẩu xác nhận không hợp lệ' });
-
-                let hashPassword = await hash(password, 8);
-				if (!hashPassword)
-					return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình hash mật khẩu' });
-
-				dataInsert.password = hashPassword;
-				dataInsert.firstName = firstName;
-				dataInsert.lastName = lastName;
-				dataInsert.address = address;
-
-                if(avatar) {
-                    let resultInsertImage = await IMAGE_MODEL.insert(dataInsert);
-                    if(resultInsertImage.error)
-					    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình thêm ảnh đại diện' });
-                    
-				    dataInsert.avatar = resultInsertImage.data._id;
-                }
+                icon && (dataInsert.icon = icon);
 
                 let infoAfterInsert = await this.insertData(dataInsert);
                 if(!infoAfterInsert)
-                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình tạo người dùng' });
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình tạo đặc điểm' });
 
                 return resolve({ error: false, data: infoAfterInsert });
             } catch (error) {
@@ -102,95 +70,28 @@ class Model extends BaseModel {
         })
     }
 
-    getInfo({ userID }) {
+    update({ characteristicID, characteristicTypeID, value, icon, status }) {
         return new Promise(async resolve => {
             try {
-                if(!ObjectID.isValid(userID))
-                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
-
-                let infoUser = await USER_COLL.findById(userID);
-                if(!infoUser)
-                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy thông tin người dùng' });
-
-                return resolve({ error: false, data: infoUser });
-            } catch (error) {
-                return resolve({ error: true, message: error.message });
-            }
-        })
-    }
-
-	update({ userID, username, email, currentPass, newPass, confirmPass, status, role, firstName, lastName, address, phone, avatar }) {
-        return new Promise(async resolve => {
-            try {
-                if(!ObjectID.isValid(userID))
-                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
-
-                let infoUser = await USER_COLL.findById(userID);
-                if(!infoUser)
-                    return resolve({ error: true, message: 'Mã ID người dùng không hợp lệ' });
-
-                let emailValid 	  = email.toLowerCase().trim();
-                let usernameValid = username.toLowerCase().trim();
-                let phoneValid    = phone.toLowerCase().trim();
-
-                let checkExists = await USER_COLL.findOne({
-                    _id: { $ne: userID },
-                    $or: [
-                        { username: usernameValid },
-                        { email: emailValid },
-                        { phone: phoneValid },
-                    ]
-                });
-                if(checkExists)
-                    return resolve({ error: true, message: 'Tên người dùng hoặc email hoặc số điện thoại đã tồn tại' });
-
-				if(role && ![this.ADMIN_ROLE, this.USER_ROLE].includes(+role))
-					return resolve({ error: true, message: 'Quyền không hợp lệ' });
-
-				if(status && ![this.STATUS_ACTIVE, this.STATUS_INACTIVE].includes(+status))
-					return resolve({ error: true, message: 'Trạng thái không hợp lệ' });
-
                 let dataUpdate = {};
 
-                username && (dataUpdate.username = username);
-                email    && (dataUpdate.email = email);
-                phone    && (dataUpdate.phone = phone);
-                role     && (dataUpdate.role = +role);
-                status   && (dataUpdate.status = +status);
+                if(!ObjectID.isValid(characteristicID) || (characteristicTypeID && !ObjectID.isValid(characteristicTypeID)))
+                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
 
-                // Bước kiểm tra và đổi mật khẩu
-                if(!confirmPass || !currentPass || !newPass)
-					return resolve({ error: true, message: 'Vui lòng nhập đẩy đủ các thông tin về mật khẩu để tiến hành thay đổi mật khẩu' });
-                else {
-                    let isCorrectPass = await compare(currentPass, infoUser.password);
-                    if(!isCorrectPass)
-					    return resolve({ error: true, message: 'Mật khẩu không chính xác. Vui lòng thử lại' });
-                    
-                    if(confirmPass !== newPass)
-					    return resolve({ error: true, message: 'Mật khẩu xác nhận không chính xác. Vui lòng thử lại' });
+                value && (dataUpdate.value = value);
+                icon  && (dataUpdate.icon = icon);
+                characteristicTypeID && (dataUpdate.characteristicTypeID = characteristicTypeID);
 
-                    let hashPassword = await hash(newPass, 8);
-                    if (!hashPassword)
-                        return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình hash mật khẩu' });
+                if(status) {
+                    if(![this.STATUS_ACTIVE, this.STATUS_INACTIVE, this.STATUS_DELETED].includes(+status))
+                        return resolve({ error: true, message: 'Trạng thái không hợp lệ' });
 
-                    dataUpdate.password = hashPassword;
+                    dataUpdate.status = +status;
                 }
 
-				firstName && (dataUpdate.firstName = firstName);
-				lastName  && (dataUpdate.lastName = lastName);
-				address   && (dataUpdate.address = address);
-
-                if(avatar) {
-                    let resultInsertImage = await IMAGE_MODEL.insert(dataUpdate);
-                    if(resultInsertImage.error)
-					    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình thêm ảnh đại diện' });
-                    
-				    dataUpdate.avatar = resultInsertImage.data._id;
-                }
-
-                let infoAfterUpdate = await USER_COLL.findByIdAndUpdate(userID, dataUpdate, { new: true });
+                let infoAfterUpdate = await CHARACTERISTIC_COLL.findByIdAndUpdate(characteristicID, dataUpdate, { new: true });
                 if(!infoAfterUpdate)
-                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình cập nhật người dùng' });
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình tạo đặc điểm' });
 
                 return resolve({ error: false, data: infoAfterUpdate });
             } catch (error) {
@@ -199,56 +100,61 @@ class Model extends BaseModel {
         })
     }
 
-    updatePersonalUser({ userID, password, oldPassword, status, role }) {
+    getInfo({ characteristicID }) {
         return new Promise(async resolve => {
             try {
-                if(!ObjectID.isValid(userID))
-                    return resolve({ error: true, message: 'params_invalid' });
+                if(!ObjectID.isValid(characteristicID))
+                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
 
-                let checkExists = await USER_COLL.findById(userID);
-                if(!checkExists)
-                    return resolve({ error: true, message: 'user_is_not_exists' });
+                let infoCharacteristic = await CHARACTERISTIC_COLL.findById(characteristicID).populate({
+                    path: 'characteristicTypeID',
+                    select: 'name code icon'
+                });
+                if(!infoCharacteristic)
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy thông tin đặc điểm' });
 
-				if(oldPassword){
-					let isMatchPass = await compare(oldPassword, checkExists.password);
-					if (!isMatchPass) 
-						return resolve({ error: true, message: 'old_password_wrong' });
-				}
-
-                let dataUpdateUser = {};
-                password && (dataUpdateUser.password    = hashSync(password, 8));
-
-                if([0,1,2].includes(+role)){
-                    dataUpdateUser.role = role;
-                }
-
-				if([0,1].includes(+status)){
-					dataUpdateUser.status = status;
-				}
-
-                await this.updateWhereClause({ _id: userID }, dataUpdateUser);
-                password && delete dataUpdateUser.password;
-
-                return resolve({ error: false, data: dataUpdateUser });
+                return resolve({ error: false, data: infoCharacteristic });
             } catch (error) {
                 return resolve({ error: true, message: error.message });
             }
         })
     }
 
-    remove({ userID }) {
+    getListOfCharacteristicType({ characteristicTypeID }) {
         return new Promise(async resolve => {
             try {
-                if(!ObjectID.isValid(userID))
+                if(!ObjectID.isValid(characteristicTypeID))
+                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
+
+                let listCharacteristic = await CHARACTERISTIC_COLL.find({
+                    characteristicTypeID
+                }).populate({
+                    path: 'characteristicTypeID',
+                    select: 'name code icon'
+                });
+                if(!listCharacteristic || !listCharacteristic.length)
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách đặc điểm của một loại đặc điểm' });
+
+                return resolve({ error: false, data: listCharacteristic });
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
+
+    remove({ characteristicID }) {
+        return new Promise(async resolve => {
+            try {
+                if(!ObjectID.isValid(characteristicID))
                     return resolve({ error: true, message: 'Tham số không hợp lệ' });
 
                 let dataUpdate = {
                     status: this.STATUS_DELETED
                 };
 
-				let infoAfterDelete = await USER_COLL.findByIdAndUpdate(userID, dataUpdate, { new: true });
+				let infoAfterDelete = await CHARACTERISTIC_COLL.findByIdAndUpdate(characteristicID, dataUpdate, { new: true });
                 if(!infoAfterDelete) 
-                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình xóa người dùng' });
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình xóa đặc điểm' });
 
                 return resolve({ error: false, data: infoAfterDelete });
             } catch (error) {
@@ -260,68 +166,23 @@ class Model extends BaseModel {
 	getList(){
         return new Promise(async resolve => {
             try {
-                let listUser = await USER_COLL.find({}).lean();
-                if(!listUser)
-                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách người dùng' });
+                let listCharacteristic = await CHARACTERISTIC_COLL
+                                                .find({
+                                                    status: this.STATUS_ACTIVE
+                                                })
+                                                .populate({
+                                                    path: 'characteristicTypeID',
+                                                    select: 'name code icon'
+                                                })
+                if(!listCharacteristic)
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách đặc điểm' });
 
-                return resolve({ error: false, data: listUser });
+                return resolve({ error: false, data: listCharacteristic });
             } catch (error) {
                 return resolve({ error: true, message: error.message });
             }
         })
     }
-
-    login({ username, email, password }) {
-        return new Promise(async resolve => {
-            try {
-                let checkExists = await USER_COLL.findOne({ 
-                    $or: [
-                        { username: username && username.toLowerCase().trim() },
-                        { email: email && email.toLowerCase().trim() }
-                    ]
-                });
-                if (!checkExists) 
-                    return resolve({ error: true, message: 'Username hoặc Email không tồn tại' });
-
-                let isMatchPass = await compare(password, checkExists.password);
-                if (!isMatchPass) 
-                    return resolve({ error: true, message: 'Mật khẩu không chính xác' });
-
-                if (checkExists.status == this.STATUS_INACTIVE) 
-                    return resolve({ error: true, message: 'Người dùng đang bị khóa. Vui lòng liên hệ quản trị viên' });
-
-                let infoUser = {
-                    _id: checkExists._id,
-                    username: checkExists.username,
-                    firstName: checkExists.firstName,
-                    lastName: checkExists.lastName,
-                    email: checkExists.email,
-                    phone: checkExists.phone,
-                    address: checkExists.address,
-                    status: checkExists.status,
-                    role: checkExists.role,
-                }
-
-                let isExistToken = await TOKEN_MODEL.getInfo({ userID: checkExists._id });
-                let token;
-                if(isExistToken.error) {
-                    token = jwt.sign(infoUser, cfJWS.secret);
-
-                    let resultInsertToken = await TOKEN_MODEL.insert({ userID: checkExists._id, token });
-                    if(resultInsertToken.error) 
-                        return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình cấp TOKEN' });
-                } else token = isExistToken.data.token;
-
-                return resolve({
-                    error: false,
-                    data: { user: infoUser, token }
-                });
-            } catch (error) {
-                return resolve({ error: true, message: error.message });
-            }
-        })
-    }
-
 }
 
 exports.MODEL = new Model;

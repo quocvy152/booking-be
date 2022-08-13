@@ -129,11 +129,11 @@ class Model extends BaseModel {
                 if(!ObjectID.isValid(characteristicTypeID))
                     return resolve({ error: true, message: 'Tham số không hợp lệ' });
 
-                let infoUser = await CHARACTERISTIC_TYPE_COLL.findById(characteristicTypeID);
-                if(!infoUser)
+                let infoCharacteristicType = await CHARACTERISTIC_TYPE_COLL.findById(characteristicTypeID);
+                if(!infoCharacteristicType)
                     return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy thông tin loại đặc điểm' });
 
-                return resolve({ error: false, data: infoUser });
+                return resolve({ error: false, data: infoCharacteristicType });
             } catch (error) {
                 return resolve({ error: true, message: error.message });
             }
@@ -164,7 +164,9 @@ class Model extends BaseModel {
 	getList(){
         return new Promise(async resolve => {
             try {
-                let listCharacteristicType = await CHARACTERISTIC_TYPE_COLL.find({}).lean();
+                let listCharacteristicType = await CHARACTERISTIC_TYPE_COLL.find({
+                    status: this.STATUS_ACTIVE
+                }).lean();
                 if(!listCharacteristicType)
                     return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách loại đặc điểm' });
 

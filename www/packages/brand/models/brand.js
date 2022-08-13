@@ -109,7 +109,9 @@ class Model extends BaseModel {
         return new Promise(async resolve => {
             try {
                 let listBrand = await BRAND_COLL
-                    .find({})
+                    .find({
+                        status: this.STATUS_ACTIVE                       
+                    })
 					.sort({ createAt: -1 })
 					.lean();
                 if(!listBrand)

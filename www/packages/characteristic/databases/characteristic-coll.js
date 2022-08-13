@@ -15,8 +15,18 @@ module.exports = BASE_COLL('characteristic', {
 		type: String,
 		trim: true
 	},
-	characteristicType: {
+	characteristicTypeID: {
 		type: Schema.Types.ObjectId,
 		ref: 'characteristic_type'
-	}
+	},
+	/**
+	 * Trạng thái hoạt động.
+	 * 2. Đã xóa
+	 * 1. Hoạt động
+	 * 0. Khóa
+	 */
+	status: {
+		type: Number,
+		default: 1
+	},
 });
