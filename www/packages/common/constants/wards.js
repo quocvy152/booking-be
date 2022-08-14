@@ -1,4 +1,4 @@
-[
+exports.wards = [
     {
         "name": "Quận Ba Đình",
         "code": 1,

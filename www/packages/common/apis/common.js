@@ -15,6 +15,7 @@ const fs                                        = require('fs');
 const USER_MODEL 	= require('../../users/models/user').MODEL;
 const { districts }                                 = require('../constants/districts');
 const { provinces }                                 = require('../constants/provinces');
+const { wards }                                     = require('../constants/wards');
 
 /**
  * COLLECTIONS
@@ -103,7 +104,7 @@ module.exports = class Auth extends ChildRouter {
                 },
                 methods: {
                     get: [ (req, res) => {
-                        let listProvince = Object.entries(provinces);
+                        let listProvince = provinces;
                         res.json({ listProvince });
                     }]
                 },
@@ -117,20 +118,8 @@ module.exports = class Auth extends ChildRouter {
                 methods: {
                     get: [ (req, res) => {
                         let { province } = req.params;
-                        let listDistricts = [];
-
-                        let filterObject = (obj, filter, filterValue) => 
-                            Object.keys(obj).reduce((acc, val) =>
-                            (obj[val][filter] === filterValue ? {
-                                ...acc,
-                                [val]: obj[val]  
-                            } : acc
-                        ), {});
-
-                        if (province && !Number.isNaN(Number(province))) {
-                            listDistricts = filterObject(districts, 'parent_code', province.toString())
-                        }
-                        res.json({ province, listDistricts });
+                        let listDistrict = districts.filter(district => district['province_code'] == province);
+                        res.json({ province, listDistrict });
                     }]
                 },
             },
@@ -143,16 +132,8 @@ module.exports = class Auth extends ChildRouter {
                 methods: {
                     get: [ (req, res) => {
                         let { district } = req.params;
-                        let listWards = [];
-                        let  filePath = path.resolve(__dirname, `../constants/wards/${district}.json`);
-                        fs.readFile(filePath, {encoding: 'utf-8'}, function(err, data){
-                            if (!err) {
-                                listWards = JSON.parse(data);
-                                res.json({ district, listWards  });
-                            } else {
-                                res.json({ error: true, message: "district_not_exist" });
-                            }
-                        });
+                        let listWards = wards.filter(districtWards => districtWards['code'] == district);
+                        res.json({ district, listWards });
                     }]
                 },
             },
