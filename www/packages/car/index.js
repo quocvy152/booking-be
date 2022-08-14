@@ -1,9 +1,9 @@
-const USER_MODEL 		= require('./models/user').MODEL;
-const USER_COLL  		= require('./databases/user-coll');
-const USER_ROUTES       = require('./apis/user');
+const CAR_MODEL 		= require('./models/car').MODEL;
+const CAR_COLL  		= require('./databases/car-coll');
+const CAR_ROUTES        = require('./apis/car');
 
 module.exports = {
-    USER_ROUTES,
-    USER_COLL,
-    USER_MODEL,
+    CAR_ROUTES,
+    CAR_COLL,
+    CAR_MODEL,
 }

@@ -39,10 +39,12 @@ module.exports = BASE_COLL('car', {
 	price: {
 		type: Number
 	},
+	// Tài sản thế chấp
 	mortage: {
 		type: String,
 		trim: true
 	},
+	// Điều khoản
 	rules: {
 		type: String,
 		trim: true

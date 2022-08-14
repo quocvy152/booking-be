@@ -10,14 +10,12 @@ const path = require('path');
  */
 const ChildRouter                           = require('../../../routing/child_routing');
 const roles                                 = require('../../../config/cf_role');
-const { CF_ROUTINGS_USER } 					= require('../constants/user.uri');
+const { CF_ROUTINGS_CAR } 					= require('../constants/car.uri');
 
 /**
  * MODELS
  */
-const USER_MODEL = require('../models/user').MODEL;
-
-
+const CAR_MODEL = require('../models/car').MODEL;
 module.exports = class Auth extends ChildRouter {
     constructor() {
         super('/');
@@ -38,23 +36,35 @@ module.exports = class Auth extends ChildRouter {
              * Date: 11/08/2022
              * Dev: VyPQ
              */
-            [CF_ROUTINGS_USER.USERS]: {
+            [CF_ROUTINGS_CAR.CARS]: {
                 config: {
-                    auth: [ roles.role.all.bin ],
+                    auth: [ roles.role.user.bin ],
                     type: 'json',
                 },
                 methods: {
                     get: [ async function (req, res) {
-                        const resultGetListUser = await USER_MODEL.getList();
-                        res.json(resultGetListUser);
+                        const resultGetListCar = await CAR_MODEL.getList();
+                        res.json(resultGetListCar);
                     }],
                     post: [ async function (req, res) {
-                        const { username, email, password, confirmPass, role, status, firstName, lastName, address, phone, avatar } = req.body;
+                        const { 
+                            name, provinceID, districtID, 
+                            wardID, provinceText, districtText, 
+                            wardText, address, price, mortage, 
+                            rules, userID, brandID, description, 
+                            avatar, gallery, status,
+                            listCharacteristicID
+                        } = req.body;
 
-                        const resultInsertAccount = await USER_MODEL.insert({ 
-                            username, email, password, confirmPass, role, status, firstName, lastName, address, phone, avatar
+                        const resultInsertCar = await CAR_MODEL.insert({ 
+                            name, provinceID, districtID, 
+                            wardID, provinceText, districtText, 
+                            wardText, address, price, mortage, 
+                            rules, userID, brandID, description, 
+                            avatar, gallery, status,
+                            listCharacteristicID
                         });
-                        res.json(resultInsertAccount);
+                        res.json(resultInsertCar);
                     }]
                 },
             },
@@ -67,32 +77,42 @@ module.exports = class Auth extends ChildRouter {
              * Date: 11/08/2022
              * Dev: VyPQ
              */
-            [CF_ROUTINGS_USER.USERS_USERID]: {
+            [CF_ROUTINGS_CAR.CARS_CARID]: {
                 config: {
                     auth: [ roles.role.all.bin ],
                     type: 'json',
                 },
                 methods: {
                     get: [ async function (req, res) {
-                        const { userID } = req.params;
-
-                        const resultGetInfoUser = await USER_MODEL.getInfo({ userID });
-                        res.json(resultGetInfoUser);
+                        const { carID } = req.params;
+                        const resultGetInfoCar = await CAR_MODEL.getInfo({ carID });
+                        res.json(resultGetInfoCar);
                     }],
                     put: [ async function (req, res) {
-                        const { userID } = req.params;
-                        const { username, email, currentPass, newPass, confirmPass, role, status, firstName, lastName, address, phone, avatar } = req.body;
+                        const { carID } = req.params;
+                        const { 
+                            name, provinceID, districtID, 
+                            wardID, provinceText, districtText, 
+                            wardText, address, price, mortage, 
+                            rules, userID, brandID, description, 
+                            avatar, gallery, status,
+                            listCharacteristicID
+                        } = req.body;
 
-                        const resultUpdateUser = await USER_MODEL.update({ 
-                            userID, username, email, currentPass, newPass, confirmPass, role, status, firstName, lastName, address, phone, avatar
+                        const resultUpdateCar = await CAR_MODEL.update({ 
+                            carID, name, provinceID, districtID, 
+                            wardID, provinceText, districtText, 
+                            wardText, address, price, mortage, 
+                            rules, userID, brandID, description, 
+                            avatar, gallery, status,
+                            listCharacteristicID
                         });
-                        res.json(resultUpdateUser);
+                        res.json(resultUpdateCar);
                     }],
                     delete: [ async function (req, res) {
-                        const { userID } = req.params;
-
-                        const resultGetInfoUser = await USER_MODEL.remove({ userID });
-                        res.json(resultGetInfoUser);
+                        const { carID } = req.params;
+                        const resultGetInfoCar = await CAR_MODEL.remove({ carID });
+                        res.json(resultGetInfoCar);
                     }],
                 },
             },
@@ -103,7 +123,7 @@ module.exports = class Auth extends ChildRouter {
              * Date: 12/08/2022
              * Dev: VyPQ
              */
-             [CF_ROUTINGS_USER.LOGIN]: {
+             [CF_ROUTINGS_CAR.LOGIN]: {
                 config: {
                     auth: [ roles.role.all.bin ],
                     type: 'json',
@@ -111,7 +131,7 @@ module.exports = class Auth extends ChildRouter {
                 methods: {
                     post: [ async function (req, res) {
                         const { username, email, password } = req.body;
-                        const resultLogin = await USER_MODEL.login({ username, email, password });
+                        const resultLogin = await CAR_MODEL.login({ username, email, password });
                         res.json(resultLogin);
                     }]
                 },

@@ -27,6 +27,7 @@ const CAR_COLL  					= require('../databases/car-coll');
  */
 const IMAGE_MODEL                = require('../../image/models/image').MODEL;
 const TOKEN_MODEL                = require('../../token/models/token').MODEL;
+const CAR_CHARACTERISTIC_MODEL   = require('../../characteristic/models/car_characteristic').MODEL;
 class Model extends BaseModel {
     constructor() {
         super(CAR_COLL);
@@ -37,63 +38,91 @@ class Model extends BaseModel {
         this.STATUS_DELETED = 2;
     }
 
-	insert({ username, email, password, confirmPass, role, status = 1, firstName, lastName, address, phone, avatar }) {
+	insert({ name, provinceID, districtID, wardID, provinceText, districtText, wardText, address, price, mortage, rules, userID, brandID, description, avatar, gallery, status, listCharacteristicID }) {
         return new Promise(async resolve => {
             try {
-                if(!username || !email || !phone || !password || !role)
-                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
+                if(!ObjectID.isValid(userID))
+                    return resolve({ error: true, message: 'Tham số không hợp lệ. Vui lòng kiểm tra thông tin chủ xe' });
 
-                let emailValid 	  = email.toLowerCase().trim();
-                let usernameValid = username.toLowerCase().trim();
-                let phoneValid    = phone.toLowerCase().trim();
+                if(!ObjectID.isValid(brandID))
+                    return resolve({ error: true, message: 'Tham số không hợp lệ. Vui lòng kiểm tra thông tin thương hiệu' });
 
-                let checkExists = await USER_COLL.findOne({
-                    $or: [
-                        { username: usernameValid },
-                        { email: emailValid },
-                        { phone: phoneValid },
-                    ]
-                });
-                if(checkExists)
-                    return resolve({ error: true, message: 'Tên người dùng hoặc email hoặc số điện thoại đã tồn tại' });
+                if(!name)
+                    return resolve({ error: true, message: 'Vui lòng nhập tên xe' });
 
-				if(![this.ADMIN_ROLE, this.USER_ROLE].includes(+role))
-					return resolve({ error: true, message: 'Quyền không hợp lệ' });
+                if(!provinceID || !districtID || !wardID || !address)
+                    return resolve({ error: true, message: 'Vui lòng nhập đầy đủ thông tin địa chỉ' });
 
-				if(![this.STATUS_ACTIVE, this.STATUS_INACTIVE].includes(+status))
-					return resolve({ error: true, message: 'Trạng thái không hợp lệ' });
+                if(!price)
+                    return resolve({ error: true, message: 'Vui lòng nhập giá thuê xe' });
+                
+                if(Number(price) <= 0)
+                    return resolve({ error: true, message: 'Giá thuê xe không hợp lệ' });
+
+                if(!mortage)
+                    return resolve({ error: true, message: 'Vui lòng nhập thông tin tài sản thế chấp' });
+                
+                if(!rules)
+                    return resolve({ error: true, message: 'Vui lòng nhập điều khoản khi thuê xe' });
+
+                if(!description)
+                    return resolve({ error: true, message: 'Vui lòng nhập mô tả của xe' });
+
+                if(status && ![this.STATUS_ACTIVE, this.STATUS_INACTIVE].includes(+status))
+                    return resolve({ error: true, message: 'Trạng thái không hợp lệ' });
 
                 let dataInsert = {
-                    username: usernameValid, 
-                    email: emailValid,
-                    phone: phoneValid,
-					status,
-					role
+                    name, 
+                    provinceID, 
+                    districtID, 
+                    wardID, 
+                    provinceText, 
+                    districtText, 
+                    wardText, 
+                    address, 
+                    price, 
+                    mortage, // tài sản thế chấp
+                    rules, 
+                    userID, 
+                    brandID, 
+                    description,
+                    status
                 }
 
-                if(confirmPass !== password)
-					return resolve({ error: true, message: 'Mật khẩu xác nhận không hợp lệ' });
-
-                let hashPassword = await hash(password, 8);
-				if (!hashPassword)
-					return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình hash mật khẩu' });
-
-				dataInsert.password = hashPassword;
-				dataInsert.firstName = firstName;
-				dataInsert.lastName = lastName;
-				dataInsert.address = address;
-
                 if(avatar) {
-                    let resultInsertImage = await IMAGE_MODEL.insert(dataInsert);
-                    if(resultInsertImage.error)
-					    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình thêm ảnh đại diện' });
-                    
-				    dataInsert.avatar = resultInsertImage.data._id;
+                    let { name, size, path } = avatar;
+
+                    let resultInsertImage = await IMAGE_MODEL.insert({ name, size, path });
+                    if(resultInsertImage.error) return resolve(resultInsertImage);
+
+                    dataInsert.avatar = resultInsertImage.data._id;
+                }
+
+                if(gallery && gallery.lenght) {
+                    let listPromise = gallery.map(galleryItem => IMAGE_MODEL.insert({
+                        name: galleryItem.name,
+                        size: galleryItem.size,
+                        path: galleryItem.path
+                    }));
+
+                    let resultAfterPromiseAll = await Promise.all(listPromise);
+                    let listImageGalleryID = resultAfterPromiseAll.map(resultImage => resultImage.data._id);
+
+                    dataInsert.gallery = listImageGalleryID;
                 }
 
                 let infoAfterInsert = await this.insertData(dataInsert);
                 if(!infoAfterInsert)
-                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình tạo người dùng' });
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình tạo xe' });
+
+                if(listCharacteristicID && listCharacteristicID.length) {
+                    let listPromise = await listCharacteristicID.map(characteristic => CAR_CHARACTERISTIC_MODEL.insert({ 
+                        carID: infoAfterInsert._id,
+                        characteristicID: characteristic
+                    }));
+
+                    let resultAfterPromiseAll = await Promise.all(listPromise);
+                }
 
                 return resolve({ error: false, data: infoAfterInsert });
             } catch (error) {
@@ -102,110 +131,122 @@ class Model extends BaseModel {
         })
     }
 
-    getInfo({ userID }) {
+    getInfo({ carID }) {
         return new Promise(async resolve => {
             try {
-                if(!ObjectID.isValid(userID))
+                if(!ObjectID.isValid(carID))
                     return resolve({ error: true, message: 'Tham số không hợp lệ' });
 
-                let infoUser = await USER_COLL.findById(userID);
-                if(!infoUser)
-                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy thông tin người dùng' });
+                let infoCar = await CAR_COLL.findById(carID).populate({
+                    path: 'brandID userID avatar gallery',
+                    select: 'name firstName lastName path'
+                });
+                if(!infoCar)
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy thông tin xe' });
 
-                return resolve({ error: false, data: infoUser });
+                return resolve({ error: false, data: infoCar });
             } catch (error) {
                 return resolve({ error: true, message: error.message });
             }
         })
     }
 
-	update({ userID, username, email, currentPass, newPass, confirmPass, status, role, firstName, lastName, address, phone, avatar }) {
+	update({ carID, name, provinceID, districtID, wardID, provinceText, districtText, wardText, address, price, mortage, rules, brandID, description, avatar, gallery, status, listCharacteristicID }) {
         return new Promise(async resolve => {
             try {
-                if(!ObjectID.isValid(userID))
-                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
-
-                let infoUser = await USER_COLL.findById(userID);
-                if(!infoUser)
-                    return resolve({ error: true, message: 'Mã ID người dùng không hợp lệ' });
-
-                let emailValid 	  = email.toLowerCase().trim();
-                let usernameValid = username.toLowerCase().trim();
-                let phoneValid    = phone.toLowerCase().trim();
-
-                let checkExists = await USER_COLL.findOne({
-                    _id: { $ne: userID },
-                    $or: [
-                        { username: usernameValid },
-                        { email: emailValid },
-                        { phone: phoneValid },
-                    ]
-                });
-                if(checkExists)
-                    return resolve({ error: true, message: 'Tên người dùng hoặc email hoặc số điện thoại đã tồn tại' });
-
-				if(role && ![this.ADMIN_ROLE, this.USER_ROLE].includes(+role))
-					return resolve({ error: true, message: 'Quyền không hợp lệ' });
-
-				if(status && ![this.STATUS_ACTIVE, this.STATUS_INACTIVE].includes(+status))
-					return resolve({ error: true, message: 'Trạng thái không hợp lệ' });
-
                 let dataUpdate = {};
 
-                username && (dataUpdate.username = username);
-                email    && (dataUpdate.email = email);
-                phone    && (dataUpdate.phone = phone);
-                role     && (dataUpdate.role = +role);
-                status   && (dataUpdate.status = +status);
+                if(brandID && !ObjectID.isValid(brandID))
+                    return resolve({ error: true, message: 'Tham số không hợp lệ. Vui lòng kiểm tra thông tin thương hiệu' });
 
-                // Bước kiểm tra và đổi mật khẩu
-                if(!confirmPass || !currentPass || !newPass)
-					return resolve({ error: true, message: 'Vui lòng nhập đẩy đủ các thông tin về mật khẩu để tiến hành thay đổi mật khẩu' });
-                else {
-                    let isCorrectPass = await compare(currentPass, infoUser.password);
-                    if(!isCorrectPass)
-					    return resolve({ error: true, message: 'Mật khẩu không chính xác. Vui lòng thử lại' });
-                    
-                    if(confirmPass !== newPass)
-					    return resolve({ error: true, message: 'Mật khẩu xác nhận không chính xác. Vui lòng thử lại' });
+                if(name) {
+                    let isExist = await CAR_COLL.findOne({
+                        _id: { $ne: carID },
+                        name
+                    });
+                    if(isExist)
+                        return resolve({ error: true, message: 'Tên xe đã tồn tại' });
 
-                    let hashPassword = await hash(newPass, 8);
-                    if (!hashPassword)
-                        return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình hash mật khẩu' });
-
-                    dataUpdate.password = hashPassword;
+                    dataUpdate.name = name;
                 }
 
-				firstName && (dataUpdate.firstName = firstName);
-				lastName  && (dataUpdate.lastName = lastName);
-				address   && (dataUpdate.address = address);
+                if(price) {
+                    if(Number(price) <= 0)
+                        return resolve({ error: true, message: 'Giá thuê xe không hợp lệ' });
+
+                    price && (dataUpdate.price = price);
+                }
+
+                provinceID   && (dataUpdate.provinceID = provinceID);
+                provinceText && (dataUpdate.provinceText = provinceText);
+                districtID   && (dataUpdate.districtID = districtID);
+                districtText && (dataUpdate.districtText = districtText);
+                wardID       && (dataUpdate.wardID = wardID);
+                wardText     && (dataUpdate.wardText = wardText);
+                address      && (dataUpdate.address = address);
+                mortage      && (dataUpdate.mortage = mortage);
+                rules        && (dataUpdate.rules = rules);
+                description  && (dataUpdate.description = description);
+
+                if(status) {
+                    if(![this.STATUS_ACTIVE, this.STATUS_INACTIVE].includes(+status))
+                        return resolve({ error: true, message: 'Trạng thái không hợp lệ' });
+
+                    dataUpdate.status = +status;
+                }
 
                 if(avatar) {
-                    let resultInsertImage = await IMAGE_MODEL.insert(dataUpdate);
-                    if(resultInsertImage.error)
-					    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình thêm ảnh đại diện' });
-                    
-				    dataUpdate.avatar = resultInsertImage.data._id;
+                    let { name, size, path } = avatar;
+
+                    let resultInsertImage = await IMAGE_MODEL.insert({ name, size, path });
+                    if(resultInsertImage.error) return resolve(resultInsertImage);
+
+                    dataUpdate.avatar = resultInsertImage.data._id;
                 }
 
-                let infoAfterUpdate = await USER_COLL.findByIdAndUpdate(userID, dataUpdate, { new: true });
-                if(!infoAfterUpdate)
-                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình cập nhật người dùng' });
+                if(gallery && gallery.lenght) {
+                    let listPromise = gallery.map(galleryItem => IMAGE_MODEL.insert({
+                        name: galleryItem.name,
+                        size: galleryItem.size,
+                        path: galleryItem.path
+                    }));
 
-                return resolve({ error: false, data: infoAfterUpdate });
+                    let resultAfterPromiseAll = await Promise.all(listPromise);
+                    let listImageGalleryID = resultAfterPromiseAll.map(resultImage => resultImage.data._id);
+
+                    dataUpdate.gallery = listImageGalleryID;
+                }
+
+                let infoAfterUpdate = await CAR_COLL.findByIdAndUpdate(carID, dataUpdate, { new: true });
+                if(!infoAfterUpdate)
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình tạo xe' });
+
+                if(listCharacteristicID && listCharacteristicID.length) {
+                    let resultRemoveCharacteristicCar = await CAR_CHARACTERISTIC_MODEL.removeAllCarCharacteristicToInactive({ carID });
+                    if(resultRemoveCharacteristicCar.error) return resolve(resultRemoveCharacteristicCar);
+
+                    let listPromise = await listCharacteristicID.map(characteristic => CAR_CHARACTERISTIC_MODEL.insert({ 
+                        carID: infoAfterUpdate._id,
+                        characteristicID: characteristic
+                    }));
+
+                    let resultAfterPromiseAll = await Promise.all(listPromise);
+                }
+
+                return resolve({ error: false, data: infoAfterUpdate })
             } catch (error) {
                 return resolve({ error: true, message: error.message });
             }
         })
     }
 
-    updatePersonalUser({ userID, password, oldPassword, status, role }) {
+    updatePersonalUser({ carID, password, oldPassword, status, role }) {
         return new Promise(async resolve => {
             try {
-                if(!ObjectID.isValid(userID))
+                if(!ObjectID.isValid(carID))
                     return resolve({ error: true, message: 'params_invalid' });
 
-                let checkExists = await USER_COLL.findById(userID);
+                let checkExists = await CAR_COLL.findById(carID);
                 if(!checkExists)
                     return resolve({ error: true, message: 'user_is_not_exists' });
 
@@ -226,7 +267,7 @@ class Model extends BaseModel {
 					dataUpdateUser.status = status;
 				}
 
-                await this.updateWhereClause({ _id: userID }, dataUpdateUser);
+                await this.updateWhereClause({ _id: carID }, dataUpdateUser);
                 password && delete dataUpdateUser.password;
 
                 return resolve({ error: false, data: dataUpdateUser });
@@ -236,19 +277,19 @@ class Model extends BaseModel {
         })
     }
 
-    remove({ userID }) {
+    remove({ carID }) {
         return new Promise(async resolve => {
             try {
-                if(!ObjectID.isValid(userID))
+                if(!ObjectID.isValid(carID))
                     return resolve({ error: true, message: 'Tham số không hợp lệ' });
 
                 let dataUpdate = {
                     status: this.STATUS_DELETED
                 };
 
-				let infoAfterDelete = await USER_COLL.findByIdAndUpdate(userID, dataUpdate, { new: true });
+				let infoAfterDelete = await CAR_COLL.findByIdAndUpdate(carID, dataUpdate, { new: true });
                 if(!infoAfterDelete) 
-                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình xóa người dùng' });
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình xóa xe' });
 
                 return resolve({ error: false, data: infoAfterDelete });
             } catch (error) {
@@ -260,9 +301,9 @@ class Model extends BaseModel {
 	getList(){
         return new Promise(async resolve => {
             try {
-                let listUser = await USER_COLL.find({}).lean();
+                let listUser = await CAR_COLL.find({}).lean();
                 if(!listUser)
-                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách người dùng' });
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách xe' });
 
                 return resolve({ error: false, data: listUser });
             } catch (error) {
@@ -274,7 +315,7 @@ class Model extends BaseModel {
     login({ username, email, password }) {
         return new Promise(async resolve => {
             try {
-                let checkExists = await USER_COLL.findOne({ 
+                let checkExists = await CAR_COLL.findOne({ 
                     $or: [
                         { username: username && username.toLowerCase().trim() },
                         { email: email && email.toLowerCase().trim() }
@@ -288,9 +329,9 @@ class Model extends BaseModel {
                     return resolve({ error: true, message: 'Mật khẩu không chính xác' });
 
                 if (checkExists.status == this.STATUS_INACTIVE) 
-                    return resolve({ error: true, message: 'Người dùng đang bị khóa. Vui lòng liên hệ quản trị viên' });
+                    return resolve({ error: true, message: 'xe đang bị khóa. Vui lòng liên hệ quản trị viên' });
 
-                let infoUser = {
+                let infoCar = {
                     _id: checkExists._id,
                     username: checkExists.username,
                     firstName: checkExists.firstName,
@@ -302,19 +343,19 @@ class Model extends BaseModel {
                     role: checkExists.role,
                 }
 
-                let isExistToken = await TOKEN_MODEL.getInfo({ userID: checkExists._id });
+                let isExistToken = await TOKEN_MODEL.getInfo({ carID: checkExists._id });
                 let token;
                 if(isExistToken.error) {
-                    token = jwt.sign(infoUser, cfJWS.secret);
+                    token = jwt.sign(infoCar, cfJWS.secret);
 
-                    let resultInsertToken = await TOKEN_MODEL.insert({ userID: checkExists._id, token });
+                    let resultInsertToken = await TOKEN_MODEL.insert({ carID: checkExists._id, token });
                     if(resultInsertToken.error) 
                         return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình cấp TOKEN' });
                 } else token = isExistToken.data.token;
 
                 return resolve({
                     error: false,
-                    data: { user: infoUser, token }
+                    data: { user: infoCar, token }
                 });
             } catch (error) {
                 return resolve({ error: true, message: error.message });

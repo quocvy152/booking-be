@@ -1,11 +1,10 @@
-const BASE_ROUTE = '/users';
+const BASE_ROUTE = '/cars';
 
-const CF_ROUTINGS_USER = {
-	USERS: `${BASE_ROUTE}`,
-	USERS_USERID: `${BASE_ROUTE}/:userID`,
-	LOGIN: `${BASE_ROUTE}/login`,
+const CF_ROUTINGS_CAR = {
+	CARS: `${BASE_ROUTE}`,
+	CARS_CARID: `${BASE_ROUTE}/:carID`,
 
     ORIGIN_APP: BASE_ROUTE
 }
 
-exports.CF_ROUTINGS_USER = CF_ROUTINGS_USER;
+exports.CF_ROUTINGS_CAR = CF_ROUTINGS_CAR;
