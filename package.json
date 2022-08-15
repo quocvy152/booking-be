@@ -2,6 +2,10 @@
   "name": "iot-system-membership-card",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "18.x",
+    "npm": "7.x"
+  },
   "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",
@@ -15,7 +19,7 @@
     "web-rtc",
     "socket.io"
   ],
-  "author": "KoF",
+  "author": "VyPQ",
   "license": "ISC",
   "dependencies": {
     "@auth0/s3": "^1.0.0",
