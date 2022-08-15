@@ -4,7 +4,7 @@ let express = require('express'),
     cluster = require('cluster'),
     net = require('net'),
     sio = require('socket.io'),
-    sio_redis = require('socket.io-redis'),
+    // sio_redis = require('socket.io-redis'),
     https = require('https'),
     farmhash = require('farmhash'),
     fs = require('fs');
@@ -60,7 +60,7 @@ if (cluster.isMaster) {
 
     let io = sio(server);
 
-    io.adapter(sio_redis({host: 'localhost', port: 6379}));
+    // io.adapter(sio_redis({host: 'localhost', port: 6379}));
 } else {
     let app = new express();
     server = app.listen(0, hostConf.host);
@@ -88,7 +88,7 @@ if (cluster.isMaster) {
         });
     }
 
-    io.adapter(sio_redis({host: 'localhost', port: 6379}));
+    // io.adapter(sio_redis({host: 'localhost', port: 6379}));
 
     let socket = require('./www/socket/socket');
     socket(io);
