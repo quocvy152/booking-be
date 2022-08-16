@@ -9,4 +9,4 @@ exports.host_product = true;
  * đều hướng kết nối database
  * @type {boolean}
  */
-exports.database_product = false;
+exports.database_product = true;
