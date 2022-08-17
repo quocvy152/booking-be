@@ -2,7 +2,8 @@
 
 const _session_version = '1.1.0';
 const _session_key = '!@#$Q$&$^!*^$&!^$!*$&@$^@&$#$^%&*&*';
-const session = require('express-session');
+// const session = require('express-session');
+const session = require('cookie-session');
 const APP = require('../../app');
 
 // const redis = require("redis");
