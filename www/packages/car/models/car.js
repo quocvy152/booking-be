@@ -301,7 +301,10 @@ class Model extends BaseModel {
 	getList(){
         return new Promise(async resolve => {
             try {
-                let listUser = await CAR_COLL.find({}).lean();
+                let listUser = await CAR_COLL.find({}).populate({
+                    path: 'brandID userID',
+                    select: 'name icon firstName lastName'
+                });
                 if(!listUser)
                     return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách xe' });
 
