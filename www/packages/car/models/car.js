@@ -6,6 +6,7 @@
 const ObjectID                      = require('mongoose').Types.ObjectId;
 const jwt                           = require('jsonwebtoken');
 const { hash, hashSync, compare }   = require('bcryptjs');
+const _                             = require('lodash');
 
 /**
  * INTERNAL PACKAGES
@@ -28,6 +29,8 @@ const CAR_COLL  					= require('../databases/car-coll');
 const IMAGE_MODEL                = require('../../image/models/image').MODEL;
 const TOKEN_MODEL                = require('../../token/models/token').MODEL;
 const CAR_CHARACTERISTIC_MODEL   = require('../../characteristic/models/car_characteristic').MODEL;
+const CHARACTERISTIC_MODEL       = require('../../characteristic/models/characteristic').MODEL;
+
 class Model extends BaseModel {
     constructor() {
         super(CAR_COLL);
@@ -301,14 +304,27 @@ class Model extends BaseModel {
 	getList(){
         return new Promise(async resolve => {
             try {
-                let listUser = await CAR_COLL.find({}).populate({
+                let condition = {
+                    status: this.STATUS_ACTIVE
+                }
+
+                let listCar = await CAR_COLL.find(condition).populate({
                     path: 'brandID userID',
                     select: 'name icon firstName lastName'
                 });
-                if(!listUser)
+                if(!listCar)
                     return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách xe' });
 
-                return resolve({ error: false, data: listUser });
+                let listCarRes = [];
+                for await (let car of listCar) {
+                    let listCharacteristicOfCar = await CAR_CHARACTERISTIC_MODEL.getListByCar({ carID: car._id });
+                    listCarRes[listCarRes.length++] = {
+                        infoCar: car,
+                        details: listCharacteristicOfCar && listCharacteristicOfCar.data
+                    }
+                }
+
+                return resolve({ error: false, data: listCarRes });
             } catch (error) {
                 return resolve({ error: true, message: error.message });
             }

@@ -81,6 +81,37 @@ class Model extends BaseModel {
             }
         })
     }
+    
+    getListByCar({ carID }) {
+        return new Promise(async resolve => {
+            try {
+                if(!ObjectID.isValid(carID))
+                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
+
+                let condition = {
+                    carID,
+                    status: this.STATUS_ACTIVE
+                }
+                
+                let listCharacteristicByCar = await CAR_CHARACTERISTIC_COLL
+                                            .find(condition)
+                                            .populate({
+                                                path: 'characteristicID',
+                                                select: 'value icon characteristicTypeID',
+                                                populate: {
+                                                    path: 'characteristicTypeID',
+                                                    select: 'name code'
+                                                }
+                                            })
+                if(!listCharacteristicByCar)
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy điểm của xe' });
+
+                return resolve({ error: false, data: listCharacteristicByCar });
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
 
 }
 
