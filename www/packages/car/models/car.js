@@ -331,50 +331,22 @@ class Model extends BaseModel {
         })
     }
 
-    login({ username, email, password }) {
+    checkIsOwnerOfCar({ userID, carID }) {
         return new Promise(async resolve => {
             try {
-                let checkExists = await CAR_COLL.findOne({ 
-                    $or: [
-                        { username: username && username.toLowerCase().trim() },
-                        { email: email && email.toLowerCase().trim() }
-                    ]
-                });
-                if (!checkExists) 
-                    return resolve({ error: true, message: 'Username hoặc Email không tồn tại' });
+                if(!ObjectID.isValid(userID) || !ObjectID.isValid(carID))
+                    return resolve({ error: true, message: 'Tham số không hợp lệ' })
 
-                let isMatchPass = await compare(password, checkExists.password);
-                if (!isMatchPass) 
-                    return resolve({ error: true, message: 'Mật khẩu không chính xác' });
-
-                if (checkExists.status == this.STATUS_INACTIVE) 
-                    return resolve({ error: true, message: 'xe đang bị khóa. Vui lòng liên hệ quản trị viên' });
-
-                let infoCar = {
-                    _id: checkExists._id,
-                    username: checkExists.username,
-                    firstName: checkExists.firstName,
-                    lastName: checkExists.lastName,
-                    email: checkExists.email,
-                    phone: checkExists.phone,
-                    address: checkExists.address,
-                    status: checkExists.status,
-                    role: checkExists.role,
-                }
-
-                let isExistToken = await TOKEN_MODEL.getInfo({ carID: checkExists._id });
-                let token;
-                if(isExistToken.error) {
-                    token = jwt.sign(infoCar, cfJWS.secret);
-
-                    let resultInsertToken = await TOKEN_MODEL.insert({ carID: checkExists._id, token });
-                    if(resultInsertToken.error) 
-                        return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình cấp TOKEN' });
-                } else token = isExistToken.data.token;
+                let isOwnerOfCar = await CAR_COLL.findOne({ _id: carID, userID });
+                if(isOwnerOfCar)
+                    return resolve({
+                        error: true,
+                        message: 'Người dùng không thể tự thuê xe của chính mình' 
+                    });
 
                 return resolve({
                     error: false,
-                    data: { user: infoCar, token }
+                    message: 'OK. Người dùng không phải là chủ của xe này' 
                 });
             } catch (error) {
                 return resolve({ error: true, message: error.message });

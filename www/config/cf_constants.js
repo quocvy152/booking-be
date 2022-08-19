@@ -95,3 +95,13 @@ exports.REGISTER_TRIAL_PROGRAM_STATUS = [
     { value: 3, text: 'Khách không nhận', color: "#472c81" },
     { value: 4, text: 'Khách đã nhận', color: "#2c8144" },
 ]
+
+// TRẠNG THÁI ĐẶT XE
+exports.STATUS_BOOKING = [                   
+    { value: 0, text: 'Không hoạt động' },
+    { value: 1, text: 'Đang hoạt động' },
+    { value: 2, text: 'Đã hủy' },
+    { value: 3, text: 'Đợi duyệt' },
+    { value: 4, text: 'Đợi trả xe' },
+    { value: 5, text: 'Đã thanh toán' },
+]

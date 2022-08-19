@@ -5,6 +5,7 @@ const roleCf = require('./../config/cf_role');
 const { COMMON_ROUTES }     	            = require('../packages/common');
 const { USER_ROUTES  } 	    	            = require('../packages/users');
 const { BRAND_ROUTES  } 	                = require('../packages/brand');
+const { BOOKING_ROUTES  } 	                = require('../packages/booking');
 const { CAR_ROUTES  } 	                    = require('../packages/car');
 const { CUSTOMER_ROUTES }   	            = require('../packages/customer');
 const { S3_ROUTES } 	    	            = require('../packages/upload-s3');
@@ -19,7 +20,8 @@ const initAuths = [
     BRAND_ROUTES,
     TOKEN_ROUTES,
     CHARACTERISTIC_ROUTES,
-    CAR_ROUTES
+    CAR_ROUTES,
+    BOOKING_ROUTES
 ];
 
 let allAuths = {};
