@@ -40,6 +40,14 @@ class Model extends BaseModel {
 	insert({ username, email, password, confirmPass, role, status = 1, firstName, lastName, address, phone, avatar }) {
         return new Promise(async resolve => {
             try {
+                console.log({
+                    username, 
+                    email, 
+                    password,
+                    phone,
+                    role
+                })
+
                 if(!username || !email || !phone || !password || !role)
                     return resolve({ error: true, message: 'Tham số không hợp lệ' });
 
