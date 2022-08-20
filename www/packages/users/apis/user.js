@@ -99,11 +99,31 @@ module.exports = class Auth extends ChildRouter {
 
             /**
              * Function: 
+             *      + GET INFO OF CURRENT USER (API)
+             * Date: 12/08/2022
+             * Dev: VyPQ
+             */
+             [CF_ROUTINGS_USER.USERS_INFO]: {
+                config: {
+                    auth: [ roles.role.user.bin ],
+                    type: 'json',
+                },
+                methods: {
+                    get: [ async function (req, res) {
+                        const { _id } = req.user;
+                        const resultGetInfoUser = await USER_MODEL.getInfo({ userID: _id });
+                        res.json(resultGetInfoUser);
+                    }]
+                },
+            },
+
+            /**
+             * Function: 
              *      + Login (API)
              * Date: 12/08/2022
              * Dev: VyPQ
              */
-             [CF_ROUTINGS_USER.LOGIN]: {
+            [CF_ROUTINGS_USER.LOGIN]: {
                 config: {
                     auth: [ roles.role.all.bin ],
                     type: 'json',
