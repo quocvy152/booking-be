@@ -331,6 +331,40 @@ class Model extends BaseModel {
         })
     }
 
+	getListMyCar({ userID }){
+        return new Promise(async resolve => {
+            try {
+                if(!ObjectID.isValid(userID))
+                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
+                
+                let condition = {
+                    status: this.STATUS_ACTIVE,
+                    userID
+                }
+
+                let listCar = await CAR_COLL.find(condition).populate({
+                    path: 'brandID userID',
+                    select: 'name icon firstName lastName'
+                });
+                if(!listCar)
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách xe' });
+
+                let listCarRes = [];
+                for await (let car of listCar) {
+                    let listCharacteristicOfCar = await CAR_CHARACTERISTIC_MODEL.getListByCar({ carID: car._id });
+                    listCarRes[listCarRes.length++] = {
+                        infoCar: car,
+                        details: listCharacteristicOfCar && listCharacteristicOfCar.data
+                    }
+                }
+
+                return resolve({ error: false, data: listCarRes });
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
+
     checkIsOwnerOfCar({ userID, carID }) {
         return new Promise(async resolve => {
             try {

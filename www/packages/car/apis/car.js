@@ -119,20 +119,20 @@ module.exports = class Auth extends ChildRouter {
 
             /**
              * Function: 
-             *      + Login (API)
+             *      + Get list my car (API)
              * Date: 12/08/2022
              * Dev: VyPQ
              */
-             [CF_ROUTINGS_CAR.LOGIN]: {
+            [CF_ROUTINGS_CAR.GET_LIST_MY_CARS]: {
                 config: {
-                    auth: [ roles.role.all.bin ],
+                    auth: [ roles.role.user.bin ],
                     type: 'json',
                 },
                 methods: {
-                    post: [ async function (req, res) {
-                        const { username, email, password } = req.body;
-                        const resultLogin = await CAR_MODEL.login({ username, email, password });
-                        res.json(resultLogin);
+                    get: [ async function (req, res) {
+                        const { _id: userID } = req.user;
+                        const resultListMyCar = await CAR_MODEL.getListMyCar({ userID });
+                        res.json(resultListMyCar);
                     }]
                 },
             },
