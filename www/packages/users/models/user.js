@@ -193,7 +193,12 @@ class Model extends BaseModel {
 				address   && (dataUpdate.address = address);
 
                 if(avatar) {
-                    let resultInsertImage = await IMAGE_MODEL.insert(dataUpdate);
+                    let dataImage = {
+                        name: avatar.filename,
+                        path: avatar.path,
+                        size: avatar.size
+                    }
+                    let resultInsertImage = await IMAGE_MODEL.insert(dataImage);
                     if(resultInsertImage.error)
 					    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình thêm ảnh đại diện' });
                     
