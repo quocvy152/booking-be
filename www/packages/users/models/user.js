@@ -132,6 +132,9 @@ class Model extends BaseModel {
 	update({ userID, username, email, currentPass, newPass, confirmPass, status, role, firstName, lastName, address, phone, avatar }) {
         return new Promise(async resolve => {
             try {
+                console.log({
+                    userID, username, email, currentPass, newPass, confirmPass, status, role, firstName, lastName, address, phone, avatar
+                })
                 if(!ObjectID.isValid(userID))
                     return resolve({ error: true, message: 'Tham số không hợp lệ' });
 
