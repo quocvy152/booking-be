@@ -80,7 +80,7 @@ module.exports = class Auth extends ChildRouter {
                         const resultGetInfoUser = await USER_MODEL.getInfo({ userID });
                         res.json(resultGetInfoUser);
                     }],
-                    put: [ async function (req, res) {
+                    put: [ multer.uploadSingle, async function (req, res) {
                         const { userID } = req.params;
                         const { username, email, currentPass, newPass, confirmPass, role, status, firstName, lastName, address, phone, avatar } = req.body;
 
