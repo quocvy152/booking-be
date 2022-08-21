@@ -81,6 +81,9 @@ module.exports = class Auth extends ChildRouter {
                         res.json(resultGetInfoUser);
                     }],
                     put: [ multer.uploadSingle, async function (req, res) {
+                        console.log({
+                            FILE: req.file
+                        })
                         const { userID } = req.params;
                         const { username, email, currentPass, newPass, confirmPass, role, status, firstName, lastName, address, phone, avatar } = req.body;
 
