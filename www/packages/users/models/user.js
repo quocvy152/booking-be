@@ -172,9 +172,7 @@ class Model extends BaseModel {
                 status   && (dataUpdate.status = +status);
 
                 // Bước kiểm tra và đổi mật khẩu
-                if(!confirmPass || !currentPass || !newPass)
-					return resolve({ error: true, message: 'Vui lòng nhập đẩy đủ các thông tin về mật khẩu để tiến hành thay đổi mật khẩu' });
-                else {
+                if(confirmPass && currentPass && newPass) {
                     let isCorrectPass = await compare(currentPass, infoUser.password);
                     if(!isCorrectPass)
 					    return resolve({ error: true, message: 'Mật khẩu không chính xác. Vui lòng thử lại' });
@@ -187,7 +185,8 @@ class Model extends BaseModel {
                         return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình hash mật khẩu' });
 
                     dataUpdate.password = hashPassword;
-                }
+                } else
+					return resolve({ error: true, message: 'Vui lòng nhập đẩy đủ các thông tin về mật khẩu để tiến hành thay đổi mật khẩu' });
 
 				firstName && (dataUpdate.firstName = firstName);
 				lastName  && (dataUpdate.lastName = lastName);
