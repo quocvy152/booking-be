@@ -6,6 +6,7 @@ const CF_ROUTINGS_USER = {
 	USERS_INFO: `${BASE_ROUTE}/info/current`,
 	USERS_USERID: `${BASE_ROUTE}/:userID`,
 	LOGIN: `${BASE_ROUTE}/login`,
+	UPDATE_AVATAR: `${BASE_ROUTE}/avatar/update`,
 
     ORIGIN_APP: BASE_ROUTE
 }

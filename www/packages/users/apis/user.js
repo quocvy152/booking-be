@@ -10,6 +10,7 @@ const path = require('path');
  */
 const ChildRouter                           = require('../../../routing/child_routing');
 const roles                                 = require('../../../config/cf_role');
+const multer                                = require('../../../config/cf_helpers_multer/index');
 const { CF_ROUTINGS_USER } 					= require('../constants/user.uri');
 
 /**
@@ -153,6 +154,24 @@ module.exports = class Auth extends ChildRouter {
                         const { username, email, password } = req.body;
                         const resultLogin = await USER_MODEL.login({ username, email, password });
                         res.json(resultLogin);
+                    }]
+                },
+            },
+
+            /**
+             * Function: 
+             *      + Update Avatar (API)
+             * Date: 12/08/2022
+             * Dev: VyPQ
+             */
+             [CF_ROUTINGS_USER.UPDATE_AVATAR]: {
+                config: {
+                    auth: [ roles.role.user.bin ],
+                    type: 'json',
+                },
+                methods: {
+                    post: [ multer.uploadSingle, async function (req, res) {
+                        res.json(req.file);
                     }]
                 },
             },
