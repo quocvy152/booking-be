@@ -185,7 +185,7 @@ class Model extends BaseModel {
                         return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình hash mật khẩu' });
 
                     dataUpdate.password = hashPassword;
-                } else
+                } else if(confirmPass || currentPass || newPass)
 					return resolve({ error: true, message: 'Vui lòng nhập đẩy đủ các thông tin về mật khẩu để tiến hành thay đổi mật khẩu' });
 
 				firstName && (dataUpdate.firstName = firstName);
