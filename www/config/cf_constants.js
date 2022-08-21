@@ -105,3 +105,7 @@ exports.STATUS_BOOKING = [
     { value: 4, text: 'Đợi trả xe' },
     { value: 5, text: 'Đã thanh toán' },
 ]
+
+exports.BOOKING_URL = {
+    BOOKING_SERVER: 'https://booking-be-app.herokuapp.com'
+}

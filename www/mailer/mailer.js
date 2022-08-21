@@ -7,6 +7,9 @@ let { checkEmail } 	= require('../utils/utils');
 module.exports = function (to, subject, content, callback) {
 	if(checkEmail(to)){
 		let smtpTransport = mailer.createTransport("SMTP", {
+			host: cfMailer.host,
+			port: 465,
+			secure: true,
 			service: cfMailer.service,
 			auth: {
 				user: cfMailer.email,
@@ -22,6 +25,7 @@ module.exports = function (to, subject, content, callback) {
 		};
 	
 		smtpTransport.sendMail(mail, function (error, response) {
+			console.log({ error })
 			if (error) {
 				if (callback == null || typeof callback == "undefined") {
 				} else {

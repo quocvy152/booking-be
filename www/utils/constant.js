@@ -1,7 +1,7 @@
 "use strict";
 
 exports._base_logo1_url = "";
-exports.webName 		= "AST - Voucher";
+exports.webName 		= "Booking - Ứng dụng đặt thuê xe";
 
 exports.ADMIN_ACCESS    = [0];
 exports.USER_ACCESS   	= [0,1];

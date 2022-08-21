@@ -11,6 +11,8 @@ const { hash, hashSync, compare }   = require('bcryptjs');
  * INTERNAL PACKAGES
  */
 const cfJWS                         = require('../../../config/cf_jws');
+const { resetPassAccount }          = require('../../../mailer/module/mail_user');
+const { BOOKING_URL }               = require('../../../config/cf_constants');
 
 /**
  * BASES
@@ -323,6 +325,35 @@ class Model extends BaseModel {
                 return resolve({
                     error: false,
                     data: { user: infoUser, token }
+                });
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
+
+    resetPassword({ account }) {
+        return new Promise(async resolve => {
+            try {
+                console.log({ account })
+                if(!account)
+                    return resolve({ error: true, message: 'Tham số không hợp lệ sssssss' });
+
+                let infoUser = await USER_COLL.findOne({
+                    $or: [
+                        { email: account },
+                        { username: account }
+                    ]
+                });
+                if(!infoUser)
+                    return resolve({ error: true, message: 'Tên tài khoản hoặc email không hợp lệ' });
+
+                let BOOKING_SERVER = BOOKING_URL.BOOKING_SERVER;
+                resetPassAccount(infoUser.email, infoUser.username, BOOKING_SERVER, 1);
+
+                return resolve({
+                    error: false,
+                    data: infoUser
                 });
             } catch (error) {
                 return resolve({ error: true, message: error.message });

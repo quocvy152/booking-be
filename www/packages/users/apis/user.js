@@ -119,6 +119,26 @@ module.exports = class Auth extends ChildRouter {
 
             /**
              * Function: 
+             *      + Reset Password (API)
+             * Date: 12/08/2022
+             * Dev: VyPQ
+             */
+             [CF_ROUTINGS_USER.RESET_PASSWORD]: {
+                config: {
+                    auth: [ roles.role.all.bin ],
+                    type: 'json',
+                },
+                methods: {
+                    put: [ async function (req, res) {
+                        const { account } = req.body;
+                        const resultResetPassword = await USER_MODEL.resetPassword({ account });
+                        res.json(resultResetPassword);
+                    }]
+                },
+            },
+
+            /**
+             * Function: 
              *      + Login (API)
              * Date: 12/08/2022
              * Dev: VyPQ

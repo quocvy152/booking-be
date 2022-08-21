@@ -21,7 +21,7 @@ exports.verifyEmailUser = function (userName, email, link, lang) {
 let template = (otp) => `<div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
 <div style="margin:50px auto;width:70%;padding:20px 0">
 <div style="border-bottom:1px solid #eee">
-    <a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">NANDIO</a>
+    <a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">BOOKING</a>
 </div>
 
   <p>Mã OTP của Bạn là: <strong>${otp}</strong></p>
@@ -32,13 +32,13 @@ let template = (otp) => `<div style="font-family: Helvetica,Arial,sans-serif;min
 
 function templateChangeEmail(email, code) {
     return `
-        ${getHeaderEmail("NANDIO")}
+        ${getHeaderEmail("BOOKING")}
         Xin chào ${email}, Code mặc định của bạn là <b>${code}</b>
-        <p><i>Email này được gửi từ hệ thống NANDIO. Hãy đổi nhập code để đổi lại thông tin</i></p>
+        <p><i>Email này được gửi từ hệ thống BOOKING. Hãy đổi nhập code để đổi lại thông tin</i></p>
         <hr>
         <p>Hi ${email}, Your default code is <b>${code}</b></p>
         <hr>
-        <p><i>This email is send from NANDIO. Please enter the code to change the info </i></p>
+        <p><i>This email is send from BOOKING. Please enter the code to change the info </i></p>
         ${getFooterEmail()}
     `;
 }
@@ -46,7 +46,7 @@ function templateChangeEmail(email, code) {
 exports.sendOTP = function (email, code) {
     let emailContent = template(code);
     
-    mailer(email, 'XÁC THỰC TÀI KHOẢN - NANDIO', emailContent, function (callback) {
+    mailer(email, 'XÁC THỰC TÀI KHOẢN - BOOKING', emailContent, function (callback) {
         console.log({
             callback
         });
@@ -60,18 +60,18 @@ exports.sendOTP = function (email, code) {
  * @param type
  */
 exports.resetPassAccount = function (email, userName, link, type) {
-
-    let emailContent = getHeaderEmail((type === 1) ? "RESET PASSWORD" : "RESET SECOND PASSWORD")
+    let emailContent = getHeaderEmail((type === 1) ? "KHỞI TẠO LẠI MẬT KHẨU" : "RESET SECOND PASSWORD")
         + getContentEmailResetPass(userName, baseUrl + link, type);
     +getFooterEmail();
 
-    mailer(email, `${webName}: Reset password`, emailContent, function (callback) {
+    mailer(email, `${webName}: Khởi Tạo Lại Mật Khẩu`, emailContent, function (callback) {
+        if(callback.error) console.log({ MESSAGE_MAILER: callback.message })
     });
 };
 
 exports.sendMailChangeEmail = function (email, code){
     let emailContent = templateChangeEmail(email, code);
-    mailer(email, `CODE - NANDIO`, emailContent, function(cb){
+    mailer(email, `CODE - BOOKING`, emailContent, function(cb){
         console.log(cb);
     });
 }
