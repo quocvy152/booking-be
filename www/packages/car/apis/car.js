@@ -11,6 +11,7 @@ const path = require('path');
 const ChildRouter                           = require('../../../routing/child_routing');
 const roles                                 = require('../../../config/cf_role');
 const { CF_ROUTINGS_CAR } 					= require('../constants/car.uri');
+const multer                                = require('../../../config/cf_helpers_multer/index');
 
 /**
  * MODELS
@@ -46,7 +47,7 @@ module.exports = class Auth extends ChildRouter {
                         const resultGetListCar = await CAR_MODEL.getList();
                         res.json(resultGetListCar);
                     }],
-                    post: [ async function (req, res) {
+                    post: [ multer.uploadSingle, async function (req, res) {
                         const { 
                             name, provinceID, districtID, 
                             wardID, provinceText, districtText, 
