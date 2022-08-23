@@ -1,13 +1,13 @@
-const BASE_ROUTE = '/admin';
+const BASE_ROUTE = '/location';
 
 const CF_ROUTINGS_COMMON = {
     HOME: `${BASE_ROUTE}/home`,
     LOGIN: `/login`,
     LOGOUT: `/logout`,
     
-    LIST_PROVINCES: `/list-provinces`,
-    LIST_DISTRICTS: `/list-districts/:province`,
-    LIST_WARDS: `/list-wards/:district`,
+    LIST_PROVINCES: `${BASE_ROUTE}/provinces`,
+    LIST_DISTRICTS: `${BASE_ROUTE}/district-by-province`,
+    LIST_WARDS: `${BASE_ROUTE}/ward-list-district`,
 
     ORIGIN_APP: BASE_ROUTE
 }
