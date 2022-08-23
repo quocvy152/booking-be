@@ -9,9 +9,6 @@ let storage = multer.diskStorage({
         cb(null, outputPath);
     },
     filename: function (req, file, cb) {
-        console.log({
-            req, file, cb
-        })
         let fileName = '';
 
         if(MIME_TYPES_IMAGE.includes(file.mimetype)){
@@ -26,6 +23,6 @@ let storage = multer.diskStorage({
 
         req.fileName = fileName;
     }
-})
+});
 
 exports.upload = multer({ storage: storage });

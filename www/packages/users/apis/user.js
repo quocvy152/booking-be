@@ -4,6 +4,7 @@
  * EXTERNAL PACKAGE
  */
 const path = require('path');
+const imgbbUploader = require('imgbb-uploader');
 
 /**
  * INTERNAL PACKAGE
@@ -11,7 +12,9 @@ const path = require('path');
 const ChildRouter                           = require('../../../routing/child_routing');
 const roles                                 = require('../../../config/cf_role');
 const multer                                = require('../../../config/cf_helpers_multer/index');
+const uploadImage                           = require('../../../config/services/cf_firebase');
 const { CF_ROUTINGS_USER } 					= require('../constants/user.uri');
+const { BOOKING_KEY }                       = require('../../../config/cf_constants');
 
 /**
  * MODELS
@@ -82,8 +85,12 @@ module.exports = class Auth extends ChildRouter {
                     }],
                     put: [ multer.uploadSingle, async function (req, res) {
                         const { userID } = req.params;
-                        const avatar     = req.file;
+                        let avatar = req.file;
                         const { username, email, currentPass, newPass, confirmPass, role, status, firstName, lastName, address, phone } = req.body;
+
+                        let resultUploadImg = await imgbbUploader(BOOKING_KEY.KEY_API_IMGBB, req.file.path);
+                        let { display_url } = resultUploadImg;
+                        avatar.urlImgServer = display_url;
 
                         const resultUpdateUser = await USER_MODEL.update({ 
                             userID, username, email, currentPass, newPass, confirmPass, role, status, firstName, lastName, address, phone, avatar

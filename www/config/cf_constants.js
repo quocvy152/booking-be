@@ -109,3 +109,7 @@ exports.STATUS_BOOKING = [
 exports.BOOKING_URL = {
     BOOKING_SERVER: 'https://booking-be-app.herokuapp.com'
 }
+
+exports.BOOKING_KEY = {
+    KEY_API_IMGBB: process.env.KEY_API_IMGBB || '7003ae21f0b2cdeb074ccf48d228244b'
+}

@@ -193,9 +193,12 @@ class Model extends BaseModel {
 				address   && (dataUpdate.address = address);
 
                 if(avatar) {
+                    console.log({
+                        avatar
+                    })
                     let dataImage = {
                         name: avatar.filename,
-                        path: avatar.path,
+                        path: avatar.urlImgServer,
                         size: avatar.size
                     }
                     let resultInsertImage = await IMAGE_MODEL.insert(dataImage);
