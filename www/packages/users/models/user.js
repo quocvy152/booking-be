@@ -132,9 +132,6 @@ class Model extends BaseModel {
 	update({ userID, username, email, currentPass, newPass, confirmPass, status, role, firstName, lastName, address, phone, avatar }) {
         return new Promise(async resolve => {
             try {
-                console.log({
-                    userID, username, email, currentPass, newPass, confirmPass, status, role, firstName, lastName, address, phone, avatar
-                })
                 if(!ObjectID.isValid(userID))
                     return resolve({ error: true, message: 'Tham số không hợp lệ' });
 
@@ -193,9 +190,6 @@ class Model extends BaseModel {
 				address   && (dataUpdate.address = address);
 
                 if(avatar) {
-                    console.log({
-                        avatar
-                    })
                     let dataImage = {
                         name: avatar.filename,
                         path: avatar.urlImgServer,

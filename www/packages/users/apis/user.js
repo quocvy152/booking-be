@@ -4,6 +4,7 @@
  * EXTERNAL PACKAGE
  */
 const path = require('path');
+const fs   = require('fs');
 const imgbbUploader = require('imgbb-uploader');
 
 /**
@@ -91,6 +92,7 @@ module.exports = class Auth extends ChildRouter {
                         let resultUploadImg = await imgbbUploader(BOOKING_KEY.KEY_API_IMGBB, req.file.path);
                         let { display_url } = resultUploadImg;
                         avatar.urlImgServer = display_url;
+                        fs.unlinkSync(req.file.path);
 
                         const resultUpdateUser = await USER_MODEL.update({ 
                             userID, username, email, currentPass, newPass, confirmPass, role, status, firstName, lastName, address, phone, avatar
