@@ -140,6 +140,23 @@ class Model extends BaseModel {
         })
     }
 
+    getInfoByCode({ code }) {
+        return new Promise(async resolve => {
+            try {
+                if(!code)
+                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
+
+                let infoCharacteristicType = await CHARACTERISTIC_TYPE_COLL.findOne({ code });
+                if(!infoCharacteristicType)
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy thông tin loại đặc điểm' });
+
+                return resolve({ error: false, data: infoCharacteristicType });
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
+
     remove({ characteristicTypeID }) {
         return new Promise(async resolve => {
             try {

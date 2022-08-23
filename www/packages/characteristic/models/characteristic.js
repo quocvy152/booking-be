@@ -30,6 +30,7 @@ const CHARACTERISTIC_COLL      = require('../databases/characteristic-coll');
  */
 const IMAGE_MODEL                = require('../../image/models/image').MODEL;
 const TOKEN_MODEL                = require('../../token/models/token').MODEL;
+const CHARACTERISTIC_TYPE_MODEL  = require('../models/characteristic_type').MODEL;
 
 class Model extends BaseModel {
     constructor() {
@@ -128,6 +129,31 @@ class Model extends BaseModel {
 
                 let listCharacteristic = await CHARACTERISTIC_COLL.find({
                     characteristicTypeID
+                }).populate({
+                    path: 'characteristicTypeID',
+                    select: 'name code icon'
+                });
+                if(!listCharacteristic || !listCharacteristic.length)
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách đặc điểm của một loại đặc điểm' });
+
+                return resolve({ error: false, data: listCharacteristic });
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
+
+    getListByCode({ code }) {
+        return new Promise(async resolve => {
+            try {
+                if(!code)
+                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
+
+                let infoCharacteristicType = await CHARACTERISTIC_TYPE_MODEL.getInfoByCode({ code });
+                if(infoCharacteristicType.error) return resolve(infoCharacteristicType);
+
+                let listCharacteristic = await CHARACTERISTIC_COLL.find({
+                    characteristicTypeID: infoCharacteristicType.data._id
                 }).populate({
                     path: 'characteristicTypeID',
                     select: 'name code icon'

@@ -183,6 +183,26 @@ module.exports = class Auth extends ChildRouter {
                     }]
                 },
             },
+
+            /**
+             * Function: 
+             *      + Info characteristics (API)
+             * Date: 12/08/2022
+             * Dev: VyPQ
+             */
+            [CF_ROUTINGS_CHARACTERISTIC.LIST_CHARACTERISTIC_BY_CODE]: {
+                config: {
+                    auth: [ roles.role.user.bin ],
+                    type: 'json',
+                },
+                methods: {
+                    get: [ async function (req, res) {
+                        const { code } = req.query;
+                        const resultListCharacteristicByCode = await CHARACTERISTIC_MODEL.getListByCode({ code });
+                        res.json(resultListCharacteristicByCode);
+                    }]
+                },
+            },
         }
     }
 };
