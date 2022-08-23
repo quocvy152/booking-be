@@ -105,7 +105,7 @@ module.exports = class Auth extends ChildRouter {
                 methods: {
                     get: [ (req, res) => {
                         let listProvince = provinces;
-                        res.json({ listProvince });
+                        res.json({ error: false, data: listProvince });
                     }]
                 },
             },
@@ -119,7 +119,7 @@ module.exports = class Auth extends ChildRouter {
                     get: [ (req, res) => {
                         let { province_id } = req.query;
                         let listDistrict = districts.filter(district => district['province_code'] == province_id);
-                        res.json({ province_id, listDistrict });
+                        res.json({ error: false, data: { province_id, listDistrict } });
                     }]
                 },
             },
@@ -133,7 +133,7 @@ module.exports = class Auth extends ChildRouter {
                     get: [ (req, res) => {
                         let { district_id } = req.query;
                         let listWards = wards.filter(districtWards => districtWards['code'] == district_id);
-                        res.json({ district_id, listWards });
+                        res.json({ error: false, data: { district_id, listWards } });
                     }]
                 },
             },
