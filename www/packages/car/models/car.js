@@ -41,7 +41,7 @@ class Model extends BaseModel {
         this.STATUS_DELETED = 2;
     }
 
-	insert({ name, provinceID, districtID, wardID, provinceText, districtText, wardText, address, price, mortage, rules, userID, brandID, description, avatar, gallery, status, listCharacteristicID }) {
+	insert({ name, provinceID, districtID, wardID, provinceText, districtText, wardText, address, price, mortage, rules, userID, brandID, description, avatar, gallery = [], status = 1, listCharacteristicID }) {
         return new Promise(async resolve => {
             try {
                 if(!ObjectID.isValid(userID))
