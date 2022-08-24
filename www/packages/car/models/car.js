@@ -44,6 +44,13 @@ class Model extends BaseModel {
 	insert({ name, provinceID, districtID, wardID, provinceText, districtText, wardText, address, price, mortage, rules, userID, brandID, description, avatar, gallery = [], status = 1, listCharacteristicID }) {
         return new Promise(async resolve => {
             try {
+                console.log({
+                    name, provinceID, districtID, 
+                    wardID, provinceText, districtText, 
+                    wardText, address, price, mortage, 
+                    rules, userID, brandID, description, 
+                    gallery, status, listCharacteristicID
+                })
                 if(!ObjectID.isValid(userID))
                     return resolve({ error: true, message: 'Tham số không hợp lệ. Vui lòng kiểm tra thông tin chủ xe' });
 
@@ -114,9 +121,16 @@ class Model extends BaseModel {
                     dataInsert.gallery = listImageGalleryID;
                 }
 
+                console.log({
+                    dataInsert
+                })
                 let infoAfterInsert = await this.insertData(dataInsert);
                 if(!infoAfterInsert)
                     return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình tạo xe' });
+
+                console.log({
+                    infoAfterInsert
+                })
 
                 if(listCharacteristicID && listCharacteristicID.length) {
                     let listPromise = await listCharacteristicID.map(characteristic => CAR_CHARACTERISTIC_MODEL.insert({ 

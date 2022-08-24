@@ -151,9 +151,6 @@ module.exports = class Auth extends ChildRouter {
                 },
                 methods: {
                     post: [ multer.uploadSingle, async function (req, res) {
-                        console.log({
-                            FILE: req.file
-                        })
                         const { 
                             name, provinceID, districtID, 
                             wardID, provinceText, districtText, 
@@ -162,14 +159,6 @@ module.exports = class Auth extends ChildRouter {
                             gallery, status, listCharacteristicID
                         } = req.body;
                         let avatar = req.file;
-
-                        console.log({
-                            name, provinceID, districtID, 
-                            wardID, provinceText, districtText, 
-                            wardText, address, price, mortage, 
-                            rules, userID, brandID, description, 
-                            gallery, status, listCharacteristicID
-                        })
 
                         const resultInsertCar = await CAR_MODEL.insert({ 
                             name, provinceID, districtID, 
