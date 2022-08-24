@@ -150,8 +150,7 @@ module.exports = class Auth extends ChildRouter {
                     type: 'json',
                 },
                 methods: {
-                    //multer.uploadSingle, 
-                    post: [ async function (req, res) {
+                    post: [ multer.uploadSingle, async function (req, res) {
                         console.log({
                             FILE: req.file
                         })
@@ -162,7 +161,7 @@ module.exports = class Auth extends ChildRouter {
                             rules, userID, brandID, description, 
                             gallery, status, listCharacteristicID
                         } = req.body;
-                        // let avatar = req.file;
+                        let avatar = req.file;
 
                         console.log({
                             name, provinceID, districtID, 
