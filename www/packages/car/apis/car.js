@@ -176,9 +176,6 @@ module.exports = class Auth extends ChildRouter {
                             avatar, gallery, status,
                             listCharacteristicID
                         });
-                        console.log({
-                            resultInsertCar
-                        })
                         res.json(resultInsertCar);
                     }]
                 },
