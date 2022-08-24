@@ -132,6 +132,7 @@ class Model extends BaseModel {
                     infoAfterInsert
                 })
 
+                listCharacteristicID = listCharacteristicID && listCharacteristicID.split(',');
                 if(listCharacteristicID && listCharacteristicID.length) {
                     let listPromise = await listCharacteristicID.map(characteristic => CAR_CHARACTERISTIC_MODEL.insert({ 
                         carID: infoAfterInsert._id,

@@ -4,6 +4,8 @@
  * EXTERNAL PACKAGE
  */
 const path = require('path');
+const fs   = require('fs');
+const imgbbUploader = require('imgbb-uploader');
 
 /**
  * INTERNAL PACKAGE
@@ -12,6 +14,7 @@ const ChildRouter                           = require('../../../routing/child_ro
 const roles                                 = require('../../../config/cf_role');
 const { CF_ROUTINGS_CAR } 					= require('../constants/car.uri');
 const multer                                = require('../../../config/cf_helpers_multer/index');
+const { BOOKING_KEY }                       = require('../../../config/cf_constants');
 
 /**
  * MODELS
@@ -160,6 +163,11 @@ module.exports = class Auth extends ChildRouter {
                         } = req.body;
                         let avatar = req.file;
 
+                        let resultUploadImg = await imgbbUploader(BOOKING_KEY.KEY_API_IMGBB, req.file.path);
+                        let { display_url } = resultUploadImg;
+                        avatar.urlImgServer = display_url;
+                        fs.unlinkSync(req.file.path);
+
                         const resultInsertCar = await CAR_MODEL.insert({ 
                             name, provinceID, districtID, 
                             wardID, provinceText, districtText, 
@@ -168,6 +176,9 @@ module.exports = class Auth extends ChildRouter {
                             avatar, gallery, status,
                             listCharacteristicID
                         });
+                        console.log({
+                            resultInsertCar
+                        })
                         res.json(resultInsertCar);
                     }]
                 },
