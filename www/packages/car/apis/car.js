@@ -146,7 +146,7 @@ module.exports = class Auth extends ChildRouter {
              */
             [CF_ROUTINGS_CAR.REGISTER_CARS]: {
                 config: {
-                    auth: [ roles.role.user.bin ],
+                    auth: [ roles.role.all.bin ],
                     type: 'json',
                 },
                 methods: {
