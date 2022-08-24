@@ -48,21 +48,32 @@ module.exports = class Auth extends ChildRouter {
                         res.json(resultGetListCar);
                     }],
                     post: [ multer.uploadSingle, async function (req, res) {
+                        console.log({
+                            FILE: req.file
+                        })
                         const { 
                             name, provinceID, districtID, 
                             wardID, provinceText, districtText, 
                             wardText, address, price, mortage, 
                             rules, userID, brandID, description, 
-                            status, listCharacteristicID
+                            gallery, status, listCharacteristicID
                         } = req.body;
                         let avatar = req.file;
+
+                        console.log({
+                            name, provinceID, districtID, 
+                            wardID, provinceText, districtText, 
+                            wardText, address, price, mortage, 
+                            rules, userID, brandID, description, 
+                            gallery, status, listCharacteristicID
+                        })
 
                         const resultInsertCar = await CAR_MODEL.insert({ 
                             name, provinceID, districtID, 
                             wardID, provinceText, districtText, 
                             wardText, address, price, mortage, 
                             rules, userID, brandID, description, 
-                            avatar, status,
+                            avatar, gallery, status,
                             listCharacteristicID
                         });
                         res.json(resultInsertCar);
