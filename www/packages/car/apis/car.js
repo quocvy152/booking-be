@@ -48,9 +48,6 @@ module.exports = class Auth extends ChildRouter {
                         res.json(resultGetListCar);
                     }],
                     post: [ multer.uploadSingle, async function (req, res) {
-                        console.log({
-                            FILE: req.file
-                        })
                         const { 
                             name, provinceID, districtID, 
                             wardID, provinceText, districtText, 
@@ -59,14 +56,6 @@ module.exports = class Auth extends ChildRouter {
                             gallery, status, listCharacteristicID
                         } = req.body;
                         let avatar = req.file;
-
-                        console.log({
-                            name, provinceID, districtID, 
-                            wardID, provinceText, districtText, 
-                            wardText, address, price, mortage, 
-                            rules, userID, brandID, description, 
-                            gallery, status, listCharacteristicID
-                        })
 
                         const resultInsertCar = await CAR_MODEL.insert({ 
                             name, provinceID, districtID, 
@@ -145,6 +134,52 @@ module.exports = class Auth extends ChildRouter {
                         const { _id: userID } = req.user;
                         const resultListMyCar = await CAR_MODEL.getListMyCar({ userID });
                         res.json(resultListMyCar);
+                    }]
+                },
+            },
+
+            /**
+             * Function: 
+             *      + Get list my car (API)
+             * Date: 12/08/2022
+             * Dev: VyPQ
+             */
+            [CF_ROUTINGS_CAR.REGISTER_CARS]: {
+                config: {
+                    auth: [ roles.role.user.bin ],
+                    type: 'json',
+                },
+                methods: {
+                    post: [ multer.uploadSingle, async function (req, res) {
+                        console.log({
+                            FILE: req.file
+                        })
+                        const { 
+                            name, provinceID, districtID, 
+                            wardID, provinceText, districtText, 
+                            wardText, address, price, mortage, 
+                            rules, userID, brandID, description, 
+                            gallery, status, listCharacteristicID
+                        } = req.body;
+                        let avatar = req.file;
+
+                        console.log({
+                            name, provinceID, districtID, 
+                            wardID, provinceText, districtText, 
+                            wardText, address, price, mortage, 
+                            rules, userID, brandID, description, 
+                            gallery, status, listCharacteristicID
+                        })
+
+                        const resultInsertCar = await CAR_MODEL.insert({ 
+                            name, provinceID, districtID, 
+                            wardID, provinceText, districtText, 
+                            wardText, address, price, mortage, 
+                            rules, userID, brandID, description, 
+                            avatar, gallery, status,
+                            listCharacteristicID
+                        });
+                        res.json(resultInsertCar);
                     }]
                 },
             },
