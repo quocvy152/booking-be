@@ -344,8 +344,8 @@ class Model extends BaseModel {
                 }
 
                 let listCar = await CAR_COLL.find(condition).populate({
-                    path: 'brandID userID',
-                    select: 'name icon firstName lastName'
+                    path: 'brandID userID avatar',
+                    select: 'name icon firstName lastName size path'
                 });
                 if(!listCar)
                     return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách xe' });
