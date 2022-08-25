@@ -200,7 +200,7 @@ class Model extends BaseModel {
                 }
 
                 if(avatar) {
-                    let { name, size, path } = avatar;
+                    let { name, size, urlImgServer: path } = avatar;
 
                     let resultInsertImage = await IMAGE_MODEL.insert({ name, size, path });
                     if(resultInsertImage.error) return resolve(resultInsertImage);

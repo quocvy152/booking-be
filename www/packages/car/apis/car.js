@@ -99,9 +99,14 @@ module.exports = class Auth extends ChildRouter {
                             wardID, provinceText, districtText, 
                             wardText, address, price, mortage, 
                             rules, userID, brandID, description, 
-                            avatar, gallery, status,
-                            listCharacteristicID
+                            gallery, status, listCharacteristicID
                         } = req.body;
+                        
+                        let avatar = req.file;
+                        let resultUploadImg = await imgbbUploader(BOOKING_KEY.KEY_API_IMGBB, req.file.path);
+                        let { display_url } = resultUploadImg;
+                        avatar.urlImgServer = display_url;
+                        fs.unlinkSync(req.file.path);
 
                         const resultUpdateCar = await CAR_MODEL.update({ 
                             carID, name, provinceID, districtID, 
@@ -161,8 +166,8 @@ module.exports = class Auth extends ChildRouter {
                             rules, userID, brandID, description, 
                             gallery, status, listCharacteristicID
                         } = req.body;
-                        let avatar = req.file;
 
+                        let avatar = req.file;
                         let resultUploadImg = await imgbbUploader(BOOKING_KEY.KEY_API_IMGBB, req.file.path);
                         let { display_url } = resultUploadImg;
                         avatar.urlImgServer = display_url;
