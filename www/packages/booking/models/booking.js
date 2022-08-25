@@ -149,6 +149,37 @@ class Model extends BaseModel {
         })
     }
 
+    isCarHaveBooking({ carID }) {
+        return new Promise(async resolve => {
+            try {
+                if(!ObjectID.isValid(carID))
+                    return resolve({ error: true, message: "Tham số không hợp lệ" });
+
+				let listBooking = await BOOKING_COLL
+					.findOne({ car: carID })
+					.lean();
+
+                let dataResponse = {};
+
+                if(!listBooking || !listBooking.length) {
+                    dataResponse = {
+                        error: false,
+                        message: 'OK. Xe chưa được đăng ký chuyến nào'
+                    }
+                } else {
+                    dataResponse = {
+                        error: true,
+                        message: 'Xe đã được đăng ký các chuyến xe. Không thể xóa xe'
+                    }
+                }
+                
+                return resolve(dataResponse);
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
+
     remove({ brandID }) {
         return new Promise(async resolve => {
             try {

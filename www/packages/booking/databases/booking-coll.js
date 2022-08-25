@@ -13,7 +13,7 @@ module.exports = BASE_COLL('booking', {
 	},
 	car: {
 		type: Schema.Types.ObjectId,
-		ref: 'user'
+		ref: 'car'
 	},
 	startTime: {
 		type: Date

@@ -30,6 +30,7 @@ const IMAGE_MODEL                = require('../../image/models/image').MODEL;
 const TOKEN_MODEL                = require('../../token/models/token').MODEL;
 const CAR_CHARACTERISTIC_MODEL   = require('../../characteristic/models/car_characteristic').MODEL;
 const CHARACTERISTIC_MODEL       = require('../../characteristic/models/characteristic').MODEL;
+const BOOKING_MODEL              = require('../../booking/models/booking').MODEL;
 
 class Model extends BaseModel {
     constructor() {
@@ -287,6 +288,8 @@ class Model extends BaseModel {
             try {
                 if(!ObjectID.isValid(carID))
                     return resolve({ error: true, message: 'Tham số không hợp lệ' });
+
+                let isCarHaveBooking = await 
 
                 let dataUpdate = {
                     status: this.STATUS_DELETED

@@ -108,15 +108,6 @@ module.exports = class Auth extends ChildRouter {
                         avatar.urlImgServer = display_url;
                         fs.unlinkSync(req.file.path);
 
-                        console.log({
-                            carID, avatar,
-                            name, provinceID, districtID, 
-                            wardID, provinceText, districtText, 
-                            wardText, address, price, mortage, 
-                            rules, userID, brandID, description, 
-                            gallery, status, listCharacteristicID
-                        })
-
                         const resultUpdateCar = await CAR_MODEL.update({ 
                             carID, name, provinceID, districtID, 
                             wardID, provinceText, districtText, 
@@ -222,15 +213,6 @@ module.exports = class Auth extends ChildRouter {
                         let { display_url } = resultUploadImg;
                         avatar.urlImgServer = display_url;
                         fs.unlinkSync(req.file.path);
-
-                        console.log({
-                            carID, avatar,
-                            name, provinceID, districtID, 
-                            wardID, provinceText, districtText, 
-                            wardText, address, price, mortage, 
-                            rules, userID, brandID, description, 
-                            gallery, status, listCharacteristicID
-                        })
 
                         const resultUpdateCar = await CAR_MODEL.update({ 
                             carID, name, provinceID, districtID, 
