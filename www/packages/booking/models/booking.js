@@ -222,7 +222,10 @@ class Model extends BaseModel {
                 let listBooking = await BOOKING_COLL
                     .find(condition)
                     .populate({
-                        path: 'car'
+                        path: 'car',
+                    })
+                    .populate({
+                        path: 'car.avatar car.brandID',
                     })
                     .populate({
                         path: 'user',
