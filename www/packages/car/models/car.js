@@ -225,6 +225,7 @@ class Model extends BaseModel {
                 if(!infoAfterUpdate)
                     return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình tạo xe' });
 
+                listCharacteristicID = listCharacteristicID && listCharacteristicID.split(',');
                 if(listCharacteristicID && listCharacteristicID.length) {
                     let resultRemoveCharacteristicCar = await CAR_CHARACTERISTIC_MODEL.removeAllCarCharacteristicToInactive({ carID });
                     if(resultRemoveCharacteristicCar.error) return resolve(resultRemoveCharacteristicCar);
