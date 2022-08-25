@@ -92,7 +92,7 @@ module.exports = class Auth extends ChildRouter {
                         const resultGetInfoCar = await CAR_MODEL.getInfo({ carID });
                         res.json(resultGetInfoCar);
                     }],
-                    put: [ async function (req, res) {
+                    put: [ multer.uploadSingle, async function (req, res) {
                         const { carID } = req.params;
                         const { 
                             name, provinceID, districtID, 
