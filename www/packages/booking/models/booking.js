@@ -223,7 +223,7 @@ class Model extends BaseModel {
                     .find(condition)
                     .populate({
                         path: 'car',
-                        select: 'brandID userID avatar',
+                        select: 'brandID userID avatar price',
                         populate: {
                             path: 'brandID userID avatar',
                             select: 'name firstName lastName size path avatar'
