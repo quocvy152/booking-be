@@ -34,12 +34,12 @@ const BOOKING_COLL  				= require('../databases/booking-coll');
 class Model extends BaseModel {
     constructor() {
         super(BOOKING_COLL);
-		this.STATUS_INACTIVE        = 0;
-        this.STATUS_ACTIVE          = 1;
-        this.STATUS_CANCELED        = 2;
-        this.STATUS_WAIT_CONFIRM    = 3;
-        this.STATUS_WAIT_GIVE_BACK  = 4;
-        this.STATUS_PAID            = 5;
+		this.STATUS_INACTIVE        = 0; // Không hoạt động
+        this.STATUS_ACTIVE          = 1; // Hoạt động
+        this.STATUS_CANCELED        = 2; // Đã hủy
+        this.STATUS_WAIT_CONFIRM    = 3; // Đợi duyệt
+        this.STATUS_WAIT_GIVE_BACK  = 4; // Đợi trả xe
+        this.STATUS_PAID            = 5; // Đã thanh toán
     }
 
     /**
@@ -194,6 +194,39 @@ class Model extends BaseModel {
                     return resolve({ error: true, message: "Xảy ra lỗi trong quá trình xóa chuyến xe" });
 
                 return resolve({ error: false, data: infoAfterDelete });
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
+
+    // Lấy ra danh sách các chuyến mà mình đang đặt lịch
+    getListMyBooking({ user, type }){
+        return new Promise(async resolve => {
+            try {
+                if(!ObjectID.isValid(user))
+                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
+
+                if(![
+                    this.STATUS_ACTIVE,
+                    this.STATUS_PAID,
+                    this.STATUS_WAIT_CONFIRM,
+                    this.STATUS_WAIT_GIVE_BACK
+                ].includes(+type)) return resolve({ error: true, message: 'Trạng thái lấy danh sách các chuyến đang đặt lịch không hợp lệ' })
+
+                let condition = {
+                    user,
+                    status: +type
+                };
+
+                let listBooking = await BOOKING_COLL
+                    .find(condition)
+					.sort({ createAt: -1 })
+					.lean();
+                if(!listBooking)
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách chuyến xe' });
+
+                return resolve({ error: false, data: listBooking });
             } catch (error) {
                 return resolve({ error: true, message: error.message });
             }
