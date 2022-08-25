@@ -25,7 +25,6 @@ const {
  */
 const BaseModel 					= require('../../../models/intalize/base_model');
 const IMAGE_MODEL				    = require('../../image').MODEL;
-const CAR_MODEL                     = require('../../car/models/car').MODEL;
 
 /**
  * COLLECTIONS, MODELS
@@ -203,3 +202,5 @@ class Model extends BaseModel {
 }
 
 exports.MODEL = new Model;
+
+var CAR_MODEL                     = require('../../car/models/car').MODEL;

@@ -30,8 +30,6 @@ const IMAGE_MODEL                = require('../../image/models/image').MODEL;
 const TOKEN_MODEL                = require('../../token/models/token').MODEL;
 const CAR_CHARACTERISTIC_MODEL   = require('../../characteristic/models/car_characteristic').MODEL;
 const CHARACTERISTIC_MODEL       = require('../../characteristic/models/characteristic').MODEL;
-const BOOKING_MODEL              = require('../../booking/models/booking').MODEL;
-
 class Model extends BaseModel {
     constructor() {
         super(CAR_COLL);
@@ -397,3 +395,5 @@ class Model extends BaseModel {
 }
 
 exports.MODEL = new Model;
+
+var BOOKING_MODEL              = require('../../booking/models/booking').MODEL;
