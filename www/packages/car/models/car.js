@@ -289,7 +289,8 @@ class Model extends BaseModel {
                 if(!ObjectID.isValid(carID))
                     return resolve({ error: true, message: 'Tham số không hợp lệ' });
 
-                let isCarHaveBooking = await 
+                let isCarHaveBooking = await BOOKING_MODEL.isCarHaveBooking({ carID });
+                if(isCarHaveBooking.error) return resolve(isCarHaveBooking);
 
                 let dataUpdate = {
                     status: this.STATUS_DELETED
