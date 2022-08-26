@@ -76,7 +76,7 @@ class Model extends BaseModel {
                     car: carID,
                     startTime: { $lte: new Date(startTime) },
                     endTime:   { $gte: new Date(startTime) },
-                    $or: [
+                    $and: [
                         {status: { $ne: this.STATUS_INACTIVE }},
                         {status: { $ne: this.STATUS_CANCELED }}
                     ] 
