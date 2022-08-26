@@ -6,6 +6,7 @@ const CF_ROUTINGS_BOOKING = {
 	LIST_MY_BOOKINGS: `${BASE_ROUTE}/list/my-booking`,
 	LIST_CUSTOMER_BOOKING_MY_CAR: `${BASE_ROUTE}/list/customer-booking-my-car`,
 	ACCEPT_BOOKINGS: `${BASE_ROUTE}/action/accept-booking`,
+	ACCEPT_PAYING: `${BASE_ROUTE}/action/accept-paying`,
 	CANCEL_BOOKINGS: `${BASE_ROUTE}/action/cancel-booking`,
 	PAYED_BOOKINGS: `${BASE_ROUTE}/action/pay-booking`,
 

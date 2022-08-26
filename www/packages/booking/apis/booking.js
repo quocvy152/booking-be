@@ -124,7 +124,7 @@ module.exports = class Auth extends ChildRouter {
              * Date: 25/08/2022
              * Dev: VyPQ
              */
-             [CF_ROUTINGS_BOOKING.LIST_CUSTOMER_BOOKING_MY_CAR]: {
+            [CF_ROUTINGS_BOOKING.LIST_CUSTOMER_BOOKING_MY_CAR]: {
                 config: {
                     auth: [ roles.role.user.bin ],
                     type: 'json',
@@ -155,6 +155,26 @@ module.exports = class Auth extends ChildRouter {
                         const { bookingID } = req.query;
                         const resultAcceptBooking = await BOOKING_MODEL.acceptBooking({ bookingID });
                         res.json(resultAcceptBooking);
+                    }],
+                },
+            },
+
+            /**
+             * Function: 
+             *      + List accept booking
+             * Date: 26/08/2022
+             * Dev: VyPQ
+             */
+             [CF_ROUTINGS_BOOKING.ACCEPT_PAYING]: {
+                config: {
+                    auth: [ roles.role.user.bin ],
+                    type: 'json',
+                },
+                methods: {
+                    put: [ async (req, res) => {
+                        const { bookingID } = req.query;
+                        const resultAcceptPaying = await BOOKING_MODEL.acceptPaying({ bookingID });
+                        res.json(resultAcceptPaying);
                     }],
                 },
             },

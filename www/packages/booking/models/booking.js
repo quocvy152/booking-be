@@ -282,6 +282,27 @@ class Model extends BaseModel {
         })
     }
 
+    acceptPaying({ bookingID }) {
+        return new Promise(async resolve => {
+            try {
+                if(!ObjectID.isValid(bookingID))
+                    return resolve({ error: true, message: "Tham số không hợp lệ" });
+
+                let dataUpdateToCancel = { status: this.STATUS_PAID };
+
+				let infoAfterPayed = await BOOKING_COLL.findByIdAndUpdate(bookingID, dataUpdateToCancel, {
+                    new: true
+                });
+                if(!infoAfterPayed) 
+                    return resolve({ error: true, message: "Xảy ra lỗi trong quá trình chấp nhận thanh toán chuyến xe" });
+
+                return resolve({ error: false, data: infoAfterPayed });
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
+
     // Lấy ra danh sách các chuyến mà mình đang đặt lịch
     getListMyBooking({ user, type }){
         return new Promise(async resolve => {
