@@ -226,6 +226,27 @@ class Model extends BaseModel {
         })
     }
 
+    acceptBooking({ bookingID }) {
+        return new Promise(async resolve => {
+            try {
+                if(!ObjectID.isValid(bookingID))
+                    return resolve({ error: true, message: "Tham số không hợp lệ" });
+
+                let dataUpdateToCancel = { status: this.STATUS_ACTIVE };
+
+				let infoAfterCancel = await BOOKING_COLL.findByIdAndUpdate(bookingID, dataUpdateToCancel, {
+                    new: true
+                });
+                if(!infoAfterCancel) 
+                    return resolve({ error: true, message: "Xảy ra lỗi trong quá trình hủy chuyến xe" });
+
+                return resolve({ error: false, data: infoAfterCancel });
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
+
     // Lấy ra danh sách các chuyến mà mình đang đặt lịch
     getListMyBooking({ user, type }){
         return new Promise(async resolve => {
@@ -286,7 +307,7 @@ class Model extends BaseModel {
     }
 
      // Lấy ra danh sách các chuyến xe khách hàng khác đang có nhu cầu thuê của mình
-     getListCustomerBookingMyCar({ user, type }){
+    getListCustomerBookingMyCar({ user, type }){
         return new Promise(async resolve => {
             try {
                 if(!ObjectID.isValid(user))
