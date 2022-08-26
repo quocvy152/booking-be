@@ -75,7 +75,11 @@ class Model extends BaseModel {
                 let conditionCheckHadBooking = {
                     car: carID,
                     startTime: { $lte: new Date(startTime) },
-                    endTime:   { $gte: new Date(startTime) }
+                    endTime:   { $gte: new Date(startTime) },
+                    $or: [
+                        {status: { $ne: this.STATUS_INACTIVE }},
+                        {status: { $ne: this.STATUS_CANCELED }}
+                    ] 
                 }
                 let isHadBookingInThisTime = await BOOKING_COLL.findOne(conditionCheckHadBooking);
                 if(isHadBookingInThisTime)
