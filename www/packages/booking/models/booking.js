@@ -284,6 +284,48 @@ class Model extends BaseModel {
             }
         })
     }
+
+     // Lấy ra danh sách các chuyến xe khách hàng khác đang có nhu cầu thuê của mình
+     getListCustomerBookingMyCar({ user, type }){
+        return new Promise(async resolve => {
+            try {
+                if(!ObjectID.isValid(user))
+                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
+
+                if(![
+                    this.STATUS_WAIT_CONFIRM,
+                    this.STATUS_WAIT_GIVE_BACK
+                ].includes(+type)) return resolve({ error: true, message: 'Trạng thái lấy danh sách các chuyến đang đợi đặt lịch không hợp lệ' });
+
+                let listCarOfUser = await CAR_MODEL.getListMyCar({ userID: user });
+                if(listCarOfUser.error) return resolve(listCarOfUser);
+
+                let listIDSFromCarOfUser = listCarOfUser.data.map(car => car.infoCar._id);
+
+                let condition = {
+                    car: { $in: listIDSFromCarOfUser },
+                    status: +type
+                }
+
+                let listCustomerBookingMyCar = await BOOKING_COLL.find(condition);
+                if(!listCustomerBookingMyCar)
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách chuyến xe' });
+
+                let listCustomerBookingMyCarRes = [];
+                for await (let item of listCustomerBookingMyCar) {
+                    let listCharacteristicOfCar = await CAR_CHARACTERISTIC_MODEL.getListByCar({ carID: item.car._id });
+                    listCustomerBookingMyCarRes[listCustomerBookingMyCarRes.length++] = {
+                        booking: item,
+                        details: listCharacteristicOfCar && listCharacteristicOfCar.data
+                    }
+                }
+
+                return resolve({ error: false, data: listCustomerBookingMyCarRes });
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
 }
 
 exports.MODEL = new Model;

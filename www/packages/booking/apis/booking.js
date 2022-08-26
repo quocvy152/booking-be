@@ -120,6 +120,27 @@ module.exports = class Auth extends ChildRouter {
 
             /**
              * Function: 
+             *      + List another user booking my car
+             * Date: 25/08/2022
+             * Dev: VyPQ
+             */
+             [CF_ROUTINGS_BOOKING.LIST_CUSTOMER_BOOKING_MY_CAR]: {
+                config: {
+                    auth: [ roles.role.user.bin ],
+                    type: 'json',
+                },
+                methods: {
+                    get: [ async (req, res) => {
+                        const { _id: userID } = req.user;
+                        const { type } = req.query;
+                        const resultListBooking = await BOOKING_MODEL.getListCustomerBookingMyCar({ user: userID, type });
+                        res.json(resultListBooking);
+                    }],
+                },
+            },
+
+            /**
+             * Function: 
              *      + List cancel booking
              * Date: 26/08/2022
              * Dev: VyPQ
