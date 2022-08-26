@@ -242,6 +242,7 @@ class Model extends BaseModel {
                 const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
                 const startDate = new Date(infoBooking.startTime);
                 const endDate = new Date();
+                dataUpdateToPayed.timeGiveCarBack = endDate;
                 
                 const diffDays = Math.abs((endDate - startDate) / oneDay);
                 if(diffDays < 0) dataUpdateToPayed.realMoney = 0;

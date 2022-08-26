@@ -21,6 +21,9 @@ module.exports = BASE_COLL('booking', {
 	endTime: {
 		type: Date
 	},
+	timeGiveCarBack: {
+		type: Date
+	},
 	pickUpPlace: {
 		type: String
 	},
