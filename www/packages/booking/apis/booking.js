@@ -178,6 +178,26 @@ module.exports = class Auth extends ChildRouter {
                     }],
                 },
             },
+
+            /**
+             * Function: 
+             *      + List accept booking
+             * Date: 26/08/2022
+             * Dev: VyPQ
+             */
+            [CF_ROUTINGS_BOOKING.PAYED_BOOKINGS]: {
+                config: {
+                    auth: [ roles.role.user.bin ],
+                    type: 'json',
+                },
+                methods: {
+                    put: [ async (req, res) => {
+                        const { bookingID } = req.query;
+                        const resultPayBooking = await BOOKING_MODEL.payBooking({ bookingID });
+                        res.json(resultPayBooking);
+                    }],
+                },
+            },
         }
     }
 };

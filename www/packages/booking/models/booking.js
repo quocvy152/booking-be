@@ -226,6 +226,40 @@ class Model extends BaseModel {
         })
     }
 
+    payBooking({ bookingID }) {
+        return new Promise(async resolve => {
+            try {
+                if(!ObjectID.isValid(bookingID))
+                    return resolve({ error: true, message: "Tham số không hợp lệ" });
+
+                let dataUpdateToPayed = { status: this.STATUS_WAIT_GIVE_BACK };
+
+                let infoBooking = await BOOKING_COLL.findById(bookingID);
+                if(!infoBooking)
+                    return resolve({ error: true, message: "Thông tin chuyến đi không hợp lệ" });
+
+                // Tính ra tổng số tiền thuê xe
+                const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+                const startDate = new Date(infoBooking.startTime);
+                const endDate = new Date();
+                
+                const diffDays = Math.abs((endDate - startDate) / oneDay);
+                if(diffDays < 0) dataUpdateToPayed.realMoney = 0;
+                else dataUpdateToPayed.realMoney = Math.round(diffDays * infoBooking.price);
+
+				let infoAfterCancel = await BOOKING_COLL.findByIdAndUpdate(bookingID, dataUpdateToPayed, {
+                    new: true
+                });
+                if(!infoAfterCancel) 
+                    return resolve({ error: true, message: "Xảy ra lỗi trong quá trình hủy chuyến xe" });
+
+                return resolve({ error: false, data: infoAfterCancel });
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
+
     acceptBooking({ bookingID }) {
         return new Promise(async resolve => {
             try {

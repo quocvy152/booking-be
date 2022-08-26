@@ -33,7 +33,17 @@ module.exports = BASE_COLL('booking', {
 	price: {
 		type: Number
 	},
+	/**
+	 * Tổng số tiền khi thuê từ 2 khoảng thời gian
+	 */
 	totalPrice: {
+		type: Number
+	},
+	/**
+	 * Số tiền thực sự cần thanh toán
+	 * Có thể người dùng trả xe trước thời gian kết thúc thì sẽ tính toán và cập nhật vào trường này
+	 */
+	realMoney: {
 		type: Number
 	},
 	/**
