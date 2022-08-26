@@ -116,25 +116,11 @@ class Model extends BaseModel {
         })
     }
 
-	getList({ name, brand }){
+	getList(){
         return new Promise(async resolve => {
             try {
-                let condition = {};
-
-                if(name) {
-                    let key = name.split(" ");
-                    key = '.*' + key.join(".*") + '.*';
-                    condition.name = new RegExp(key, 'i');
-                }
-
-                if(brand) {
-                    if(ObjectID.isValid(brand))
-                        condition.brandID = brand;
-                }
-                
-
                 let listBooking = await BOOKING_COLL
-                    .find(condition)
+                    .find()
 					.sort({ createAt: -1 })
 					.lean();
                 if(!listBooking)

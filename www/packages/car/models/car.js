@@ -305,12 +305,23 @@ class Model extends BaseModel {
         })
     }
 
-	getList(){
+	getList({ name, brand }){
         return new Promise(async resolve => {
             try {
-                let condition = {
-                    status: this.STATUS_ACTIVE
+                let condition = {};
+
+                if(name) {
+                    let key = name.split(" ");
+                    key = '.*' + key.join(".*") + '.*';
+                    condition.name = new RegExp(key, 'i');
                 }
+
+                if(brand) {
+                    if(ObjectID.isValid(brand))
+                        condition.brandID = brand;
+                }
+
+                condition.status = this.STATUS_ACTIVE
 
                 let listCar = await CAR_COLL.find(condition).populate({
                     path: 'brandID userID avatar',
