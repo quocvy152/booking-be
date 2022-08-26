@@ -371,7 +371,8 @@ class Model extends BaseModel {
 
                 if(![
                     this.STATUS_WAIT_CONFIRM,
-                    this.STATUS_WAIT_GIVE_BACK
+                    this.STATUS_WAIT_GIVE_BACK,
+                    this.STATUS_ACTIVE
                 ].includes(+type)) return resolve({ error: true, message: 'Trạng thái lấy danh sách các chuyến đang đợi đặt lịch không hợp lệ' });
 
                 let listCarOfUser = await CAR_MODEL.getListMyCar({ userID: user });
