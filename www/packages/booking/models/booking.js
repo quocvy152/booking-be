@@ -25,6 +25,7 @@ const {
  */
 const BaseModel 					= require('../../../models/intalize/base_model');
 const IMAGE_MODEL				    = require('../../image').MODEL;
+const CAR_CHARACTERISTIC_MODEL      = require('../../characteristic/models/car_characteristic').MODEL;
 
 /**
  * COLLECTIONS, MODELS
@@ -223,10 +224,12 @@ class Model extends BaseModel {
                     .find(condition)
                     .populate({
                         path: 'car',
-                        select: 'brandID userID avatar price',
                         populate: {
                             path: 'brandID userID avatar',
-                            select: 'name firstName lastName size path avatar'
+                            select: 'name firstName lastName phone size path avatar',
+                            populate: {
+                                path: 'avatar'
+                            }
                         }
                     })
                     .populate({
@@ -241,7 +244,16 @@ class Model extends BaseModel {
                 if(!listBooking)
                     return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách chuyến xe' });
 
-                return resolve({ error: false, data: listBooking });
+                let listBookingRes = [];
+                for await (let item of listBooking) {
+                    let listCharacteristicOfCar = await CAR_CHARACTERISTIC_MODEL.getListByCar({ carID: item.car._id });
+                    listBookingRes[listBookingRes.length++] = {
+                        booking: item,
+                        details: listCharacteristicOfCar && listCharacteristicOfCar.data
+                    }
+                }
+
+                return resolve({ error: false, data: listBookingRes });
             } catch (error) {
                 return resolve({ error: true, message: error.message });
             }
