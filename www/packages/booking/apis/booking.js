@@ -103,7 +103,7 @@ module.exports = class Auth extends ChildRouter {
              * Date: 25/08/2022
              * Dev: VyPQ
              */
-             [CF_ROUTINGS_BOOKING.LIST_MY_BOOKINGS]: {
+            [CF_ROUTINGS_BOOKING.LIST_MY_BOOKINGS]: {
                 config: {
                     auth: [ roles.role.user.bin ],
                     type: 'json',
@@ -114,6 +114,26 @@ module.exports = class Auth extends ChildRouter {
                         const { type } = req.query;
                         const resultListBooking = await BOOKING_MODEL.getListMyBooking({ user: userID, type });
                         res.json(resultListBooking);
+                    }],
+                },
+            },
+
+            /**
+             * Function: 
+             *      + List cancel booking
+             * Date: 26/08/2022
+             * Dev: VyPQ
+             */
+            [CF_ROUTINGS_BOOKING.CANCEL_BOOKINGS]: {
+                config: {
+                    auth: [ roles.role.user.bin ],
+                    type: 'json',
+                },
+                methods: {
+                    put: [ async (req, res) => {
+                        const { bookingID } = req.query;
+                        const resultCancelBooking = await BOOKING_MODEL.cancelBooking({ bookingID });
+                        res.json(resultCancelBooking);
                     }],
                 },
             },

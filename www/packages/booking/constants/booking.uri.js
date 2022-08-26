@@ -4,6 +4,7 @@ const CF_ROUTINGS_BOOKING = {
 	BOOKINGS: `${BASE_ROUTE}`,
 	BOOKINGS_BOOKINGID: `${BASE_ROUTE}/:bookingID`,
 	LIST_MY_BOOKINGS: `${BASE_ROUTE}/list/my-booking`,
+	CANCEL_BOOKINGS: `${BASE_ROUTE}/action/cancel-booking`,
 
 	ORIGIN_APP: BASE_ROUTE
 }
