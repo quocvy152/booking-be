@@ -103,6 +103,7 @@ class Model extends BaseModel {
                                                     select: 'name code'
                                                 }
                                             })
+                                            .sort({ value: 1 })
                 if(!listCharacteristicByCar)
                     return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy điểm của xe' });
 

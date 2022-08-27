@@ -112,7 +112,7 @@ class Model extends BaseModel {
                     .find({
                         status: this.STATUS_ACTIVE                       
                     })
-					.sort({ createAt: -1 })
+					.sort({ name: 1 })
 					.lean();
                 if(!listBrand)
                     return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách thương hiệu' });
