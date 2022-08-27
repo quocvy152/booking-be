@@ -380,17 +380,7 @@ class Model extends BaseModel {
                     this.STATUS_ACTIVE
                 ].includes(+type)) return resolve({ error: true, message: 'Trạng thái lấy danh sách các chuyến đang đợi đặt lịch không hợp lệ' });
 
-                let conditionCar = {
-                    userID: user
-                };
-
-                if(name && name != 'undefined') {
-                    let key = name.split(" ");
-                    key = '.*' + key.join(".*") + '.*';
-                    conditionCar.name = new RegExp(key, 'i');
-                }
-
-                let listCarOfUser = await CAR_MODEL.getListMyCar(conditionCar);
+                let listCarOfUser = await CAR_MODEL.getListMyCar({ userID: user });
                 if(listCarOfUser.error) return resolve(listCarOfUser);
 
                 let listIDSFromCarOfUser = listCarOfUser.data.map(car => car.infoCar._id);
@@ -433,10 +423,10 @@ class Model extends BaseModel {
                     }
                 }
 
-                // if(name != 'undefined' && name) {
-                //     let listCustomerBookingMyCarResFilter = listCustomerBookingMyCarRes.filter(item => item.booking.car.name.includes(name));
-                //     return resolve({ error: false, data: listCustomerBookingMyCarResFilter });
-                // }
+                if(name != 'undefined' && name) {
+                    let listCustomerBookingMyCarResFilter = listCustomerBookingMyCarRes.filter(item => item.booking.car.name.includes(name));
+                    return resolve({ error: false, data: listCustomerBookingMyCarResFilter });
+                }
 
                 return resolve({ error: false, data: listCustomerBookingMyCarRes });
             } catch (error) {
