@@ -384,7 +384,7 @@ class Model extends BaseModel {
                     userID: user
                 };
 
-                if(name) {
+                if(name && name != 'undefined') {
                     let key = name.split(" ");
                     key = '.*' + key.join(".*") + '.*';
                     conditionCar.name = new RegExp(key, 'i');
