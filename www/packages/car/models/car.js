@@ -350,7 +350,7 @@ class Model extends BaseModel {
         })
     }
 
-	getListMyCar({ userID }){
+	getListMyCar({ userID, name }){
         return new Promise(async resolve => {
             try {
                 if(!ObjectID.isValid(userID))
@@ -359,6 +359,12 @@ class Model extends BaseModel {
                 let condition = {
                     status: this.STATUS_ACTIVE,
                     userID
+                }
+
+                if(name) {
+                    let key = name.split(" ");
+                    key = '.*' + key.join(".*") + '.*';
+                    condition.name = new RegExp(key, 'i');
                 }
 
                 let listCar = await CAR_COLL.find(condition).populate({
