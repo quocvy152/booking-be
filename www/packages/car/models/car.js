@@ -330,7 +330,7 @@ class Model extends BaseModel {
                         path: 'avatar',
                         select: 'size path'
                     }
-                });
+                }).sort({ name: 1 });
                 if(!listCar)
                     return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách xe' });
 
@@ -374,7 +374,7 @@ class Model extends BaseModel {
                         path: 'avatar',
                         select: 'size path'
                     }
-                });
+                }).sort({ name: 1 });
                 if(!listCar)
                     return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách xe' });
 
