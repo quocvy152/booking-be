@@ -356,7 +356,7 @@ class Model extends BaseModel {
                 }
 
                 if(name != 'undefined' && name) {
-                    let listBookingResFilter = listBookingRes.filter(item => item.booking.car.name.includes(name));
+                    let listBookingResFilter = listBookingRes.filter(item => item.booking.car.name.toLowerCase().includes(name.toLowerCase()));
                     return resolve({ error: false, data: listBookingResFilter });
                 }
 
@@ -424,7 +424,7 @@ class Model extends BaseModel {
                 }
 
                 if(name != 'undefined' && name) {
-                    let listCustomerBookingMyCarResFilter = listCustomerBookingMyCarRes.filter(item => item.booking.car.name.includes(name));
+                    let listCustomerBookingMyCarResFilter = listCustomerBookingMyCarRes.filter(item => item.booking.car.toLowerCase().name.includes(name.toLowerCase()));
                     return resolve({ error: false, data: listCustomerBookingMyCarResFilter });
                 }
 
