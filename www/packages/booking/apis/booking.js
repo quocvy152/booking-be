@@ -112,8 +112,8 @@ module.exports = class Auth extends ChildRouter {
                 methods: {
                     get: [ async (req, res) => {
                         const { _id: userID } = req.user;
-                        const { type } = req.query;
-                        const resultListBooking = await BOOKING_MODEL.getListMyBooking({ user: userID, type });
+                        const { type, name } = req.query;
+                        const resultListBooking = await BOOKING_MODEL.getListMyBooking({ user: userID, type, name });
                         res.json(resultListBooking);
                     }],
                 },
@@ -133,8 +133,8 @@ module.exports = class Auth extends ChildRouter {
                 methods: {
                     get: [ async (req, res) => {
                         const { _id: userID } = req.user;
-                        const { type } = req.query;
-                        const resultListBooking = await BOOKING_MODEL.getListCustomerBookingMyCar({ user: userID, type });
+                        const { type, name } = req.query;
+                        const resultListBooking = await BOOKING_MODEL.getListCustomerBookingMyCar({ user: userID, type, name });
                         res.json(resultListBooking);
                     }],
                 },

@@ -304,7 +304,7 @@ class Model extends BaseModel {
     }
 
     // Lấy ra danh sách các chuyến mà mình đang đặt lịch
-    getListMyBooking({ user, type }){
+    getListMyBooking({ user, type, name }){
         return new Promise(async resolve => {
             try {
                 if(!ObjectID.isValid(user))
@@ -355,6 +355,11 @@ class Model extends BaseModel {
                     }
                 }
 
+                if(name) {
+                    let listBookingResFilter = listBookingRes.filter(item => item.booking.car.name.includes(name));
+                    return resolve({ error: false, data: listBookingResFilter });
+                }
+
                 return resolve({ error: false, data: listBookingRes });
             } catch (error) {
                 return resolve({ error: true, message: error.message });
@@ -363,7 +368,7 @@ class Model extends BaseModel {
     }
 
      // Lấy ra danh sách các chuyến xe khách hàng khác đang có nhu cầu thuê của mình
-    getListCustomerBookingMyCar({ user, type }){
+    getListCustomerBookingMyCar({ user, type, name }){
         return new Promise(async resolve => {
             try {
                 if(!ObjectID.isValid(user))
@@ -416,6 +421,11 @@ class Model extends BaseModel {
                         booking: item,
                         details: listCharacteristicOfCar && listCharacteristicOfCar.data
                     }
+                }
+
+                if(name) {
+                    let listCustomerBookingMyCarResFilter = listCustomerBookingMyCarRes.filter(item => item.booking.car.name.includes(name));
+                    return resolve({ error: false, data: listCustomerBookingMyCarResFilter });
                 }
 
                 return resolve({ error: false, data: listCustomerBookingMyCarRes });
