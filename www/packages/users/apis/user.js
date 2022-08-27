@@ -185,6 +185,27 @@ module.exports = class Auth extends ChildRouter {
                     }]
                 },
             },
+
+            /**
+             * Function: 
+             *      + Change Password (API)
+             * Date: 27/08/2022
+             * Dev: VyPQ
+             */
+            [CF_ROUTINGS_USER.CHANGE_PASSWORD]: {
+                config: {
+                    auth: [ roles.role.user.bin ],
+                    type: 'json',
+                },
+                methods: {
+                    post: [ async function (req, res) {
+                        const { _id: userID } = req.user;
+                        const { oldPassword, newPassword, confirmPassword } = req.body;
+                        let infoUserAfterChangePass = await USER_MODEL.changePassword({ userID, oldPassword, newPassword, confirmPassword });
+                        res.json(infoUserAfterChangePass);
+                    }]
+                },
+            },
         }
     }
 };

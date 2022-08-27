@@ -365,6 +365,50 @@ class Model extends BaseModel {
         })
     }
 
+    changePassword({ userID, oldPassword, newPassword, confirmPassword }) {
+        return new Promise(async resolve => {
+            try {
+                if(!ObjectID.isValid(userID))
+                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
+
+                let infoUser = await USER_COLL.findById(userID);
+                if(!infoUser)
+                    return resolve({ error: true, message: 'Mã ID người dùng không hợp lệ' });
+
+                let dataUpdate = {};
+
+                // Bước kiểm tra và đổi mật khẩu
+                if(confirmPassword && oldPassword && newPassword) {
+                    let isCorrectPass = await compare(oldPassword, infoUser.password);
+                    if(!isCorrectPass)
+					    return resolve({ error: true, message: 'Mật khẩu không chính xác. Vui lòng thử lại' });
+                    
+                    if(confirmPassword !== newPassword)
+					    return resolve({ error: true, message: 'Mật khẩu xác nhận không chính xác. Vui lòng thử lại' });
+
+                    let hashPassword = await hash(newPassword, 8);
+                    if (!hashPassword)
+                        return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình hash mật khẩu' });
+
+                    dataUpdate.password = hashPassword;
+                } else if(confirmPassword || oldPassword || newPassword)
+					return resolve({ error: true, message: 'Vui lòng nhập đẩy đủ các thông tin về mật khẩu để tiến hành thay đổi mật khẩu' });
+
+                let infoAfterUpdate = await USER_COLL.findByIdAndUpdate(userID, dataUpdate, { new: true });
+                if(!infoAfterUpdate)
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình cập nhật người dùng' });
+
+                return resolve({
+                    error: false,
+                    data: infoAfterUpdate,
+                    message: 'Thay đổi mật khẩu tài khoản của bạn thành công'
+                });
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
+
 }
 
 exports.MODEL = new Model;
