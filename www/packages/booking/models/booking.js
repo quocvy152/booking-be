@@ -91,6 +91,15 @@ class Model extends BaseModel {
                 const endDate = new Date(endTime);
                 
                 const diffDays = Math.abs((endDate - startDate) / oneDay);
+                if(diffDays < 1)
+					return resolve({ error: true, message: 'Ngày thuê và ngày kết thúc phải chênh nhau tối thiểu là 1 ngày' });
+
+                if(endDate < startDate)
+					return resolve({ error: true, message: 'Ngày kết thúc phải lớn hơn ngày thuê' });
+                
+                if(startDate < new Date())
+					return resolve({ error: true, message: 'Ngày bắt đầu phải lớn hơn hoặc bằng ngày hiện tại' });
+
                 const totalPrice = Math.round(diffDays * price);
 
                 let dataInsert = {
