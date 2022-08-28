@@ -354,7 +354,6 @@ class Model extends BaseModel {
 
                 let newPassword = randomStringFixLength(6);
                 let newPasswordHash = await hash(newPassword, 8);
-                console.log({ newPassword })
                 let infoUserAfterUpdate = await USER_COLL.findOneAndUpdate({
                     $or: [
                         { username: account },
