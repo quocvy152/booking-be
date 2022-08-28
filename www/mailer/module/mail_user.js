@@ -59,9 +59,9 @@ exports.sendOTP = function (email, code) {
  * @param link
  * @param type
  */
-exports.resetPassAccount = function (email, userName, link, type) {
+exports.resetPassAccount = function (email, userName, link, type, newPassword) {
     let emailContent = getHeaderEmail((type === 1) ? "KHỞI TẠO LẠI MẬT KHẨU" : "RESET SECOND PASSWORD")
-        + getContentEmailResetPass(userName, baseUrl + link, type);
+        + getContentEmailResetPass(userName, baseUrl + link, type, newPassword);
     +getFooterEmail();
 
     mailer(email, `${webName}: Khởi Tạo Lại Mật Khẩu`, emailContent, function (callback) {
@@ -133,12 +133,12 @@ function getContentVerifyEMail(message, link, lang) {
         '</td></tr></tbody>';
 }
 
-function getContentEmailResetPass(userName, link, type) {
+function getContentEmailResetPass(userName, link, type, newPassword) {
     return '<tbody>' +
         '<tr>' +
         '<td style="border-top:solid 1px #d9d9d9" colspan="2"> ' +
         '<div style="padding:15px 0">' +
-        '<p class="title" style="line-height: 1.7; font-size: 19px;">' + util.format(language.getLanguage((type === 1) ? 'reset_password_mail' : 'reset_second_password_mail', defaultLanguage), userName, link) + '</p>' +
+        '<p class="title" style="line-height: 1.7; font-size: 19px;">' + util.format(language.getLanguage((type === 1) ? `Bạn đã yêu cầu cấp lại mật khẩu! Mật khẩu mới của bạn là: ${newPassword}` : 'reset_second_password_mail', defaultLanguage), userName, link) + '</p>' +
         '<br>' +
         '</div>' +
         '</td></tr></tbody>';

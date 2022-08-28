@@ -13,6 +13,7 @@ const { hash, hashSync, compare }   = require('bcryptjs');
 const cfJWS                         = require('../../../config/cf_jws');
 const { resetPassAccount }          = require('../../../mailer/module/mail_user');
 const { BOOKING_URL }               = require('../../../config/cf_constants');
+const { randomStringFixLength }     = require('../../../utils/string_utils');
 
 /**
  * BASES
@@ -339,9 +340,8 @@ class Model extends BaseModel {
     resetPassword({ account }) {
         return new Promise(async resolve => {
             try {
-                console.log({ account })
                 if(!account)
-                    return resolve({ error: true, message: 'Tham số không hợp lệ sssssss' });
+                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
 
                 let infoUser = await USER_COLL.findOne({
                     $or: [
@@ -352,12 +352,22 @@ class Model extends BaseModel {
                 if(!infoUser)
                     return resolve({ error: true, message: 'Tên tài khoản hoặc email không hợp lệ' });
 
+                let newPassword = randomStringFixLength(6);
+                let newPasswordHash = await hash(newPassword, 8);
+                console.log({ newPassword })
+                let infoUserAfterUpdate = await USER_COLL.findOneAndUpdate({
+                    $or: [
+                        { username: account },
+                        { email: account }
+                    ]
+                }, { password: newPasswordHash })
+
                 let BOOKING_SERVER = BOOKING_URL.BOOKING_SERVER;
-                resetPassAccount(infoUser.email, infoUser.username, BOOKING_SERVER, 1);
+                resetPassAccount(infoUser.email, infoUser.username, BOOKING_SERVER, 1, newPassword);
 
                 return resolve({
                     error: false,
-                    data: infoUser
+                    data: infoUserAfterUpdate
                 });
             } catch (error) {
                 return resolve({ error: true, message: error.message });
