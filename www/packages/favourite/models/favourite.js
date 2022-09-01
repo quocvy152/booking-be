@@ -109,6 +109,14 @@ class Model extends BaseModel {
                                             .find({ user: userID, status: this.STATUS_ACTIVE })
                                             .populate({
                                                 path: 'user car',
+                                                populate: {
+                                                    path: 'brandID userID avatar',
+                                                    select: 'name icon firstName lastName path size avatar phone',
+                                                    populate: {
+                                                        path: 'avatar',
+                                                        select: 'size path'
+                                                    }
+                                                }
                                             })
                                             .lean();
 
