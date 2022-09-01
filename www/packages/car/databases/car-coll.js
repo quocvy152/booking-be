@@ -69,6 +69,10 @@ module.exports = BASE_COLL('car', {
 		type: Schema.Types.ObjectId,
 		ref: 'image'
 	}],
+	totalFavourite: {
+		type: Number, 
+		default: 0
+	},
 	/**
 	 * Trạng thái hoạt động.
 	 * 2. Đã xóa

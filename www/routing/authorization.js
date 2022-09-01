@@ -11,6 +11,7 @@ const { CUSTOMER_ROUTES }   	            = require('../packages/customer');
 const { S3_ROUTES } 	    	            = require('../packages/upload-s3');
 const { TOKEN_ROUTES } 	    	            = require('../packages/token');
 const { CHARACTERISTIC_ROUTES } 	    	= require('../packages/characteristic');
+const { FAVOURITE_ROUTES }                  = require('../packages/favourite');
 
 const initAuths = [
     COMMON_ROUTES,
@@ -21,6 +22,7 @@ const initAuths = [
     TOKEN_ROUTES,
     CHARACTERISTIC_ROUTES,
     CAR_ROUTES,
+    FAVOURITE_ROUTES,
     BOOKING_ROUTES
 ];
 
