@@ -79,17 +79,17 @@ class Model extends BaseModel {
     /**
      * BỎ YÊU THÍCH
      */
-	unFavourite({ favouriteID }) {
+	unFavourite({ carID, userID }) {
         return new Promise(async resolve => {
             try {
-				if(!ObjectID.isValid(favouriteID))
+				if(!ObjectID.isValid(carID) || !ObjectID.isValid(userID))
 					return resolve({ error: true, message: 'Tham số không hợp lệ' });
 
-                let infoFavouriteAfterUpdate = await FAVOURITE_COLL.findByIdAndUpdate(favouriteID, { status: this.STATUS_INACTIVE }, { new: true });
+                let infoFavouriteAfterUpdate = await FAVOURITE_COLL.findOneAndUpdate({ carID, userID }, { status: this.STATUS_INACTIVE }, { new: true });
                 if(!infoFavouriteAfterUpdate) 
 				    return resolve({ error: false, message: 'Xảy ra lỗi trong quá trình bỏ yêu thích' });
 
-				return resolve({ error: false, data: infoFavouriteAfterUpdate });
+				return resolve({ error: false, data: infoFavouriteAfterUpdate, message: 'Bạn đã bỏ yêu thích chiếc xe này' });
             } catch (error) {
                 return resolve({ error: true, message: error.message });
             }
