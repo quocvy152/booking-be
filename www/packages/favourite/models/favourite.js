@@ -79,17 +79,17 @@ class Model extends BaseModel {
     /**
      * BỎ YÊU THÍCH
      */
-	unFavourite({ carID, userID }) {
+	unFavourite({ favouriteID }) {
         return new Promise(async resolve => {
             try {
-				if(!ObjectID.isValid(carID) || !ObjectID.isValid(userID))
+				if(!ObjectID.isValid(favouriteID))
 					return resolve({ error: true, message: 'Tham số không hợp lệ' });
 
-                let infoFavouriteAfterUpdate = await FAVOURITE_COLL.findOneAndUpdate({ carID, userID }, { status: this.STATUS_INACTIVE }, { new: true });
+                let infoFavouriteAfterUpdate = await FAVOURITE_COLL.findByIdAndUpdate(favouriteID, { status: this.STATUS_INACTIVE }, { new: true });
                 if(!infoFavouriteAfterUpdate) 
 				    return resolve({ error: false, message: 'Xảy ra lỗi trong quá trình bỏ yêu thích' });
 
-				return resolve({ error: false, data: infoFavouriteAfterUpdate, message: 'Bạn đã bỏ yêu thích chiếc xe này' });
+				return resolve({ error: false, data: infoFavouriteAfterUpdate, message: 'Bạn đã loại bỏ xe này ra khỏi danh sách yêu thích' });
             } catch (error) {
                 return resolve({ error: true, message: error.message });
             }
@@ -124,6 +124,7 @@ class Model extends BaseModel {
                 for await (let favourite of listFavouriteOfUser) {
                     let listCharacteristicOfCar = await CAR_CHARACTERISTIC_MODEL.getListByCar({ carID: favourite.car._id });
                     listCarFavouriteRes[listCarFavouriteRes.length++] = {
+                        favouriteID: favourite._id,
                         infoCar: favourite.car,
                         details: listCharacteristicOfCar && listCharacteristicOfCar.data
                     }
