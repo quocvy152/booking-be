@@ -110,8 +110,8 @@ module.exports = class Auth extends ChildRouter {
                 },
                 methods: {
                     get: [ async (req, res) => {
-                        const { user } = req.query;
-                        const resultListFavouriteOfUser = await FAVOURITE_MODEL.getListFavouriteOfUser({ userID: user });
+                        const { user, name } = req.query;
+                        const resultListFavouriteOfUser = await FAVOURITE_MODEL.getListFavouriteOfUser({ userID: user, name });
                         res.json(resultListFavouriteOfUser);
                     }],
                 },

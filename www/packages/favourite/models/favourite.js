@@ -99,7 +99,7 @@ class Model extends BaseModel {
     /**
      * DANH SÁCH YÊU THÍCH CỦA MỘT USER
      */
-	getListFavouriteOfUser({ userID }) {
+	getListFavouriteOfUser({ userID, name }) {
         return new Promise(async resolve => {
             try {
 				if(!ObjectID.isValid(userID))
@@ -128,7 +128,12 @@ class Model extends BaseModel {
                         infoCar: favourite.car,
                         details: listCharacteristicOfCar && listCharacteristicOfCar.data
                     }
-                }                         
+                } 
+                
+                if(name != 'undefined' && name) {
+                    let listCarAfterFilter = listCarFavouriteRes.filter(car => car.infoCar.name.toLowerCase().includes(name.toLowerCase()));
+                    return resolve({ error: false, data: listCarAfterFilter });
+                }
 
                 return resolve({ error: false, data: listCarFavouriteRes });
             } catch (error) {
