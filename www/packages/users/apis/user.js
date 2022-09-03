@@ -206,6 +206,38 @@ module.exports = class Auth extends ChildRouter {
                     }]
                 },
             },
+
+            /**
+             * Function: 
+             *      + Info user (API)
+             *      + Remove user (API)
+             *      + Update user (API)
+             * Date: 11/08/2022
+             * Dev: VyPQ
+             */
+             [CF_ROUTINGS_USER.UPDATE_USERS_USERID]: {
+                config: {
+                    auth: [ roles.role.user.bin ],
+                    type: 'json',
+                },
+                methods: {
+                    put: [ multer.uploadSingle, async function (req, res) {
+                        const { userID } = req.params;
+                        let avatar = req.file;
+                        const { username, email, currentPass, newPass, confirmPass, role, status, firstName, lastName, address, phone } = req.body;
+
+                        let resultUploadImg = await imgbbUploader(BOOKING_KEY.KEY_API_IMGBB, req.file.path);
+                        let { display_url } = resultUploadImg;
+                        avatar.urlImgServer = display_url;
+                        fs.unlinkSync(req.file.path);
+
+                        const resultUpdateUser = await USER_MODEL.update({ 
+                            userID, username, email, currentPass, newPass, confirmPass, role, status, firstName, lastName, address, phone, avatar
+                        });
+                        res.json(resultUpdateUser);
+                    }],
+                },
+            },
         }
     }
 };
