@@ -217,11 +217,15 @@ module.exports = class Auth extends ChildRouter {
              */
              [CF_ROUTINGS_USER.UPDATE_USERS_USERID]: {
                 config: {
-                    auth: [ roles.role.user.bin ],
+                    auth: [ roles.role.all.bin ],
                     type: 'json',
                 },
                 methods: {
                     put: [ multer.uploadSingle, async function (req, res) {
+                        console.log({
+                            FILE: req.file,
+                            BODY: req.body
+                        })
                         const { userID } = req.params;
                         let avatar = req.file;
                         const { username, email, currentPass, newPass, confirmPass, role, status, firstName, lastName, address, phone } = req.body;
