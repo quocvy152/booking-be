@@ -275,7 +275,13 @@ class Model extends BaseModel {
 	getList(){
         return new Promise(async resolve => {
             try {
-                let listUser = await USER_COLL.find({}).lean();
+                let listUser = await USER_COLL
+                                            .find({})
+                                            .populate({
+                                                path: 'avatar',
+                                                select: 'name size path'
+                                            })
+                                            .lean();
                 if(!listUser)
                     return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách người dùng' });
 
