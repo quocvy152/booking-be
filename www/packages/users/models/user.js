@@ -276,7 +276,9 @@ class Model extends BaseModel {
         return new Promise(async resolve => {
             try {
                 let listUser = await USER_COLL
-                                            .find({})
+                                            .find({
+                                                role: this.USER_ROLE
+                                            })
                                             .populate({
                                                 path: 'avatar',
                                                 select: 'name size path'
