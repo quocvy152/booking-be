@@ -317,6 +317,9 @@ class Model extends BaseModel {
                 if (!checkExists) 
                     return resolve({ error: true, message: 'Username hoặc Email không tồn tại' });
 
+                if(checkExists.status == this.STATUS_INACTIVE)
+                    return resolve({ error: true, message: 'Tài khoản của bạn đã bị khóa. Vui lòng thử tài khoản khác' });
+
                 let isMatchPass = await compare(password, checkExists.password);
                 if (!isMatchPass) 
                     return resolve({ error: true, message: 'Mật khẩu không chính xác' });
