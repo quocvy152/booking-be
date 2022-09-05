@@ -242,6 +242,20 @@ module.exports = class Auth extends ChildRouter {
                     }],
                 },
             },
+
+            [CF_ROUTINGS_USER.UPDATE_STATUS_USER]: {
+                config: {
+                    auth: [ roles.role.user.bin ],
+                    type: 'json',
+                },
+                methods: {
+                    post: [ async function (req, res) {
+                        const { user } = req.query;
+                        let infoUserAfterUpdateStatus = await USER_MODEL.updateStatus({ userID: user });
+                        res.json(infoUserAfterUpdateStatus);
+                    }]
+                },
+            },
         }
     }
 };

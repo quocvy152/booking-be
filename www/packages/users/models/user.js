@@ -426,6 +426,26 @@ class Model extends BaseModel {
         })
     }
 
+    updateStatus({ userID }){
+        return new Promise(async resolve => {
+            try {
+                if(!ObjectID.isValid(userID))
+                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
+
+                let infoUser = await USER_COLL.findById(userID);
+                if(!infoUser)
+                    return resolve({ error: true, message: 'Xảy ra lỗi. Không tìm thấy người dùng' });
+
+                let infoUserAfterUpdate = await USER_COLL.findByIdAndUpdate(userID, { status: !infoUser.status }, { new: true })
+                if(!infoUserAfterUpdate)
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình cập nhật người dùng' });
+
+                return resolve({ error: false, data: infoUserAfterUpdate });
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
 }
 
 exports.MODEL = new Model;
