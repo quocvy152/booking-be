@@ -50,7 +50,8 @@ module.exports = class Auth extends ChildRouter {
                 },
                 methods: {
                     get: [ async function (req, res) {
-                        const resultGetListUser = await USER_MODEL.getList();
+                        const { name } = req.query;
+                        const resultGetListUser = await USER_MODEL.getList({ name });
                         res.json(resultGetListUser);
                     }],
                     post: [ async function (req, res) {

@@ -272,13 +272,24 @@ class Model extends BaseModel {
         })
     }
 
-	getList(){
+	getList({ name }){
         return new Promise(async resolve => {
             try {
+                let condition = {
+                    role: this.USER_ROLE
+                };
+
+                if(name != 'undefined' && name) {
+                    let key = name.split(" ");
+                    key = '.*' + key.join(".*") + '.*';
+                    condition.$or = [
+                        { firstName: new RegExp(key, 'i') },
+                        { lastName: new RegExp(key, 'i') }
+                    ]
+                }
+
                 let listUser = await USER_COLL
-                                            .find({
-                                                role: this.USER_ROLE
-                                            })
+                                            .find(condition)
                                             .populate({
                                                 path: 'avatar',
                                                 select: 'name size path'
