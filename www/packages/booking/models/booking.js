@@ -125,11 +125,36 @@ class Model extends BaseModel {
         })
     }
 
-	getList(){
+    getList(){
         return new Promise(async resolve => {
             try {
                 let listBooking = await BOOKING_COLL
                     .find()
+					.sort({ createAt: -1 })
+					.lean();
+                if(!listBooking)
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách chuyến xe' });
+
+                return resolve({ error: false, data: listBooking });
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
+
+	getListAdmin({ status }){
+        return new Promise(async resolve => {
+            try {
+                if(status && ![this.STATUS_ACTIVE, this.STATUS_PAID].includes(+status))
+                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
+
+                let condition = {};
+
+                if(status)
+                    condition.status = +status;
+
+                let listBooking = await BOOKING_COLL
+                    .find(condition)
 					.sort({ createAt: -1 })
 					.lean();
                 if(!listBooking)
@@ -376,7 +401,7 @@ class Model extends BaseModel {
         })
     }
 
-     // Lấy ra danh sách các chuyến xe khách hàng khác đang có nhu cầu thuê của mình
+    // Lấy ra danh sách các chuyến xe khách hàng khác đang có nhu cầu thuê của mình
     getListCustomerBookingMyCar({ user, type, name }){
         return new Promise(async resolve => {
             try {
