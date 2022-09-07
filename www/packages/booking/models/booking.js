@@ -146,7 +146,7 @@ class Model extends BaseModel {
         return new Promise(async resolve => {
             try {
                 if(status && ![this.STATUS_ACTIVE, this.STATUS_PAID].includes(+status))
-                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
+                    return resolve({ error: true, message: 'Tham số không hợp lệ sssssss' });
 
                 let condition = {};
 
