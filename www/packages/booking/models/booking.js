@@ -155,8 +155,25 @@ class Model extends BaseModel {
 
                 let listBooking = await BOOKING_COLL
                     .find(condition)
+                    .populate({
+                        path: 'car',
+                        populate: {
+                            path: 'brandID userID avatar',
+                            select: 'name firstName lastName phone size path avatar',
+                            populate: {
+                                path: 'avatar'
+                            }
+                        }
+                    })
+                    .populate({
+                        path: 'user',
+                        select: 'firstName lastName phone avatar',
+                        populate: {
+                            path: 'avatar',
+                            select: 'size path'
+                        }
+                    })
 					.sort({ createAt: -1 })
-					.lean();
                 if(!listBooking)
                     return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách chuyến xe' });
 
