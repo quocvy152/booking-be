@@ -40,7 +40,9 @@ class Model extends BaseModel {
         this.STATUS_DELETED = 2;
     }
 
-	insert({ username, email, password, confirmPass, role, status = 1, firstName, lastName, address, phone, avatar }) {
+	insert({ username, email, password, confirmPass, role, status = 1, firstName, lastName, address, phone, avatar,
+        citizenIdentificationNo, citizenIdentificationFront, citizenIdentificationBack,
+        drivingLicenseNo, drivingLicenseFront, drivingLicenseBack }) {
         return new Promise(async resolve => {
             try {
                 console.log({
@@ -95,12 +97,55 @@ class Model extends BaseModel {
 				dataInsert.address = address;
 
                 if(avatar) {
-                    let resultInsertImage = await IMAGE_MODEL.insert(dataInsert);
+                    let { size, name, path } = avatar;
+                    let resultInsertImage = await IMAGE_MODEL.insert({ size, name, path });
                     if(resultInsertImage.error)
 					    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình thêm ảnh đại diện' });
                     
 				    dataInsert.avatar = resultInsertImage.data._id;
                 }
+
+                if(citizenIdentificationFront) {
+                    let { size, name, path } = citizenIdentificationFront;
+                    let resultInsertImage = await IMAGE_MODEL.insert({ size, name, path });
+                    if(resultInsertImage.error)
+					    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình thêm ảnh căn cước công dân mặt trước' });
+                    
+				    dataInsert.citizenIdentificationFront = resultInsertImage.data._id;
+                }
+
+                if(citizenIdentificationBack) {
+                    let { size, name, path } = citizenIdentificationBack;
+                    let resultInsertImage = await IMAGE_MODEL.insert({ size, name, path });
+                    if(resultInsertImage.error)
+					    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình thêm ảnh căn cước công dân mặt sau' });
+                    
+				    dataInsert.citizenIdentificationBack = resultInsertImage.data._id;
+                }
+
+                if(drivingLicenseFront) {
+                    let { size, name, path } = drivingLicenseFront;
+                    let resultInsertImage = await IMAGE_MODEL.insert({ size, name, path });
+                    if(resultInsertImage.error)
+					    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình thêm ảnh bằng lái xe mặt trước' });
+                    
+				    dataInsert.drivingLicenseFront = resultInsertImage.data._id;
+                }
+
+                if(drivingLicenseBack) {
+                    let { size, name, path } = drivingLicenseBack;
+                    let resultInsertImage = await IMAGE_MODEL.insert({ size, name, path });
+                    if(resultInsertImage.error)
+					    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình thêm ảnh bằng lái xe mặt trước' });
+                    
+				    dataInsert.drivingLicenseBack = resultInsertImage.data._id;
+                }
+
+                if(citizenIdentificationNo)
+                    dataInsert.citizenIdentificationNo = citizenIdentificationNo;
+
+                if(drivingLicenseNo)
+                    dataInsert.drivingLicenseNo = drivingLicenseNo;
 
                 let infoAfterInsert = await this.insertData(dataInsert);
                 if(!infoAfterInsert)
@@ -130,7 +175,9 @@ class Model extends BaseModel {
         })
     }
 
-	update({ userID, username, email, currentPass, newPass, confirmPass, status, role, firstName, lastName, address, phone, avatar }) {
+	update({ userID, username, email, currentPass, newPass, confirmPass, status, role, firstName, lastName, address, phone, avatar,
+        citizenIdentificationNo, citizenIdentificationFront, citizenIdentificationBack,
+        drivingLicenseNo, drivingLicenseFront, drivingLicenseBack }) {
         return new Promise(async resolve => {
             try {
                 if(!ObjectID.isValid(userID))
@@ -202,6 +249,53 @@ class Model extends BaseModel {
                     
 				    dataUpdate.avatar = resultInsertImage.data._id;
                 }
+
+                // căn cước công dân mặt trước
+                if(citizenIdentificationFront) {
+                    let { size, name, path } = citizenIdentificationFront;
+                    let resultInsertImage = await IMAGE_MODEL.insert({ size, name, path });
+                    if(resultInsertImage.error)
+					    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình thêm ảnh căn cước công dân mặt trước' });
+                    
+				    dataInsert.citizenIdentificationFront = resultInsertImage.data._id;
+                } else return resolve({ error: true, message: 'Vui lòng chọn ảnh căn cước công dân mặt trước' });
+
+                // căn cước công dân mặt sau
+                if(citizenIdentificationBack) {
+                    let { size, name, path } = citizenIdentificationBack;
+                    let resultInsertImage = await IMAGE_MODEL.insert({ size, name, path });
+                    if(resultInsertImage.error)
+					    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình thêm ảnh căn cước công dân mặt sau' });
+                    
+				    dataInsert.citizenIdentificationBack = resultInsertImage.data._id;
+                } else return resolve({ error: true, message: 'Vui lòng chọn ảnh căn cước công dân mặt sau' });
+
+                // bằng lái xe mặt trước
+                if(drivingLicenseFront) {
+                    let { size, name, path } = drivingLicenseFront;
+                    let resultInsertImage = await IMAGE_MODEL.insert({ size, name, path });
+                    if(resultInsertImage.error)
+					    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình thêm ảnh bằng lái xe mặt trước' });
+                    
+				    dataInsert.drivingLicenseFront = resultInsertImage.data._id;
+                } else return resolve({ error: true, message: 'Vui lòng chọn ảnh bằng lái xe mặt trước' });
+
+                if(drivingLicenseBack) {
+                    let { size, name, path } = drivingLicenseBack;
+                    let resultInsertImage = await IMAGE_MODEL.insert({ size, name, path });
+                    if(resultInsertImage.error)
+					    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình thêm ảnh bằng lái xe mặt trước' });
+                    
+				    dataInsert.drivingLicenseBack = resultInsertImage.data._id;
+                } else return resolve({ error: true, message: 'Vui lòng chọn ảnh bằng lái xe mặt sau' });
+
+                if(citizenIdentificationNo)
+                    dataInsert.citizenIdentificationNo = citizenIdentificationNo;
+                else return resolve({ error: true, message: 'Vui lòng nhập số căn cước công dân' });
+
+                if(drivingLicenseNo)
+                    dataInsert.drivingLicenseNo = drivingLicenseNo;
+                else return resolve({ error: true, message: 'Vui lòng nhập số bằng lái xe' });
 
                 let infoAfterUpdate = await USER_COLL.findByIdAndUpdate(userID, dataUpdate, { new: true }).populate({ path: 'avatar', select: 'path size' });
                 if(!infoAfterUpdate)

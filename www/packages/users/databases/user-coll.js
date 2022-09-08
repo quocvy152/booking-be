@@ -60,4 +60,26 @@ module.exports = BASE_COLL('user', {
 		type: String,
 		trim: true,
 	},
+	citizenIdentificationNo: {
+		type: String
+	},
+	citizenIdentificationFront: {
+		type: Schema.Types.ObjectId,
+		ref: 'image'
+	},
+	citizenIdentificationBack: {
+		type: Schema.Types.ObjectId,
+		ref: 'image'
+	},
+	drivingLicenseFront: {
+		type: Schema.Types.ObjectId,
+		ref: 'image'
+	},
+	drivingLicenseBack: {
+		type: Schema.Types.ObjectId,
+		ref: 'image'
+	},
+	drivingLicenseNo: {
+		type: String
+	},
 });
