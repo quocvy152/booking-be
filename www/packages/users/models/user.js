@@ -460,6 +460,26 @@ class Model extends BaseModel {
             }
         })
     }
+
+    isUserBlocking({ userID }){
+        return new Promise(async resolve => {
+            try {
+                if(!ObjectID.isValid(userID))
+                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
+
+                let infoUser = await USER_COLL.findById(userID);
+                if(!infoUser)
+                    return resolve({ error: true, message: 'Xảy ra lỗi. Không tìm thấy người dùng' });
+
+                if(infoUser.status == this.STATUS_INACTIVE)
+                    return resolve({ error: true, message: 'Xin lỗi tài khoản của bạn đã bị khóa. Không thể thực hiện thao tác này.' });
+
+                return resolve({ error: false, message: 'USER_OK' });
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
 }
 
 exports.MODEL = new Model;

@@ -25,6 +25,7 @@ const {
  */
 const BaseModel 					= require('../../../models/intalize/base_model');
 const IMAGE_MODEL				    = require('../../image').MODEL;
+const USER_MODEL				    = require('../../users/models/user').MODEL;
 const CAR_CHARACTERISTIC_MODEL      = require('../../characteristic/models/car_characteristic').MODEL;
 
 /**
@@ -51,6 +52,10 @@ class Model extends BaseModel {
             try {
 				if(!ObjectID.isValid(userID) || !ObjectID.isValid(carID))
 					return resolve({ error: true, message: 'Tham số không hợp lệ' });
+
+                let resultCheckUserBlocking = USER_MODEL.isUserBlocking({ userID });
+                if(resultCheckUserBlocking.error)
+					return resolve(resultCheckUserBlocking);
 
                 if(!startTime)
 					return resolve({ error: true, message: 'Vui lòng nhập thời gian bắt đầu thuê xe' });
