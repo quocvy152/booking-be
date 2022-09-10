@@ -88,7 +88,11 @@ module.exports = class Auth extends ChildRouter {
                     put: [ multer.uploadSingle, async function (req, res) {
                         const { userID } = req.params;
                         let avatar = req.file;
-                        const { username, email, currentPass, newPass, confirmPass, role, status, firstName, lastName, address, phone } = req.body;
+                        const { 
+                            username, email, currentPass, newPass, confirmPass, role, status, firstName, lastName, address, 
+                            phone, citizenIdentificationNo, citizenIdentificationFront, citizenIdentificationBack,
+                            drivingLicenseNo, drivingLicenseFront, drivingLicenseBack
+                        } = req.body;
 
                         let resultUploadImg = await imgbbUploader(BOOKING_KEY.KEY_API_IMGBB, req.file.path);
                         let { display_url } = resultUploadImg;
@@ -96,7 +100,9 @@ module.exports = class Auth extends ChildRouter {
                         fs.unlinkSync(req.file.path);
 
                         const resultUpdateUser = await USER_MODEL.update({ 
-                            userID, username, email, currentPass, newPass, confirmPass, role, status, firstName, lastName, address, phone, avatar
+                            userID, username, email, currentPass, newPass, confirmPass, role, status, firstName, lastName, avatar,
+                            address, phone, citizenIdentificationNo, citizenIdentificationFront, citizenIdentificationBack,
+                            drivingLicenseNo, drivingLicenseFront, drivingLicenseBack
                         });
                         res.json(resultUpdateUser);
                     }],
@@ -254,6 +260,73 @@ module.exports = class Auth extends ChildRouter {
                         const { user } = req.query;
                         let infoUserAfterUpdateStatus = await USER_MODEL.updateStatus({ userID: user });
                         res.json(infoUserAfterUpdateStatus);
+                    }]
+                },
+            },
+
+            /**
+             * Function: Cập nhật thông tin xác thực
+             *      + CCCD
+             *      + GPLX
+             * Date: 09/09/2022
+             * Dev: VyPQ
+             */
+             [CF_ROUTINGS_USER.UPDATE_VALIDATE_INFO]: {
+                config: {
+                    auth: [ roles.role.all.bin ],
+                    type: 'json',
+                },
+                methods: {
+                    put: [ 
+                        multer.uploadFields, async function (req, res) {
+
+                        const { user } = req.query;
+                        const { 
+                            citizenIdentificationNo, drivingLicenseNo,
+                        } = req.body;
+
+                        let citizenIdentificationFront, citizenIdentificationBack, drivingLicenseFront, drivingLicenseBack;
+                        let listImageValidateInfo = req.files;
+
+                        for(let keyImage in listImageValidateInfo) {
+                            let resultUploadImg = await imgbbUploader(BOOKING_KEY.KEY_API_IMGBB, listImageValidateInfo[keyImage][0].path);
+
+                            let { image: { filename }, size } = resultUploadImg;
+                            
+                            let { display_url } = resultUploadImg;
+                            fs.unlinkSync(listImageValidateInfo[keyImage][0].path);
+
+                            let objInfoFile = {
+                                name: filename,
+                                size: size,
+                                path: display_url
+                            }
+
+                            switch(keyImage) {
+                                case 'citizenIdentificationFront': {
+                                    citizenIdentificationFront = objInfoFile;
+                                }
+                                case 'citizenIdentificationBack': {
+                                    citizenIdentificationBack = objInfoFile;
+                                }
+                                case 'drivingLicenseFront': {
+                                    drivingLicenseFront = objInfoFile;
+                                }
+                                case 'drivingLicenseBack': {
+                                    drivingLicenseBack = objInfoFile;
+                                }
+                            }
+                        }
+                        const resultUpdateValidateInfo = await USER_MODEL.updateValidateInfo({ 
+                            userID: user,
+                            citizenIdentificationNo,
+                            drivingLicenseNo,
+                            citizenIdentificationFront,
+                            citizenIdentificationBack,
+                            drivingLicenseFront,
+                            drivingLicenseBack
+                        })
+                        res.json(resultUpdateValidateInfo);
                     }]
                 },
             },

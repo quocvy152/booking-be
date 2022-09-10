@@ -8,6 +8,7 @@ const CF_ROUTINGS_USER = {
 	USERS_USERID: `${BASE_ROUTE}/:userID`,
 	UPDATE_USERS_USERID: `${BASE_ROUTE}/update/:userID`,
 	UPDATE_STATUS_USER: `${BASE_ROUTE}/update-status`,
+	UPDATE_VALIDATE_INFO: `${BASE_ROUTE}/change/validate/info`,
 	LOGIN: `${BASE_ROUTE}/login`,
 	UPDATE_AVATAR: `${BASE_ROUTE}/avatar/update`,
 

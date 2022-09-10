@@ -58,6 +58,10 @@ class ChildRouter{
                     router.put(basePath, item.methods.put[0], item.methods.put[1]);
                 } else if (item.methods.put.length === 3) {
                     router.put(basePath, item.methods.put[0], item.methods.put[1], item.methods.put[2]);
+                } else if (item.methods.put.length === 4) {
+                    router.put(basePath, item.methods.put[0], item.methods.put[1], item.methods.put[2], item.methods.put[3]);
+                } else if (item.methods.put.length === 5) {
+                    router.put(basePath, item.methods.put[0], item.methods.put[1], item.methods.put[2], item.methods.put[3], item.methods.put[4]);
                 }
             }
 

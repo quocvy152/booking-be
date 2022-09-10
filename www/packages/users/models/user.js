@@ -177,7 +177,8 @@ class Model extends BaseModel {
 
 	update({ userID, username, email, currentPass, newPass, confirmPass, status, role, firstName, lastName, address, phone, avatar,
         citizenIdentificationNo, citizenIdentificationFront, citizenIdentificationBack,
-        drivingLicenseNo, drivingLicenseFront, drivingLicenseBack }) {
+        drivingLicenseNo, drivingLicenseFront, drivingLicenseBack 
+    }) {
         return new Promise(async resolve => {
             try {
                 if(!ObjectID.isValid(userID))
@@ -569,6 +570,95 @@ class Model extends BaseModel {
                     return resolve({ error: true, message: 'Xin lỗi tài khoản của bạn đã bị khóa. Không thể thực hiện thao tác này.' });
 
                 return resolve({ error: false, message: 'USER_OK' });
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
+
+    updateValidateInfo({ 
+        userID,
+        citizenIdentificationNo,
+        drivingLicenseNo,
+        citizenIdentificationFront,
+        citizenIdentificationBack,
+        drivingLicenseFront,
+        drivingLicenseBack 
+    }){
+        return new Promise(async resolve => {
+            try {
+                let arrDataPreparePromiseAll = [];
+
+                if(citizenIdentificationFront) {
+                    arrDataPreparePromiseAll[arrDataPreparePromiseAll.length++] = IMAGE_MODEL.insert({
+                        name: citizenIdentificationFront.name,
+                        size: citizenIdentificationFront.size,
+                        path: citizenIdentificationFront.path
+                    });
+                }
+
+                if(citizenIdentificationBack) {
+                    arrDataPreparePromiseAll[arrDataPreparePromiseAll.length++] = IMAGE_MODEL.insert({
+                        name: citizenIdentificationBack.name,
+                        size: citizenIdentificationBack.size,
+                        path: citizenIdentificationBack.path
+                    });
+                }
+
+                if(drivingLicenseFront) {
+                    arrDataPreparePromiseAll[arrDataPreparePromiseAll.length++] = IMAGE_MODEL.insert({
+                        name: drivingLicenseFront.name,
+                        size: drivingLicenseFront.size,
+                        path: drivingLicenseFront.path
+                    });
+                }
+
+                if(drivingLicenseBack) {
+                    arrDataPreparePromiseAll[arrDataPreparePromiseAll.length++] = IMAGE_MODEL.insert({
+                        name: drivingLicenseBack.name,
+                        size: drivingLicenseBack.size,
+                        path: drivingLicenseBack.path
+                    });
+                }
+
+                let resultPromiseAll = await Promise.all(arrDataPreparePromiseAll);
+
+                let resultCitizenIdentificationFront = resultPromiseAll[0];
+                let resultCitizenIdentificationBack = resultPromiseAll[1];
+                let resultDrivingLicenseFront = resultPromiseAll[2];
+                let resultDrivingLicenseBack = resultPromiseAll[3];
+
+                console.log({ 
+                    resultPromiseAll,
+                    resultCitizenIdentificationFront,
+                    resultCitizenIdentificationBack,
+                    resultDrivingLicenseFront,
+                    resultDrivingLicenseBack
+                })
+
+                let dataUpdate = {};
+
+                if(!citizenIdentificationNo)
+                    return resolve({ error: true, message: 'Vui lòng nhập số Căn cước công dân' });
+
+                if(!drivingLicenseNo)
+                    return resolve({ error: true, message: 'Vui lòng nhập số Giấy phép lái xe' });
+
+                dataUpdate.citizenIdentificationNo = citizenIdentificationNo;
+                dataUpdate.drivingLicenseNo = drivingLicenseNo;
+                resultCitizenIdentificationFront && (dataUpdate.citizenIdentificationFront = resultCitizenIdentificationFront.data._id);
+                resultCitizenIdentificationBack && (dataUpdate.citizenIdentificationBack = resultCitizenIdentificationBack.data._id);
+                resultDrivingLicenseFront && (dataUpdate.drivingLicenseFront = resultDrivingLicenseFront.data._id);
+                resultDrivingLicenseBack && (dataUpdate.drivingLicenseBack = resultDrivingLicenseBack.data._id);
+                console.log({
+                    resultCitizenIdentificationFront: resultCitizenIdentificationFront.data 
+                })
+
+                let infoUserAfterUpdate = await USER_COLL.findByIdAndUpdate(userID, dataUpdate, { new: true });
+                if(!infoUserAfterUpdate)
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình xác thực thông tin cá nhân' });
+                
+                return resolve({ error: false, data: infoUserAfterUpdate });
             } catch (error) {
                 return resolve({ error: true, message: error.message });
             }
