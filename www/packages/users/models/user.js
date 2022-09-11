@@ -300,6 +300,7 @@ class Model extends BaseModel {
 
                 if(citizenIdentificationNo || drivingLicenseNo) {
                     let conditionCheck = {
+                        _id: { $ne: userID },
                         $or: [
                             { citizenIdentificationNo },
                             { drivingLicenseNo }
@@ -658,6 +659,7 @@ class Model extends BaseModel {
 
                 if(citizenIdentificationNo || drivingLicenseNo) {
                     let conditionCheck = {
+                        _id: { $ne: userID },
                         $or: [
                             { citizenIdentificationNo },
                             { drivingLicenseNo }
