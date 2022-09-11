@@ -164,7 +164,7 @@ class Model extends BaseModel {
                 if(!ObjectID.isValid(userID))
                     return resolve({ error: true, message: 'Tham số không hợp lệ' });
 
-                let infoUser = await USER_COLL.findById(userID, { password: 0 }).populate({ path: 'avatar', select: 'path size' });
+                let infoUser = await USER_COLL.findById(userID, { password: 0 }).populate({ path: 'avatar citizenIdentificationFront citizenIdentificationBack drivingLicenseFront drivingLicenseBack', select: 'path size' });
                 if(!infoUser)
                     return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy thông tin người dùng' });
 
