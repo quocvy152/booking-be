@@ -432,6 +432,12 @@ class Model extends BaseModel {
                     address: checkExists.address,
                     status: checkExists.status,
                     role: checkExists.role,
+                    citizenIdentificationNo: checkExists.citizenIdentificationNo,
+                    drivingLicenseNo: checkExists.drivingLicenseNo,
+                    citizenIdentificationFront: checkExists.citizenIdentificationFront,
+                    citizenIdentificationBack: checkExists.citizenIdentificationBack,
+                    drivingLicenseFront: checkExists.drivingLicenseFront,
+                    drivingLicenseNo: checkExists.drivingLicenseNo,
                 }
 
                 let isExistToken = await TOKEN_MODEL.getInfo({ userID: checkExists._id });
