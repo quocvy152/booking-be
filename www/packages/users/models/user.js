@@ -298,6 +298,19 @@ class Model extends BaseModel {
                     dataUpdate.drivingLicenseNo = drivingLicenseNo;
                 else return resolve({ error: true, message: 'Vui lòng nhập số bằng lái xe' });
 
+                if(citizenIdentificationNo || drivingLicenseNo) {
+                    let conditionCheck = {
+                        $or: [
+                            { citizenIdentificationNo },
+                            { drivingLicenseNo }
+                        ]
+                    };
+
+                    let isExistValidateInfo = await USER_COLL.findOne(conditionCheck);
+                    if(isExistValidateInfo)
+                        return resolve({ error: true, message: 'Số Căn cước công dân hoặc số Giấy phép lái xe đã được sử dụng' });
+                }
+
                 let infoAfterUpdate = await USER_COLL.findByIdAndUpdate(userID, dataUpdate, { new: true }).populate({ path: 'avatar citizenIdentificationFront citizenIdentificationBack drivingLicenseFront drivingLicenseBack', select: 'path size' });
                 if(!infoAfterUpdate)
                     return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình cập nhật người dùng' });
@@ -635,14 +648,6 @@ class Model extends BaseModel {
                 let resultDrivingLicenseFront = resultPromiseAll[2];
                 let resultDrivingLicenseBack = resultPromiseAll[3];
 
-                console.log({ 
-                    resultPromiseAll,
-                    resultCitizenIdentificationFront,
-                    resultCitizenIdentificationBack,
-                    resultDrivingLicenseFront,
-                    resultDrivingLicenseBack
-                })
-
                 let dataUpdate = {};
 
                 if(!citizenIdentificationNo)
@@ -650,6 +655,19 @@ class Model extends BaseModel {
 
                 if(!drivingLicenseNo)
                     return resolve({ error: true, message: 'Vui lòng nhập số Giấy phép lái xe' });
+
+                if(citizenIdentificationNo || drivingLicenseNo) {
+                    let conditionCheck = {
+                        $or: [
+                            { citizenIdentificationNo },
+                            { drivingLicenseNo }
+                        ]
+                    };
+
+                    let isExistValidateInfo = await USER_COLL.findOne(conditionCheck);
+                    if(isExistValidateInfo)
+                        return resolve({ error: true, message: 'Số Căn cước công dân hoặc số Giấy phép lái xe đã được sử dụng' });
+                }
 
                 dataUpdate.citizenIdentificationNo = citizenIdentificationNo;
                 dataUpdate.drivingLicenseNo = drivingLicenseNo;
