@@ -240,8 +240,8 @@ class Model extends BaseModel {
 
                 if(avatar) {
                     let dataImage = {
-                        name: avatar.filename,
-                        path: avatar.urlImgServer,
+                        name: avatar.name,
+                        path: avatar.path,
                         size: avatar.size
                     }
                     let resultInsertImage = await IMAGE_MODEL.insert(dataImage);
@@ -258,7 +258,7 @@ class Model extends BaseModel {
                     if(resultInsertImage.error)
 					    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình thêm ảnh căn cước công dân mặt trước' });
                     
-				    dataInsert.citizenIdentificationFront = resultInsertImage.data._id;
+				    dataUpdate.citizenIdentificationFront = resultInsertImage.data._id;
                 } else return resolve({ error: true, message: 'Vui lòng chọn ảnh căn cước công dân mặt trước' });
 
                 // căn cước công dân mặt sau
@@ -268,7 +268,7 @@ class Model extends BaseModel {
                     if(resultInsertImage.error)
 					    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình thêm ảnh căn cước công dân mặt sau' });
                     
-				    dataInsert.citizenIdentificationBack = resultInsertImage.data._id;
+				    dataUpdate.citizenIdentificationBack = resultInsertImage.data._id;
                 } else return resolve({ error: true, message: 'Vui lòng chọn ảnh căn cước công dân mặt sau' });
 
                 // bằng lái xe mặt trước
@@ -278,7 +278,7 @@ class Model extends BaseModel {
                     if(resultInsertImage.error)
 					    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình thêm ảnh bằng lái xe mặt trước' });
                     
-				    dataInsert.drivingLicenseFront = resultInsertImage.data._id;
+				    dataUpdate.drivingLicenseFront = resultInsertImage.data._id;
                 } else return resolve({ error: true, message: 'Vui lòng chọn ảnh bằng lái xe mặt trước' });
 
                 if(drivingLicenseBack) {
@@ -287,18 +287,18 @@ class Model extends BaseModel {
                     if(resultInsertImage.error)
 					    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình thêm ảnh bằng lái xe mặt trước' });
                     
-				    dataInsert.drivingLicenseBack = resultInsertImage.data._id;
+				    dataUpdate.drivingLicenseBack = resultInsertImage.data._id;
                 } else return resolve({ error: true, message: 'Vui lòng chọn ảnh bằng lái xe mặt sau' });
 
                 if(citizenIdentificationNo)
-                    dataInsert.citizenIdentificationNo = citizenIdentificationNo;
+                    dataUpdate.citizenIdentificationNo = citizenIdentificationNo;
                 else return resolve({ error: true, message: 'Vui lòng nhập số căn cước công dân' });
 
                 if(drivingLicenseNo)
-                    dataInsert.drivingLicenseNo = drivingLicenseNo;
+                    dataUpdate.drivingLicenseNo = drivingLicenseNo;
                 else return resolve({ error: true, message: 'Vui lòng nhập số bằng lái xe' });
 
-                let infoAfterUpdate = await USER_COLL.findByIdAndUpdate(userID, dataUpdate, { new: true }).populate({ path: 'avatar', select: 'path size' });
+                let infoAfterUpdate = await USER_COLL.findByIdAndUpdate(userID, dataUpdate, { new: true }).populate({ path: 'avatar citizenIdentificationFront citizenIdentificationBack drivingLicenseFront drivingLicenseBack', select: 'path size' });
                 if(!infoAfterUpdate)
                     return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình cập nhật người dùng' });
 
