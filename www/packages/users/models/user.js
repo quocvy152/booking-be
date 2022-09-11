@@ -437,6 +437,7 @@ class Model extends BaseModel {
                     citizenIdentificationFront: checkExists.citizenIdentificationFront,
                     citizenIdentificationBack: checkExists.citizenIdentificationBack,
                     drivingLicenseFront: checkExists.drivingLicenseFront,
+                    drivingLicenseBack: checkExists.drivingLicenseBack,
                     drivingLicenseNo: checkExists.drivingLicenseNo,
                 }
 
