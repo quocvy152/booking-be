@@ -305,9 +305,12 @@ class Model extends BaseModel {
         })
     }
 
-	getList({ name, brand }){
+	getList({ name, brand, page, limit }){
         return new Promise(async resolve => {
             try {
+                page  = +page || 1;
+                limit = +limit || 8;  
+
                 let condition = {};
 
                 if(name) {
@@ -316,21 +319,27 @@ class Model extends BaseModel {
                     condition.name = new RegExp(key, 'i');
                 }
 
-                if(brand) {
-                    if(ObjectID.isValid(brand))
+                if(brand) 
+                    if(ObjectID.isValid(brand)) 
                         condition.brandID = brand;
-                }
 
                 condition.status = this.STATUS_ACTIVE
 
-                let listCar = await CAR_COLL.find(condition).populate({
-                    path: 'brandID userID avatar',
-                    select: 'name icon firstName lastName path size avatar phone',
-                    populate: {
-                        path: 'avatar',
-                        select: 'size path'
-                    }
-                }).sort({ name: 1 });
+                let listCarNonPagination = await CAR_COLL.find(condition);
+
+                let listCar = await CAR_COLL
+                                    .find(condition)
+                                    .skip((page - 1) * limit)
+                                    .limit(limit)
+                                    .populate({
+                                        path: 'brandID userID avatar',
+                                        select: 'name icon firstName lastName path size avatar phone',
+                                        populate: {
+                                            path: 'avatar',
+                                            select: 'size path'
+                                        }
+                                    })
+                                    .sort({ name: 1 });
                 if(!listCar)
                     return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách xe' });
 
@@ -343,7 +352,14 @@ class Model extends BaseModel {
                     }
                 }
 
-                return resolve({ error: false, data: listCarRes });
+                return resolve({ 
+                    error: false, 
+                    data: listCarRes,
+                    totalPages: listCarNonPagination.length > 0 ? Math.ceil(listCarNonPagination.length / limit) : 0,
+                    totalCars: listCarNonPagination.length,
+                    page,
+                    limit,
+                });
             } catch (error) {
                 return resolve({ error: true, message: error.message });
             }

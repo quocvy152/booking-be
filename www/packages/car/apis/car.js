@@ -47,8 +47,8 @@ module.exports = class Auth extends ChildRouter {
                 },
                 methods: {
                     get: [ async function (req, res) {
-                        const { name, brand } = req.query;
-                        const resultGetListCar = await CAR_MODEL.getList({ name, brand });
+                        const { name, brand, page, limit } = req.query;
+                        const resultGetListCar = await CAR_MODEL.getList({ name, brand, page, limit });
                         res.json(resultGetListCar);
                     }],
                     post: [ multer.uploadSingle, async function (req, res) {
