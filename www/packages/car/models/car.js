@@ -325,7 +325,7 @@ class Model extends BaseModel {
 
                 condition.status = this.STATUS_ACTIVE
 
-                let listCarNonPagination = await CAR_COLL.find(condition);
+                let listCarNonPagination = await CAR_COLL.find({ status: this.STATUS_ACTIVE });
 
                 let listCar = await CAR_COLL
                                     .find(condition)
@@ -339,7 +339,7 @@ class Model extends BaseModel {
                                             select: 'size path'
                                         }
                                     })
-                                    .sort({ name: 1 });
+                                    .sort({ _id: -1, name: 1 });
                 if(!listCar)
                     return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách xe' });
 
@@ -390,7 +390,7 @@ class Model extends BaseModel {
                         path: 'avatar',
                         select: 'size path'
                     }
-                }).sort({ name: 1 });
+                }).sort({ _id: -1, name: 1 });
                 if(!listCar)
                     return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách xe' });
 
