@@ -207,7 +207,7 @@ class Model extends BaseModel {
                     dataUpdate.avatar = resultInsertImage.data._id;
                 }
 
-                if(gallery && gallery.lenght) {
+                if(gallery && gallery.length) {
                     let listPromise = gallery.map(galleryItem => IMAGE_MODEL.insert({
                         name: galleryItem.name,
                         size: galleryItem.size,

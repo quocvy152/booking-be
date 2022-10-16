@@ -73,6 +73,10 @@ module.exports = BASE_COLL('car', {
 		type: Number, 
 		default: 0
 	},
+	// biển số xe
+	licensePlates: {
+		type: String, 
+	},
 	/**
 	 * Trạng thái hoạt động.
 	 * 2. Đã xóa
