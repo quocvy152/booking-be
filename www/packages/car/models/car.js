@@ -332,8 +332,8 @@ class Model extends BaseModel {
                                     .skip((page - 1) * limit)
                                     .limit(limit)
                                     .populate({
-                                        path: 'brandID userID avatar',
-                                        select: 'name icon firstName lastName path size avatar phone',
+                                        path: 'brandID userID avatar gallery',
+                                        select: 'name icon firstName lastName path size avatar phone gallery',
                                         populate: {
                                             path: 'avatar',
                                             select: 'size path'
