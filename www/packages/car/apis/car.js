@@ -51,15 +51,14 @@ module.exports = class Auth extends ChildRouter {
                         const resultGetListCar = await CAR_MODEL.getList({ name, brand, page, limit });
                         res.json(resultGetListCar);
                     }],
-                    post: [ multer.uploadSingle, async function (req, res) {
+                    post: [ async function (req, res) {
                         const { 
                             name, provinceID, districtID, 
                             wardID, provinceText, districtText, 
                             wardText, address, price, mortage, 
                             rules, userID, brandID, description, 
-                            gallery, status, listCharacteristicID
+                            gallery, status, listCharacteristicID, avatar
                         } = req.body;
-                        let avatar = req.file;
 
                         const resultInsertCar = await CAR_MODEL.insert({ 
                             name, provinceID, districtID, 
@@ -93,21 +92,15 @@ module.exports = class Auth extends ChildRouter {
                         const resultGetInfoCar = await CAR_MODEL.getInfo({ carID });
                         res.json(resultGetInfoCar);
                     }],
-                    put: [ multer.uploadSingle, async function (req, res) {
+                    put: [ async function (req, res) {
                         const { carID } = req.params;
                         const { 
                             name, provinceID, districtID, 
                             wardID, provinceText, districtText, 
                             wardText, address, price, mortage, 
                             rules, userID, brandID, description, 
-                            gallery, status, listCharacteristicID
+                            gallery, status, listCharacteristicID, avatar
                         } = req.body;
-                        
-                        let avatar = req.file;
-                        let resultUploadImg = await imgbbUploader(BOOKING_KEY.KEY_API_IMGBB, req.file.path);
-                        let { display_url } = resultUploadImg;
-                        avatar.urlImgServer = display_url;
-                        fs.unlinkSync(req.file.path);
 
                         const resultUpdateCar = await CAR_MODEL.update({ 
                             carID, name, provinceID, districtID, 

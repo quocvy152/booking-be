@@ -92,7 +92,7 @@ class Model extends BaseModel {
                 }
 
                 if(avatar) {
-                    let { name, size, urlImgServer: path } = avatar;
+                    let { name, size, path } = avatar;
 
                     let resultInsertImage = await IMAGE_MODEL.insert({ name, size, path });
                     if(resultInsertImage.error) return resolve(resultInsertImage);
@@ -100,7 +100,7 @@ class Model extends BaseModel {
                     dataInsert.avatar = resultInsertImage.data._id;
                 }
 
-                if(gallery && gallery.lenght) {
+                if(gallery && gallery.length) {
                     let listPromise = gallery.map(galleryItem => IMAGE_MODEL.insert({
                         name: galleryItem.name,
                         size: galleryItem.size,
@@ -199,7 +199,7 @@ class Model extends BaseModel {
                 }
 
                 if(avatar) {
-                    let { name, size, urlImgServer: path } = avatar;
+                    let { name, size, path } = avatar;
 
                     let resultInsertImage = await IMAGE_MODEL.insert({ name, size, path });
                     if(resultInsertImage.error) return resolve(resultInsertImage);
