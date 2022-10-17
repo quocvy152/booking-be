@@ -110,7 +110,7 @@ class Model extends BaseModel {
                                             .populate({
                                                 path: 'user car',
                                                 populate: {
-                                                    path: 'brandID userID avatar',
+                                                    path: 'brandID userID avatar gallery',
                                                     select: 'name icon firstName lastName path size avatar phone',
                                                     populate: {
                                                         path: 'avatar',

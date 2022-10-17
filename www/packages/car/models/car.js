@@ -384,8 +384,8 @@ class Model extends BaseModel {
                 }
 
                 let listCar = await CAR_COLL.find(condition).populate({
-                    path: 'brandID userID avatar',
-                    select: 'name icon firstName lastName size path avatar phone',
+                    path: 'brandID userID avatar gallery',
+                    select: 'name icon firstName lastName size path avatar gallery phone',
                     populate: {
                         path: 'avatar',
                         select: 'size path'
