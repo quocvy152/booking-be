@@ -9,6 +9,10 @@ const USER_SESSION							    = require('../../../session/user-session');
 const { CF_ROUTINGS_COMMON }                    = require('../constants/common.uri');
 const path                                      = require('path');
 const fs                                        = require('fs');
+const multer                                    = require('../../../config/cf_helpers_multer/index');
+const { BOOKING_KEY }                           = require('../../../config/cf_constants');
+const imgbbUploader = require('imgbb-uploader');
+
 /**
  * MODELS
  */
@@ -38,64 +42,32 @@ module.exports = class Auth extends ChildRouter {
              * ========================== ************** ================================
              */
 
-            /**
-             * Function: Đăng nhập account (VIEW, API)
-             * Date: 14/06/2021
-             * Dev: VyPQ
-             */
-            // [CF_ROUTINGS_COMMON.LOGIN]: {
-            //     config: {
-			// 		auth: [ roles.role.all.bin ],
-			// 		type: 'view',
-            //         inc : 'pages/login-admin.ejs',
-            //         view: 'pages/login-admin.ejs'
-			// 	},
-			// 	methods: {
-			// 		get: [ (req, res) => {
-			// 			 /**
-            //              * CHECK AND REDIRECT WHEN LOGIN
-            //              */
-			// 			const infoLogin = USER_SESSION.getUser(req.session);
-			// 			if (infoLogin && infoLogin.user && infoLogin.token)
-			// 				return res.redirect('/product/list-product');
+            [CF_ROUTINGS_COMMON.UPLOAD_IMGBB]: {
+                config: {
+                    auth: [ roles.role.all.bin ],
+					type: 'JSON',
+                },
+                methods: {
+                    post: [ multer.uploadSingle, async (req, res) => {
+                        let avatar = req.file;
 
-			// 			ChildRouter.renderToView(req, res);
-			// 		}],
-            //         post: [ async (req, res) => {
-            //             const { email, password } = req.body;
+                        let resultUploadImg = await imgbbUploader(BOOKING_KEY.KEY_API_IMGBB, req.file.path);
+                        let { display_url } = resultUploadImg;
 
-            //             const infoSignIn = await USER_MODEL.signIn({ email, password });
+                        fs.unlinkSync(req.file.path);
+                        avatar.urlImgServer = display_url;
 
-			// 			if (!infoSignIn.error) {
-			// 				const { user, token } = infoSignIn.data;
-
-            //                 USER_SESSION.saveUser(req.session, {
-            //                     user, 
-            //                     token,
-            //                 });
-            //             }
-            //             res.json(infoSignIn);
-            //         }],
-			// 	},
-            // },
-
-            /**
-             * Function: Clear session and redirect to login page (API)
-             * Date: 14/06/2021
-             * Dev: VyPQ
-             */
-            // [CF_ROUTINGS_COMMON.LOGOUT]: {
-            //     config: {
-            //         auth: [ roles.role.all.bin ],
-			// 		type: 'json',
-            //     },
-            //     methods: {
-            //         get: [ (req, res) => {
-            //             USER_SESSION.destroySession(req.session);
-			// 			res.redirect('/login');
-            //         }]
-            //     },
-            // },
+                        res.json({
+                            error: false,
+                            data: {
+                                name: resultUploadImg.display_url,
+                                size: resultUploadImg.size,
+                                path: resultUploadImg.display_url,
+                            }
+                        })
+                    }]
+                },
+            },
 
             [CF_ROUTINGS_COMMON.LIST_PROVINCES]: {
                 config: {

@@ -1,15 +1,11 @@
-const BASE_ROUTE = '/location';
+const BASE_ROUTE_LOCATION = '/location';
+const BASE_ROUTE_UPLOAD = '/upload';
 
 const CF_ROUTINGS_COMMON = {
-    HOME: `${BASE_ROUTE}/home`,
-    LOGIN: `/login`,
-    LOGOUT: `/logout`,
-    
-    LIST_PROVINCES: `${BASE_ROUTE}/provinces`,
-    LIST_DISTRICTS: `${BASE_ROUTE}/district-by-province`,
-    LIST_WARDS: `${BASE_ROUTE}/ward-list-district`,
-
-    ORIGIN_APP: BASE_ROUTE
+    LIST_PROVINCES: `${BASE_ROUTE_LOCATION}/provinces`,
+    LIST_DISTRICTS: `${BASE_ROUTE_LOCATION}/district-by-province`,
+    LIST_WARDS: `${BASE_ROUTE_LOCATION}/ward-list-district`,
+    UPLOAD_IMGBB: `${BASE_ROUTE_UPLOAD}/imgbb`,
 }
 
 exports.CF_ROUTINGS_COMMON = CF_ROUTINGS_COMMON;
