@@ -677,9 +677,6 @@ class Model extends BaseModel {
                 resultCitizenIdentificationBack && (dataUpdate.citizenIdentificationBack = resultCitizenIdentificationBack.data._id);
                 resultDrivingLicenseFront && (dataUpdate.drivingLicenseFront = resultDrivingLicenseFront.data._id);
                 resultDrivingLicenseBack && (dataUpdate.drivingLicenseBack = resultDrivingLicenseBack.data._id);
-                console.log({
-                    resultCitizenIdentificationFront: resultCitizenIdentificationFront.data 
-                })
 
                 let infoUserAfterUpdate = await USER_COLL.findByIdAndUpdate(userID, dataUpdate, { new: true });
                 if(!infoUserAfterUpdate)

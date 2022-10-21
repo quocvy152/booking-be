@@ -304,46 +304,14 @@ module.exports = class Auth extends ChildRouter {
                     type: 'json',
                 },
                 methods: {
-                    put: [ 
-                        multer.uploadFields, async function (req, res) {
+                    put: [ async function (req, res) {
 
                         const { user } = req.query;
                         const { 
-                            citizenIdentificationNo, drivingLicenseNo,
+                            citizenIdentificationNo, drivingLicenseNo, citizenIdentificationFront,
+                            citizenIdentificationBack, drivingLicenseFront, drivingLicenseBack
                         } = req.body;
 
-                        let citizenIdentificationFront, citizenIdentificationBack, drivingLicenseFront, drivingLicenseBack;
-                        let listImageValidateInfo = req.files;
-
-                        for(let keyImage in listImageValidateInfo) {
-                            let resultUploadImg = await imgbbUploader(BOOKING_KEY.KEY_API_IMGBB, listImageValidateInfo[keyImage][0].path);
-
-                            let { image: { filename }, size } = resultUploadImg;
-                            
-                            let { display_url } = resultUploadImg;
-                            fs.unlinkSync(listImageValidateInfo[keyImage][0].path);
-
-                            let objInfoFile = {
-                                name: filename,
-                                size: size,
-                                path: display_url
-                            }
-
-                            switch(keyImage) {
-                                case 'citizenIdentificationFront': {
-                                    citizenIdentificationFront = objInfoFile;
-                                }
-                                case 'citizenIdentificationBack': {
-                                    citizenIdentificationBack = objInfoFile;
-                                }
-                                case 'drivingLicenseFront': {
-                                    drivingLicenseFront = objInfoFile;
-                                }
-                                case 'drivingLicenseBack': {
-                                    drivingLicenseBack = objInfoFile;
-                                }
-                            }
-                        }
                         const resultUpdateValidateInfo = await USER_MODEL.updateValidateInfo({ 
                             userID: user,
                             citizenIdentificationNo,
