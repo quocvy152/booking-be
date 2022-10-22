@@ -49,6 +49,9 @@ module.exports = class Auth extends ChildRouter {
                 },
                 methods: {
                     post: [ multer.uploadSingle, async (req, res) => {
+                        console.log({
+                            FILE: req.file
+                        })
                         let avatar = req.file;
 
                         let resultUploadImg = await imgbbUploader(BOOKING_KEY.KEY_API_IMGBB, req.file.path);
