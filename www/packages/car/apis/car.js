@@ -159,7 +159,7 @@ module.exports = class Auth extends ChildRouter {
                             wardID, provinceText, districtText, 
                             wardText, address, price, mortage, 
                             rules, userID, brandID, description, 
-                            gallery, status, listCharacteristicID, avatar
+                            listGallery, status, listCharacteristicID, avatar
                         } = req.body;
 
                         const resultInsertCar = await CAR_MODEL.insert({ 
@@ -167,7 +167,7 @@ module.exports = class Auth extends ChildRouter {
                             wardID, provinceText, districtText, 
                             wardText, address, price, mortage, 
                             rules, userID, brandID, description, 
-                            avatar, gallery, status,
+                            avatar, gallery: listGallery, status,
                             listCharacteristicID
                         });
                         res.json(resultInsertCar);
