@@ -187,28 +187,22 @@ module.exports = class Auth extends ChildRouter {
                     type: 'json',
                 },
                 methods: {
-                    put: [ multer.uploadSingle, async function (req, res) {
+                    put: [ async function (req, res) {
                         const { carID } = req.params;
                         const { 
                             name, provinceID, districtID, 
                             wardID, provinceText, districtText, 
                             wardText, address, price, mortage, 
                             rules, userID, brandID, description, 
-                            gallery, status, listCharacteristicID
+                            listGallery, status, listCharacteristicID, avatar
                         } = req.body;
                         
-                        let avatar = req.file;
-                        let resultUploadImg = await imgbbUploader(BOOKING_KEY.KEY_API_IMGBB, req.file.path);
-                        let { display_url } = resultUploadImg;
-                        avatar.urlImgServer = display_url;
-                        fs.unlinkSync(req.file.path);
-
                         const resultUpdateCar = await CAR_MODEL.update({ 
                             carID, name, provinceID, districtID, 
                             wardID, provinceText, districtText, 
                             wardText, address, price, mortage, 
                             rules, userID, brandID, description, 
-                            avatar, gallery, status,
+                            avatar, gallery: listGallery, status,
                             listCharacteristicID
                         });
                         res.json(resultUpdateCar);
