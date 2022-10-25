@@ -196,6 +196,13 @@ module.exports = class Auth extends ChildRouter {
                             rules, userID, brandID, description, 
                             listGallery, status, listCharacteristicID, avatar
                         } = req.body;
+                        console.log({
+                            name, provinceID, districtID, 
+                            wardID, provinceText, districtText, 
+                            wardText, address, price, mortage, 
+                            rules, userID, brandID, description, 
+                            listGallery, status, listCharacteristicID, avatar
+                        })
                         
                         const resultUpdateCar = await CAR_MODEL.update({ 
                             carID, name, provinceID, districtID, 
