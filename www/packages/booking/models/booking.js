@@ -459,16 +459,7 @@ class Model extends BaseModel {
                 if(!listBooking)
                     return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách chuyến xe' });
 
-                let listBookingRes = [];
-                for await (let item of listBooking) {
-                    let listCharacteristicOfCar = await CAR_CHARACTERISTIC_MODEL.getListByCar({ carID: item.car._id });
-                    listBookingRes[listBookingRes.length++] = {
-                        booking: item,
-                        details: listCharacteristicOfCar && listCharacteristicOfCar.data
-                    }
-                }
-
-                return resolve({ error: false, data: listBookingRes });
+                return resolve({ error: false, data: listBooking });
             } catch (error) {
                 return resolve({ error: true, message: error.message });
             }
