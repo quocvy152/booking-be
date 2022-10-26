@@ -240,6 +240,27 @@ module.exports = class Auth extends ChildRouter {
                     }],
                 },
             },
+
+            /**
+             * Function: 
+             *      + Add booking (API)
+             *      + List booking (API)
+             * Date: 19/08/2022
+             * Dev: VyPQ
+             */
+            [CF_ROUTINGS_BOOKING.LIST_BOOKING_OF_CAR]: {
+                config: {
+                    auth: [ roles.role.user.bin ],
+                    type: 'json',
+                },
+                methods: {
+                    get: [ async (req, res) => {
+                        const { car } = req.query;
+                        const resultListBookingOfCar = await BOOKING_MODEL.getListBookingOfCar({ carID: car });
+                        res.json(resultListBookingOfCar);
+                    }],
+                },
+            },
         }
     }
 };

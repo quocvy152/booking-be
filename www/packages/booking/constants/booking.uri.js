@@ -3,6 +3,7 @@ const BASE_ROUTE = '/bookings';
 const CF_ROUTINGS_BOOKING = {
 	BOOKINGS: `${BASE_ROUTE}`,
 	LIST_BOOKING_ADMIN: `${BASE_ROUTE}/list/admin`,
+	LIST_BOOKING_OF_CAR: `${BASE_ROUTE}/list/booking-of-car`,
 	BOOKINGS_BOOKINGID: `${BASE_ROUTE}/:bookingID`,
 	LIST_MY_BOOKINGS: `${BASE_ROUTE}/list/my-booking`,
 	LIST_CUSTOMER_BOOKING_MY_CAR: `${BASE_ROUTE}/list/customer-booking-my-car`,
