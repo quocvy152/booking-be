@@ -432,7 +432,9 @@ class Model extends BaseModel {
 
                 let condition = {
                     status: this.STATUS_ACTIVE,
-                    car: carID
+                    car: carID,
+                    startTime: { $gte: new Date() },
+                    endTime: { $gte: new Date() }
                 };
 
                 let listBooking = await BOOKING_COLL
