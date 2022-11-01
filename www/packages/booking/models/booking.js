@@ -424,7 +424,7 @@ class Model extends BaseModel {
     }
 
     // Lấy ra danh sách các chuyến của một chiếc xe đang hoạt động
-    getListBookingOfCar({ carID }){
+    getListBookingOfCar({ carID, type }){
         return new Promise(async resolve => {
             try {
                 if(!ObjectID.isValid(carID))
@@ -433,9 +433,12 @@ class Model extends BaseModel {
                 let condition = {
                     status: this.STATUS_ACTIVE,
                     car: carID,
-                    startTime: { $gte: new Date() },
-                    endTime: { $gte: new Date() }
                 };
+
+                if(!type || type === undefined || type === 'undefined') {
+                    condition.startTime = { $gte: new Date() },
+                    condition.endTime   = { $gte: new Date() }
+                }
 
                 let listBooking = await BOOKING_COLL
                     .find(condition)
