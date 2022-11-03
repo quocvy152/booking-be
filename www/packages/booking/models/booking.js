@@ -538,6 +538,32 @@ class Model extends BaseModel {
             }
         })
     }
+
+    // Lấy ra danh sách các chuyến xe đã và đang hoạt động của một chiếc xe
+    getListBookingDoneOfCar({ carID }){
+        return new Promise(async resolve => {
+            try {
+                if(!ObjectID.isValid(carID))
+                    return resolve({ error: true, message: 'Tham số không hợp lệ. Mã xe không hợp lệ' });
+
+                let condition = {
+                    car: carID,
+                    $or: [{ status: this.STATUS_ACTIVE }, { status: this.STATUS_PAID }]
+                }
+
+                let listBookingDone = await BOOKING_COLL.find(condition);
+                if(!listBookingDone)
+                    return resolve({ 
+                        error: true, 
+                        message: 'Trạng thái lấy danh sách các chuyến đang đợi đặt lịch không hợp lệ' 
+                    });
+
+                return resolve({ error: false, data: listBookingDone });
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
 }
 
 exports.MODEL = new Model;

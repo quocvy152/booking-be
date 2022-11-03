@@ -346,9 +346,12 @@ class Model extends BaseModel {
                 let listCarRes = [];
                 for await (let car of listCar) {
                     let listCharacteristicOfCar = await CAR_CHARACTERISTIC_MODEL.getListByCar({ carID: car._id });
+                    let listBooking = await BOOKING_MODEL.getListBookingDoneOfCar({ carID: car._id });
+
                     listCarRes[listCarRes.length++] = {
                         infoCar: car,
-                        details: listCharacteristicOfCar && listCharacteristicOfCar.data
+                        details: listCharacteristicOfCar && listCharacteristicOfCar.data,
+                        booking: listBooking && listBooking.data
                     }
                 }
 
