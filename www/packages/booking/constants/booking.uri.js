@@ -12,6 +12,7 @@ const CF_ROUTINGS_BOOKING = {
 	ACCEPT_PAYING: `${BASE_ROUTE}/action/accept-paying`,
 	CANCEL_BOOKINGS: `${BASE_ROUTE}/action/cancel-booking`,
 	PAYED_BOOKINGS: `${BASE_ROUTE}/action/pay-booking`,
+	GET_TURNOVER_AND_TOTAL_BOOKING_OF_USER: `${BASE_ROUTE}/info/turnover-and-total-booking`,
 
 	ORIGIN_APP: BASE_ROUTE
 }

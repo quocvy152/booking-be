@@ -548,7 +548,7 @@ class Model extends BaseModel {
 
                 let condition = {
                     car: carID,
-                    $or: [{ status: this.STATUS_ACTIVE }, { status: this.STATUS_PAID }]
+                    $or: [{ status: this.STATUS_ACTIVE, endTime: { $lte: new Date() } }, { status: this.STATUS_PAID }]
                 }
 
                 let listBookingDone = await BOOKING_COLL.find(condition);
@@ -609,6 +609,35 @@ class Model extends BaseModel {
                     return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách chuyến xe' });
 
                 return resolve({ error: false, data: listBooking });
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
+
+    // Lấy ra danh sách các chuyến xe đã hoàn thành của một chủ xe
+    getTurnoverAndTotalBooking(){
+        return new Promise(async resolve => {
+            try {
+                let condition = {
+                    $or: [
+                        { 
+                            status: this.STATUS_PAID
+                        },
+                        {
+                            status: this.STATUS_ACTIVE,
+                            endTime: { $lte: new Date() }
+                        }
+                    ]
+                };
+
+                let listBooking = await BOOKING_COLL.find(condition);
+                if(!listBooking)
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách chuyến xe' });
+
+                let turnover = listBooking.reduce((prev, curr) => prev + (curr.realMoney ? curr.realMoney : curr.totalPrice), 0);
+
+                return resolve({ error: false, data: { turnover, totalBooking: listBooking.length } });
             } catch (error) {
                 return resolve({ error: true, message: error.message });
             }
