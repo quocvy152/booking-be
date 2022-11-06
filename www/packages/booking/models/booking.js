@@ -564,6 +564,56 @@ class Model extends BaseModel {
             }
         })
     }
+
+    // Lấy ra danh sách các chuyến xe đã và đang hoạt động của một chiếc xe
+    getListBooking({ carID, type }){
+        return new Promise(async resolve => {
+            try {
+                if(!ObjectID.isValid(carID))
+                    return resolve({ error: true, message: 'Tham số không hợp lệ. Mã xe không hợp lệ' });
+
+                let condition = {
+                    car: carID,
+                };
+
+                if(type == 'active') {
+                    condition.endTime   = { $gte: new Date() };
+                }  else {
+                    condition.startTime = { $lte: new Date() };
+                    condition.endTime   = { $lte: new Date() };
+                    condition.$or = [{ status: this.STATUS_ACTIVE }, { status: this.STATUS_PAID }]
+                }
+
+                let listBooking = await BOOKING_COLL
+                    .find(condition)
+                    .populate({
+                        path: 'car',
+                        populate: {
+                            path: 'brandID userID avatar',
+                            select: 'name firstName lastName phone size path avatar',
+                            populate: {
+                                path: 'avatar'
+                            }
+                        }
+                    })
+                    .populate({
+                        path: 'user',
+                        select: 'firstName lastName phone avatar',
+                        populate: {
+                            path: 'avatar',
+                            select: 'size path'
+                        }
+                    })
+					.sort({ createAt: -1 })
+                if(!listBooking)
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách chuyến xe' });
+
+                return resolve({ error: false, data: listBooking });
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
 }
 
 exports.MODEL = new Model;
