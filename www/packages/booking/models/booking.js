@@ -578,6 +578,7 @@ class Model extends BaseModel {
 
                 if(type == 'active') {
                     condition.endTime   = { $gte: new Date() };
+                    condition.status    = this.STATUS_ACTIVE
                 }  else {
                     condition.$or = [
                         {
