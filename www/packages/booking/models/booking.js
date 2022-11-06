@@ -579,9 +579,15 @@ class Model extends BaseModel {
                 if(type == 'active') {
                     condition.endTime   = { $gte: new Date() };
                 }  else {
-                    condition.startTime = { $lte: new Date() };
-                    condition.endTime   = { $lte: new Date() };
-                    condition.$or = [{ status: this.STATUS_ACTIVE }, { status: this.STATUS_PAID }]
+                    condition.$or = [
+                        {
+                            status: this.STATUS_ACTIVE,
+                            startTime: { $lte: new Date() },
+                            endTime: { $lte: new Date() }
+                        }, { 
+                            status: this.STATUS_PAID
+                        }
+                    ]
                 }
 
                 let listBooking = await BOOKING_COLL
