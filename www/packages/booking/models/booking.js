@@ -545,6 +545,83 @@ class Model extends BaseModel {
         })
     }
 
+    // Lấy ra danh sách các chuyến xe khách hàng đang yêu cầu trả xe của mình
+    getListCustomerReturnMyCar({ user, type, name, isActive }){
+        return new Promise(async resolve => {
+            try {
+                if(!ObjectID.isValid(user))
+                    return resolve({ error: true, message: 'Tham số không hợp lệ' });
+
+                if(![
+                    this.STATUS_WAIT_GIVE_BACK,
+                    this.STATUS_ACTIVE
+                ].includes(+type)) return resolve({ error: true, message: 'Trạng thái lấy danh sách các chuyến đang đợi đặt lịch không hợp lệ' });
+
+                let listCarOfUser = await CAR_MODEL.getListMyCar({ userID: user });
+                if(listCarOfUser.error) return resolve(listCarOfUser);
+
+                let listIDSFromCarOfUser = listCarOfUser.data.map(car => car.infoCar._id);
+
+                let condition = {
+                    car: { $in: listIDSFromCarOfUser },
+                }
+
+                if(isActive == 'active') {
+                    condition.endTime = { $gte: new Date() };
+                    condition.status = this.STATUS_WAIT_GIVE_BACK;
+                } else if(isActive == 'inactive') {
+                    condition.endTime = { $lt: new Date() };
+                    condition.$or = [
+                        { status: this.STATUS_WAIT_GIVE_BACK },
+                        { status: this.STATUS_ACTIVE },
+                    ]
+                }
+
+                let listCustomerBookingMyCar = await BOOKING_COLL
+                                            .find(condition)
+                                            .populate({
+                                                path: 'car',
+                                                populate: {
+                                                    path: 'brandID userID avatar gallery',
+                                                    select: 'name firstName lastName phone size path avatar',
+                                                    populate: {
+                                                        path: 'avatar'
+                                                    }
+                                                }
+                                            })
+                                            .populate({
+                                                path: 'user',
+                                                select: 'firstName lastName phone avatar',
+                                                populate: {
+                                                    path: 'avatar',
+                                                    select: 'size path'
+                                                }
+                                            })
+                                            .sort({ createAt: -1 })
+                if(!listCustomerBookingMyCar)
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy danh sách chuyến xe' });
+
+                let listCustomerBookingMyCarRes = [];
+                for await (let item of listCustomerBookingMyCar) {
+                    let listCharacteristicOfCar = await CAR_CHARACTERISTIC_MODEL.getListByCar({ carID: item.car._id });
+                    listCustomerBookingMyCarRes[listCustomerBookingMyCarRes.length++] = {
+                        booking: item,
+                        details: listCharacteristicOfCar && listCharacteristicOfCar.data
+                    }
+                }
+
+                if(name != 'undefined' && name) {
+                    let listCustomerBookingMyCarResFilter = listCustomerBookingMyCarRes.filter(item => item.booking.car.name.toLowerCase().includes(name.toLowerCase()));
+                    return resolve({ error: false, data: listCustomerBookingMyCarResFilter });
+                }
+
+                return resolve({ error: false, data: listCustomerBookingMyCarRes });
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
+
     // Lấy ra danh sách các chuyến xe đã và đang hoạt động của một chiếc xe
     getListBookingDoneOfCar({ carID }){
         return new Promise(async resolve => {
