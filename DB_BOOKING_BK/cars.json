@@ -1,0 +1,769 @@
+[{
+  "_id": {
+    "$oid": "6306586e032ad60049b8adb0"
+  },
+  "gallery": [],
+  "status": 1,
+  "name": "Lamborghini Huracan (Xanh Navy)",
+  "provinceID": 72,
+  "districtID": 708,
+  "wardID": 25609,
+  "provinceText": "Tỉnh Tây Ninh",
+  "districtText": "Huyện Châu Thành",
+  "wardText": "Xã Trí Bình",
+  "address": "đường DT 781",
+  "price": 2000000,
+  "mortage": "Sổ hộ khẩu hoặc Chứng minh nhân dân",
+  "rules": "Không được sử dụng chất kích thích",
+  "userID": {
+    "$oid": "62f52cd0bf6c932bc05f30a8"
+  },
+  "brandID": {
+    "$oid": "62f33d668df9cd3f74be9510"
+  },
+  "description": "Lexus là thương hiệu xe sang đến từ Nhật Bản đã không còn xa lạ với khách hàng Việt. Dù phải cạnh tranh với những thương hiệu đình đám đến từ Đức như Mercedes-Benz, BMW hay Audi nhưng Lexus vẫn có được chỗ đứng nhất định tại thị trường Việt Nam. Hôm nay, Muaxegiatot.vn xin gửi đến quý khách hàng bảng giá xe Lexus mới nhất 2022.",
+  "avatar": {
+    "$oid": "631389de130a750038773bf8"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661360238000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661360238000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630659f5032ad60049b8adeb"
+  },
+  "gallery": [],
+  "status": 1,
+  "name": "Mazda CX3",
+  "provinceID": 72,
+  "districtID": 708,
+  "wardID": 25609,
+  "provinceText": "Tỉnh Tây Ninh",
+  "districtText": "Huyện Châu Thành",
+  "wardText": "Xã Trí Bình",
+  "address": "18 đường DT 781",
+  "price": 800000,
+  "mortage": "Tiền mặt 5 triệu",
+  "rules": "Phải có giấy phép lái xe. Không được uống rượu bia",
+  "userID": {
+    "$oid": "62f52cd0bf6c932bc05f30a8"
+  },
+  "brandID": {
+    "$oid": "62f33d568df9cd3f74be950e"
+  },
+  "description": "Giá xe hấp dẫn, công nghệ ngập tràn nhưng nhiều ý kiến đánh giá Mazda CX-3 vẫn sẽ khó đấu lại Kia Seltos, Hyundai Kona.\nDù về Việt Nam khá muộn song với giá bán khá hấp dẫn đi cùng công nghệ ngập tràn, Mazda CX-3 đã nhanh chóng trở thành cái tên mới thu hút sự chú ý. Tuy nhiên, bên cạnh những đánh giá tích cực, cũng có không ít ý kiến cho rằng Mazda CX-3 sẽ khó tạo được doanh số ấn tượngtrong phân khúc SUV/CUV hạng B. Liệu có nên mua Mazda CX-3?",
+  "avatar": {
+    "$oid": "63138867130a750038773ba7"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661360629000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661360629000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6307043e8e0721004a7cbc71"
+  },
+  "gallery": [],
+  "status": 2,
+  "name": "Mazda CX5",
+  "provinceID": 72,
+  "districtID": 708,
+  "wardID": 25609,
+  "provinceText": "Tỉnh Tây Ninh",
+  "districtText": "Huyện Châu Thành",
+  "wardText": "Xã Trí Bình",
+  "address": "18 781 street",
+  "price": 560000,
+  "mortage": "CMNN",
+  "rules": "OK OK OK",
+  "userID": {
+    "$oid": "63017c2e25abf60047d903a3"
+  },
+  "brandID": {
+    "$oid": "62f33d568df9cd3f74be950e"
+  },
+  "description": "OKE",
+  "avatar": {
+    "$oid": "6307813695bfb00041968d51"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661404222000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661404222000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630705ec8e0721004a7cbd9a"
+  },
+  "gallery": [],
+  "status": 1,
+  "name": "Veloz Cross 2022 (Xanh)",
+  "provinceID": 72,
+  "districtID": 708,
+  "wardID": 25609,
+  "provinceText": "Tỉnh Tây Ninh",
+  "districtText": "Huyện Châu Thành",
+  "wardText": "Xã Trí Bình",
+  "address": "78",
+  "price": 800000,
+  "mortage": "50000",
+  "rules": "OK ROI NHA",
+  "userID": {
+    "$oid": "63017c2e25abf60047d903a3"
+  },
+  "brandID": {
+    "$oid": "62f4b01cb999175914e01938"
+  },
+  "description": "ok ok",
+  "avatar": {
+    "$oid": "63141f873ac7a200469c2c7b"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661404652000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661404652000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6307842995bfb00041968da8"
+  },
+  "gallery": [],
+  "status": 1,
+  "name": "Lambogrini Aventador (Vàng)",
+  "provinceID": 72,
+  "districtID": 708,
+  "wardID": 25609,
+  "provinceText": "Tỉnh Tây Ninh",
+  "districtText": "Huyện Châu Thành",
+  "wardText": "Xã Trí Bình",
+  "address": "12 Trương Văn Thành",
+  "price": 7000000,
+  "mortage": "6 triệu tiền mặt",
+  "rules": "Không được sử dụng chất kích thích",
+  "userID": {
+    "$oid": "63017c2e25abf60047d903a3"
+  },
+  "brandID": {
+    "$oid": "62f33d668df9cd3f74be9510"
+  },
+  "description": "Lamborghini chưa bao giờ khiến khách hàng của mình phải thất vọng về khoang cabin. Mở cửa bước vào Lamborghini Aventador SVJ 2022 bạn sẽ có cảm giác như đang bước vào một thế giới khác, nơi đó tất cả mọi thứ đều thuộc về đẳng cấp đỉnh cao và xa xỉ. Vô lăng của chiếc siêu xe này được thiết kế 3 chấu vát ngang phần đáy rất độc đáo. \n\nPhần táp lô được đầu tư kỹ lưỡng những nút bấm hiện đại và bắt mắt. Đặt biệt táp lô được nối liền với tựa để tay, khi đang gác tay người lái vẫn có thể dễ dàng thực hiện các thao tác vặn núm xoay linh hoạt. Khó mà không dành lời khen cho sự chăm chút này.",
+  "avatar": {
+    "$oid": "63138967130a750038773bcf"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630b90271ee348003e28a6f4"
+  },
+  "gallery": [],
+  "status": 1,
+  "name": "Toyota Alpha Main",
+  "provinceID": 79,
+  "districtID": 769,
+  "wardID": 26833,
+  "provinceText": "Thành phố Hồ Chí Minh",
+  "districtText": "Thành phố Thủ Đức",
+  "wardText": "Phường Long Thạnh Mỹ",
+  "address": "S107 2221 Vinhome GrandPark",
+  "price": 750000,
+  "mortage": "CMND",
+  "rules": "Khong su dung chat kich thich",
+  "userID": {
+    "$oid": "63017c2e25abf60047d903a3"
+  },
+  "brandID": {
+    "$oid": "630a39bf839721003eeb05c2"
+  },
+  "description": "Xe rat tot. OK",
+  "avatar": {
+    "$oid": "630f8cc6e41373004197fe20"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661702183000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661702183000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63138bef130a750038773c23"
+  },
+  "gallery": [],
+  "totalFavourite": 0,
+  "status": 1,
+  "name": "Huyndai Elantra (Đen)",
+  "provinceID": 40,
+  "districtID": 425,
+  "wardID": 17389,
+  "provinceText": "Tỉnh Nghệ An",
+  "districtText": "Huyện Diễn Châu",
+  "wardText": "Thị Trấn Diễn Châu",
+  "address": "18 Hồ Chí Minh",
+  "price": 750000,
+  "mortage": "Chứng mình nhân dân, Sổ Hộ khẩu",
+  "rules": "Phải có bằng lái xe, Không được uống rượu bia",
+  "userID": {
+    "$oid": "630afea66c0283003576ba8c"
+  },
+  "brandID": {
+    "$oid": "62fc7273fc6cc20048138816"
+  },
+  "description": "Tại Việt Nam, Hyundai Elantra đang là bản nâng cấp giữa vòng đời của thế hệ thứ 6, ra mắt người tiêu dùng hồi tháng 05/2019. Tham chiến tại phân khúc sedan C với loạt những cái tên như Kia Cerato, Mazda3, Toyota Corolla Altis, giá xe Hyundai Elantra được cho là khá cạnh tranh khi chỉ nhỉnh hơn đối thủ đồng hương Cerato và thấp hơn hẳn các mẫu xe Nhật. Doanh số Hyundai Elantra tại Việt Nam cũng khá ổn định trong thời gian qua. Và đây được đánh giá là mẫu xe phù hợp với khách mua xe lần đầu phục vụ mục đích gia đình.",
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662225391000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662225391000"
+    }
+  },
+  "__v": 0,
+  "avatar": {
+    "$oid": "63138caa130a750038773c56"
+  }
+},{
+  "_id": {
+    "$oid": "63138e9b130a750038773cf6"
+  },
+  "gallery": [],
+  "totalFavourite": 0,
+  "status": 1,
+  "name": "Huyndai Santafe 2020 (Xanh dương)",
+  "provinceID": 40,
+  "districtID": 425,
+  "wardID": 17392,
+  "provinceText": "Tỉnh Nghệ An",
+  "districtText": "Huyện Diễn Châu",
+  "wardText": "Xã Diễn Lâm",
+  "address": "48 Lê Lợi",
+  "price": 750000,
+  "mortage": "Chứng mình nhân dân, Sổ Hộ khẩu",
+  "rules": "Phải có bằng lái xe, Không được uống rượu bia",
+  "userID": {
+    "$oid": "630afea66c0283003576ba8c"
+  },
+  "brandID": {
+    "$oid": "62fc7273fc6cc20048138816"
+  },
+  "description": "Đánh giá xe Hyundai Santafe 2021, Xe SUV 7 chỗ. Giá xe SantaFe 2021 lăn bánh và khuyến mãi? Tư vấn mua xe trả góp. Thông số kỹ thuật xe Santafe máy dầu 2.2L, máy xăng 2.5L. Hình ảnh ngoại thất nội thất, các màu sắc của xe. Hyundai Thành Công chính thức trình làng mẫu SUV 7 chỗ ăn khách SantaFe 2021. Đây là phiên bản nâng cấp giữa dòng đời (facelift) của thế hệ thứ 4. SantaFe 2021 được phân phối 6 phiên bản, giá bán dao động từ 1,03 – 1,34 tỷ đồng, cao hơn 35-95 triệu đồng so với bản tiền nhiệm.",
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662226075000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662226075000"
+    }
+  },
+  "__v": 0,
+  "avatar": {
+    "$oid": "63138ebb130a750038773d08"
+  }
+},{
+  "_id": {
+    "$oid": "631426b63ac7a200469c2ce5"
+  },
+  "gallery": [],
+  "totalFavourite": 0,
+  "status": 1,
+  "name": "Honda Civic (Cam)",
+  "provinceID": 79,
+  "districtID": 769,
+  "wardID": 27088,
+  "provinceText": "Thành phố Hồ Chí Minh",
+  "districtText": "Thành phố Thủ Đức",
+  "wardText": "Phường Thảo Điền",
+  "address": "105 Phan Chu Trinh",
+  "price": 800000,
+  "mortage": "OK",
+  "rules": "OK",
+  "userID": {
+    "$oid": "63017c2e25abf60047d903a3"
+  },
+  "brandID": {
+    "$oid": "62f4b01cb999175914e01938"
+  },
+  "description": "HONDA",
+  "avatar": {
+    "$oid": "63142c0ad6a3a500465ac004"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662265014000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662265014000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63144fa71f437d004a6261f0"
+  },
+  "gallery": [],
+  "totalFavourite": 0,
+  "status": 2,
+  "name": "XE HOI update",
+  "provinceID": 4,
+  "districtID": 40,
+  "wardID": 1267,
+  "provinceText": "Tỉnh Cao Bằng",
+  "districtText": "Thành phố Cao Bằng",
+  "wardText": "Phường Sông Hiến",
+  "address": "105 Phan Chu Trinh",
+  "price": 750000,
+  "mortage": "OK",
+  "rules": "OK",
+  "userID": {
+    "$oid": "63144e671f437d004a6261a7"
+  },
+  "brandID": {
+    "$oid": "630a39bc839721003eeb05bf"
+  },
+  "description": "OK",
+  "avatar": {
+    "$oid": "63144ffd1f437d004a626239"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662275495000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662275495000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6314599e1f437d004a62656a"
+  },
+  "gallery": [],
+  "totalFavourite": 0,
+  "status": 2,
+  "name": "CAT",
+  "provinceID": 79,
+  "districtID": 769,
+  "wardID": 26821,
+  "provinceText": "Thành phố Hồ Chí Minh",
+  "districtText": "Thành phố Thủ Đức",
+  "wardText": "Phường Linh Đông",
+  "address": "105",
+  "price": 800000,
+  "mortage": "CMND",
+  "rules": "OK",
+  "userID": {
+    "$oid": "63017c2e25abf60047d903a3"
+  },
+  "brandID": {
+    "$oid": "62f33d568df9cd3f74be950e"
+  },
+  "description": "ok",
+  "avatar": {
+    "$oid": "6314599e1f437d004a626568"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662278046000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662278046000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631f64ded10ad10047588e83"
+  },
+  "gallery": [],
+  "totalFavourite": 0,
+  "status": 1,
+  "name": "Toyota Wigo 2020",
+  "provinceID": 2,
+  "districtID": 24,
+  "wardID": 692,
+  "provinceText": "Tỉnh Hà Giang",
+  "districtText": "Thành phố Hà Giang",
+  "wardText": "Phường Ngọc Hà",
+  "address": "12 Wallpaper background",
+  "price": 800000,
+  "mortage": "Master card and visa",
+  "rules": "No comments 😹😳",
+  "userID": {
+    "$oid": "631f61bbd10ad10047588e05"
+  },
+  "brandID": {
+    "$oid": "630a39bf839721003eeb05c2"
+  },
+  "description": "It is too cool I'm really like it. It so fast. Really strong and have good performance",
+  "avatar": {
+    "$oid": "631f64ded10ad10047588e81"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1663001822000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1663001822000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631f6614d10ad10047588ef0"
+  },
+  "gallery": [],
+  "totalFavourite": 0,
+  "status": 1,
+  "name": "BMW X5",
+  "provinceID": 2,
+  "districtID": 27,
+  "wardID": 772,
+  "provinceText": "Tỉnh Hà Giang",
+  "districtText": "Huyện Mèo Vạc",
+  "wardText": "Xã Thượng Phùng",
+  "address": "190 Have good morning please",
+  "price": 5000000,
+  "mortage": "CMND",
+  "rules": "Central African rep for your time with you to know the time with your time with the time with your family and friends with your company and the other hand the keys and visa versa with the time to know that e with the other day I trust that e the other hand I promise you will r eer with the other day I would be a great weekend too the other side the keys and the time to meet up for the",
+  "userID": {
+    "$oid": "631f61bbd10ad10047588e05"
+  },
+  "brandID": {
+    "$oid": "630a39bc839721003eeb05bf"
+  },
+  "description": "Good description",
+  "avatar": {
+    "$oid": "631f6614d10ad10047588eee"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1663002132000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1663002132000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "633b9111501ff9004270a0f0"
+  },
+  "gallery": [
+    {
+      "$oid": "635750ebf1599f0047212bd4"
+    },
+    {
+      "$oid": "635750ebf1599f0047212bd5"
+    },
+    {
+      "$oid": "635750ebf1599f0047212bd6"
+    }
+  ],
+  "totalFavourite": 0,
+  "status": 1,
+  "name": "Fortuner 2023",
+  "provinceID": 72,
+  "districtID": 708,
+  "wardID": 25609,
+  "provinceText": "Tỉnh Tây Ninh",
+  "districtText": "Huyện Châu Thành",
+  "wardText": "Xã Trí Bình",
+  "address": "18 duong 781",
+  "price": 300000,
+  "mortage": "CCCD GPLX",
+  "rules": "Ok",
+  "userID": {
+    "$oid": "63017c2e25abf60047d903a3"
+  },
+  "brandID": {
+    "$oid": "62f4b01cb999175914e01938"
+  },
+  "description": "Bên trong cabin, Fortuner Leader 2023 được trang bị gương chiếu hậu chống chói tự động, màn hình cảm ứng 8 inch, hỗ trợ kết nối Android Auto và Apple Car Play, ghế lái và hành khách phía trước bọc da tổng hợp, chỉnh điện 8 hướng, điều hòa tự động và hệ thống lọc gió PM 2.5.\n\nHệ thống an toàn mình thấy cũng khá đầy đủ, bao gồm hệ thống giám sát điểm mù với cảnh báo điểm mù trên gương chiếu hậu, cảnh báo phương tiện cắt ngang phía sau, hỗ trợ khởi hành ngang dốc, kiểm soát lực kéo, hệ thống ổn định thân xe…\n\nPhiên bản này sử dụng động cơ diesel 2.4L 4 xi-lanh cho công suất cực đại 150 mã lực đi kèm với hộp số tự động 6 cấp.",
+  "avatar": {
+    "$oid": "635750ebf1599f0047212bd2"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1664848145000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1664848145000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63424791d9dfb7004502b0e7"
+  },
+  "gallery": [],
+  "totalFavourite": 0,
+  "status": 1,
+  "name": "KIA Carnival 2022",
+  "provinceID": 72,
+  "districtID": 708,
+  "wardID": 25609,
+  "provinceText": "Tỉnh Tây Ninh",
+  "districtText": "Huyện Châu Thành",
+  "wardText": "Xã Trí Bình",
+  "address": "18 duong 781",
+  "price": 2000000,
+  "mortage": "- Cung cấp thông tin về thực trạng tài sản thế chấp cho bên nhận thế chấp.\n\n- Giao tài sản thế chấp cho bên nhận thế chấp để xử lý khi thuộc một trong các trường hợp xử lý tài sản bảo đảm quy định tại Điều 299 của Bộ luật này.\n\n- Thông báo cho bên nhận thế chấp về các quyền của người thứ ba đối với tài sản thế chấp, nếu có; trường hợp không thông báo thì bên nhận thế chấp có quyền hủy hợp đồng thế chấp tài sản và yêu cầu bồi thường thiệt hại hoặc duy trì hợp đồng và chấp nhận quyền của người thứ ba đối với tài sản thế chấp.",
+  "rules": "Hợp đồng dân sự là một giao dịch dân sự mà trong đó các bên tự trao đổi ý chí với nhau nhằm đi đến sự thỏa thuận cùng nhau làm phát sinh các quyền và nghĩa vụ nhất định. Dưới góc độ pháp lý thì hợp đồng dân sự được hiểu là sự thỏa thuận giữa các bên về việc xác lập, thay đổi hoặc chấm dứt quyền, nghĩa vụ dân sự (theo Bộ luật dân sự Việt Nam năm 2015). Hợp đồng dân sự là một bộ phận các quy phạm pháp luật do Nhà nước ban hành nhằm điều chỉnh các quan hệ xã hội phát sinh trong quá trình dịch chuyển các lợi ích vật chất giữa các chủ thể với nhau.\n\nCần phân biệt thuật ngữ hợp đồng dân sự với thuật ngữ pháp luật về hợp đồng dân sự. Đây là hai khái niệm không đồng nhất với nhau. Hợp đồng dân sự theo nghĩa chủ quan là quan hệ xã hội được hình thành từ sự thỏa thuận của các bên để để thỏa mãn nhu cầu trao đổi trong giao lưu dân sự. Còn pháp luật về hợp đồng dân sự (nghĩa khách quan) là sự thừa nhận và là yêu cầu của Nhà nước đối với các giao lưu dân sự đó.",
+  "userID": {
+    "$oid": "63017c2e25abf60047d903a3"
+  },
+  "brandID": {
+    "$oid": "6342466ed9dfb7004502b0bc"
+  },
+  "description": "Carnival là mẫu xe SUV đô thị có tính đa dụng, tiện nghi và sang trọng nhất ở thị trường Việt Nam, kết hợp sự năng động, mạnh mẽ đặc trưng của dòng xe SUV cùng không gian sang trọng, tiện nghi, ứng dụng nhiều công nghệ hiện đại tạo nên chuẩn mực mới trong phân khúc SUV.\nKia Carnival 2022 là mẫu xe thế hệ tiếp theo của Kia Sedona được thiết kế hoàn toàn mới với kích thước rộng rãi vượt trội, khoảng sáng gầm xe lớn cùng kết cấu khung gầm vững chãi của mẫu xe SUV đô thị.",
+  "avatar": {
+    "$oid": "63424791d9dfb7004502b0e5"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1665288081000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1665288081000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "634416860306f6003c14ebb4"
+  },
+  "gallery": [],
+  "totalFavourite": 0,
+  "status": 1,
+  "name": "KIA Carnival 2022 (Black)",
+  "provinceID": 72,
+  "districtID": 708,
+  "wardID": 25585,
+  "provinceText": "Tỉnh Tây Ninh",
+  "districtText": "Huyện Châu Thành",
+  "wardText": "Thị trấn Châu Thành",
+  "address": "111 Vo Thi Sau",
+  "price": 2100000,
+  "mortage": "Kia Carnival đã trải qua 4 thế hệ để có được diện mạo như bây giờ, nếu đặc biệt quan tâm đến dòng xe này, Anycar mời bạn tham khảo qua các đời xe Kia Carnival để có thể hiểu rõ nguồn gốc xuất xứ và quá trình nâng cấp mẫu xe 7 chỗ này nhé.",
+  "rules": "Kia Sedona thế hệ 2 có đến 03 phiên bản bao gồm: Kia Sedona (SWB), Kia Sedona LX (LWB), Kia Sedona EX (LWB) . \n\n \n\nKia Sedona 2005 cũng lần đầu xuất hiện tại Việt Nam vào tháng 07/2005 và rất được người dùng tại Việt Nam đặt mua, xe sử dụng động cơ 2.5L, V6 cho công suất 173 mã lực.",
+  "userID": {
+    "$oid": "631dd22e5c177b00363751ef"
+  },
+  "brandID": {
+    "$oid": "6342466ed9dfb7004502b0bc"
+  },
+  "description": "Tổng quan về Kia Carnival 2022\n \n\nKia Carnival 2022 chính thức được hãng xe Hàn Quốc ra mắt tại Việt Nam với rất nhiều biến thể khác nhau. Bước sang thế hệ mới, Kia Carnival nay không còn cạnh tranh trong phân khúc Minivan 7 chỗ nữa mà được chuyển sang phân khúc SUV đô thị cạnh tranh với các mẫu xe sang trọng như Peugeot Traveller, Toyota Granvia và Toyota Sienna.",
+  "avatar": {
+    "$oid": "634416860306f6003c14ebb2"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1665406598000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1665406598000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "634d7981b10b310038c13533"
+  },
+  "gallery": [],
+  "totalFavourite": 0,
+  "status": 1,
+  "name": "Lexus LX570",
+  "provinceID": 72,
+  "districtID": 708,
+  "wardID": 25609,
+  "provinceText": "Tỉnh Tây Ninh",
+  "districtText": "Huyện Châu Thành",
+  "wardText": "Xã Trí Bình",
+  "address": "781",
+  "price": 5400000,
+  "mortage": "Bước vào bên trong xe Lexus LX 570 2022 là một không gian sang trọng với chất liệu da mềm mại, ốp gỗ cao cấp Shimamoku kết hợp ánh sáng trắng của đèn LED. Đồng thời, hệ thống chiếu sáng cũng được bố trí xung quanh và tích hợp trong cửa xe. \n\nVô-lăng trên Lexus LX570 là dạng 3 chấu bọc da, tích hợp chức năng sưởi ấm, nhớ vị trí và loạt nút bấm tiện lợi, giúp tài xế dễ dàng thao tác hơn. \n\nToàn bộ ghế trên xe bọc da cao cấp, trong đó hàng ghế trước có tính năng làm mát và sưởi, chỉnh điện 10 hướng. Hàng ghế 2 và 3 gập 60:40 và 40:20:40, giúp gia tăng thể tích khoang hành lý đáng kể.",
+  "rules": "Ưu điểm\nNgoại thất cơ bắp nhưng vẫn rất sang trọng\nNội thất tiện nghi, mang tính thẩm mỹ cao\nĐộng cơ mạnh mẽ, khả năng vận hành êm ái\nNhược điểm\nGiá xe cao\nTiêu hao nhiều nhiên liệu",
+  "userID": {
+    "$oid": "63017c2e25abf60047d903a3"
+  },
+  "brandID": {
+    "$oid": "630a39b6839721003eeb05bc"
+  },
+  "description": "Lexus LX 570 2022 không có nhiều thay đổi về thiết kế ngoại hình so với phiên bản cũ. Phong cách của chiếc SUV hạng sang nhà Lexus vẫn giữ vẻ ngoài sang trọng mạnh mẽ và hiện đại quen thuộc. \n\nĐiểm nhấn ở phần đầu Lexus LX 570 là lưới tản nhiệt hình con suốt cỡ lớn, ăn khớp với tổng thể bề thế, mạnh mẽ của xe. Cặp đèn pha nằm 2 bên lưới tản nhiệt là sự cấu thành từ 3 bóng LED xếp lớp độc đáo đi kèm dải đèn LED ban ngày tạo  hình chữ L mảnh sắc lẹm.\n\nDọc thân xe là bộ la zăng hợp kim nhôm 21 inch mạnh mẽ. Gương chiếu hậu tích hợp đèn báo rẽ, tay nắm cửa đồng màu thân xe, nhấn mạnh vào tổng thể sang trọng, lịch lãm của Lexus LX 570.\n\nPhía đuôi xe là cụm đèn hậu LED đặt trên cao với tạo hình 3 chữ L xếp chồng lên nhau khá bắt mắt. Cụm ống xả đặt ẩn phía dưới gầm xe tạo cảm giác vuông vức cho khu vực phía sau. Sự xuất hiện của những đường gờ mạ crom càng nhấn mạnh vào vẻ đẹp đầy quyền lực của mẫu SUV hang sang cỡ lớn đến từ Nhật Bản",
+  "avatar": {
+    "$oid": "634d7981b10b310038c13531"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666021761000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666021761000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63555c2be13204004317bc56"
+  },
+  "gallery": [
+    {
+      "$oid": "635751b6f1599f0047212d15"
+    },
+    {
+      "$oid": "635751b6f1599f0047212d16"
+    },
+    {
+      "$oid": "635751b6f1599f0047212d17"
+    }
+  ],
+  "totalFavourite": 0,
+  "status": 1,
+  "name": "VinFast VF 5",
+  "provinceID": 72,
+  "districtID": 708,
+  "wardID": 25609,
+  "provinceText": "Tỉnh Tây Ninh",
+  "districtText": "Huyện Châu Thành",
+  "wardText": "Xã Trí Bình",
+  "address": "127 Cao Xa",
+  "price": 1200000,
+  "mortage": "Tạo hình cánh chim tiếp tục xuất hiện ở khu vực đuôi xe VinFast VF 5 nhưng nó chỉ là dải màu đỏ và không phát sáng như những người anh lớn trong nhà. Điều này thể hiện rõ yếu tố tối giản trong thiết kế của Vin trên mẫu SUV điện cỡ nhỏ.\n\nCụm đèn xi-nhan, đèn lùi và đèn sau màu đỏ đặt thấp xuống dưới. Cánh gió, ăng-ten vây cá cùng màu nóc xe. Cản sau thiết kế khá hầm hố với màu đen bóng, càng nhấn mạnh vẻ khỏe khoắn trên VF 5.",
+  "rules": "Ghế ngồi là bộ phận dễ gây \"thương nhớ\" nhất ở bên trong VinFast VF 5 khi được phối màu cam-đen vô cùng cầu kỳ, tinh tế. Trong đó, lưng ghế màu cam, còn lại màu đen nhưng được nhấn nhá bởi các đường chỉ cam bắt mắt.\n\nVinFast VF 5 có kết cấu 5 chỗ ngồi với phần tựa đầu điều chỉnh độ cao, mang đến cảm giác thoải mái cho người dùng. Tuy nhiên, có một điểm khá đáng tiếc ở đây chính là sự thiếu vắng của bệ tỳ tay trung tâm cho cả 2 hàng ghế.",
+  "userID": {
+    "$oid": "6352a3174bbdad004476f9e9"
+  },
+  "brandID": {
+    "$oid": "635500de9bf13400455cbec0"
+  },
+  "description": "Giá xe VinFast VF 5 2022 tại thời điểm ra mắt thế giới vẫn là ẩn số. Theo phân tích của những người trong giới, nhiều khả năng bảng giá VF 5 sẽ nằm ở khoảng trên 500 triệu đồng. Con số này được đưa ra dựa trên sự quy chiếu với các đối thủ đang bán tại Việt Nam như Sonet (từ 544 triệu đồng), Raize (527 triệu đồng).\n\nMọi thông tin về giá xe VinFast VF 5 mới nhất sẽ được Oto.com.vn cập nhật ngay khi hãng công bố chính thức.\n\nXe VinFast VF 5 có khuyến mại gì không?\nKhách hàng mua xe ô tô VinFast không bao giờ phải thất vọng về chính sách ưu đãi, khuyến mại từ hãng. Đối với VinFast VF 5, chắc chắn cũng sẽ không ngoại lệ. Tuy nhiên, ở thời điểm hiện tại, phía VinFast chưa công bố cụ thể về kế hoạch bán xe VF 5 cũng như chương trình ưu đãi dành cho mẫu SUV điện này.\n\nGiá lăn bánh VinFast VF 5 như thế nào?\nDù giá niêm yết xe điện VinFast VF 5 nằm ở khoảng bao nhiêu thì khách mua xe vẫn phải cộng thêm các khoản thuế, phí bắt buộc như sau:\n\nPhí biển số\nPhí trước bạ\nBảo hiểm trách nhiệm dân sự\nPhí đăng kiểm, phí bảo trì đường bộ...",
+  "avatar": {
+    "$oid": "635751b6f1599f0047212d13"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666538539000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666538539000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63575a19f1599f0047212df4"
+  },
+  "gallery": [
+    {
+      "$oid": "63575a19f1599f0047212dec"
+    },
+    {
+      "$oid": "63575a19f1599f0047212ded"
+    },
+    {
+      "$oid": "63575a19f1599f0047212dee"
+    },
+    {
+      "$oid": "63575a19f1599f0047212def"
+    }
+  ],
+  "totalFavourite": 0,
+  "status": 1,
+  "name": "Mini Hongguang China Electronic (Blue)",
+  "provinceID": 72,
+  "districtID": 708,
+  "wardID": 25609,
+  "provinceText": "Tỉnh Tây Ninh",
+  "districtText": "Huyện Châu Thành",
+  "wardText": "Xã Trí Bình",
+  "address": "190 duong 781",
+  "price": 500000,
+  "mortage": "Hongguang là mẫu xe được nghiên cứu bởi liên minh SAIC-GM-Wuling, được bán tại thị trường nội địa Trung Quốc từ tháng 7/2020. Với mức giá rẻ, dòng xe này nhanh chóng trở thành mẫu xe điện bán chạy nhất thị trường Trung Quốc cũng như toàn thế giới.\n\nXe được thiết kế giống như một mẫu xe cỡ A với kiểu hình hộp như xe K-car của Nhật nhằm tối ưu không gian. Các chi tiết cũng được tối giản và không có nhiều công nghệ, với đèn trước và sau đều halogen.",
+  "rules": "Thân xe ngắn với kích thước 2.917x1.943x1.621 mm và chiều dài cơ sở chỉ 1.940 mm. Cửa và kính lớn giúp xe nhỏ nhưng tạo không gian ngồi thoải mái và thoáng đãng.\n\nTại Trung Quốc, xe được bán với 3 phiên bản và 3 tùy chọn màu sắc, trong đó bản cao cấp nhất sơn hai màu với phần nóc sơn trắng. Để tăng thêm yếu tố thời trang, giữa năm nay hãng đã tạo thêm một biến thể mui trần với phần mui bằng vải.",
+  "userID": {
+    "$oid": "6352a3174bbdad004476f9e9"
+  },
+  "brandID": {
+    "$oid": "630a3a15839721003eeb05ce"
+  },
+  "description": "Mẫu xe điện giá rẻ được một công ty cơ khí ở Thái Bình tạm nhập để nghiên cứu, vì vậy sẽ không bán cho khách Việt.\n\nTại Trung Quốc, xe có giá rẻ, quy đổi khoảng 100-150 triệu đồng tiền Việt bởi chính phủ nước này có chương trình hỗ trợ khi người dân mua xe điện. Các hãng xe sản xuất ôtô cũng được giao chỉ tiêu phải sản xuất xe điện để lấy hạn ngạch sản xuất xe động cơ đốt trong.\n\nĐó cũng là lý do khiến hãng mẹ lấy lãi khá thấp cho một chiếc Hongguang Mini EV, vì thế hãng ưu tiên sản xuất phục vụ nhu cầu nội địa thay vì xuất sang thị trường nước ngoài.",
+  "avatar": {
+    "$oid": "63575a19f1599f0047212dea"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666669081000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666669081000"
+    }
+  },
+  "__v": 0
+}]

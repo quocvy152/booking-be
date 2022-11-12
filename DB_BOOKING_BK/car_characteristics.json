@@ -1,0 +1,3934 @@
+[{
+  "_id": {
+    "$oid": "630772607827b700454cb10f"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6306586e032ad60049b8adb0"
+  },
+  "characteristicID": {
+    "$oid": "62f8a00608544c53f8c3f9db"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661432416000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661432416000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630772607827b700454cb10d"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6306586e032ad60049b8adb0"
+  },
+  "characteristicID": {
+    "$oid": "62f89f5e08544c53f8c3f9cf"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661432416000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661432416000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630772607827b700454cb10e"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6306586e032ad60049b8adb0"
+  },
+  "characteristicID": {
+    "$oid": "62f89f9d08544c53f8c3f9d1"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661432416000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661432416000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630772607827b700454cb110"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6306586e032ad60049b8adb0"
+  },
+  "characteristicID": {
+    "$oid": "6304947575b50c00499448a0"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661432416000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661432416000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630772607827b700454cb112"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6306586e032ad60049b8adb0"
+  },
+  "characteristicID": {
+    "$oid": "62f76b1c7510bf45bc30fd54"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661432416000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661432416000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630772607827b700454cb114"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6306586e032ad60049b8adb0"
+  },
+  "characteristicID": {
+    "$oid": "62f8a09f08544c53f8c3f9e3"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661432416000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661432416000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630772607827b700454cb111"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6306586e032ad60049b8adb0"
+  },
+  "characteristicID": {
+    "$oid": "62ff1c93c54009004611ee6c"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661432416000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661432416000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630772607827b700454cb113"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6306586e032ad60049b8adb0"
+  },
+  "characteristicID": {
+    "$oid": "62f76b387510bf45bc30fd56"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661432416000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661432416000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630772e17827b700454cb15d"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630659f5032ad60049b8adeb"
+  },
+  "characteristicID": {
+    "$oid": "62f89f9d08544c53f8c3f9d1"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661432545000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661432545000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630772e17827b700454cb15e"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630659f5032ad60049b8adeb"
+  },
+  "characteristicID": {
+    "$oid": "62f8a00d08544c53f8c3f9dd"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661432545000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661432545000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630772e17827b700454cb15c"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630659f5032ad60049b8adeb"
+  },
+  "characteristicID": {
+    "$oid": "62f89f5e08544c53f8c3f9cf"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661432545000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661432545000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630772e17827b700454cb15f"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630659f5032ad60049b8adeb"
+  },
+  "characteristicID": {
+    "$oid": "6304947575b50c00499448a0"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661432545000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661432545000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630772e17827b700454cb160"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630659f5032ad60049b8adeb"
+  },
+  "characteristicID": {
+    "$oid": "62ff1c93c54009004611ee6c"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661432545000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661432545000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630772e17827b700454cb162"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630659f5032ad60049b8adeb"
+  },
+  "characteristicID": {
+    "$oid": "62f8a10408544c53f8c3f9e9"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661432545000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661432545000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630772e17827b700454cb163"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630659f5032ad60049b8adeb"
+  },
+  "characteristicID": {
+    "$oid": "62f8a0e008544c53f8c3f9e7"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661432545000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661432545000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630772e17827b700454cb161"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630659f5032ad60049b8adeb"
+  },
+  "characteristicID": {
+    "$oid": "62f8a11508544c53f8c3f9eb"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661432545000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661432545000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6307813695bfb00041968d57"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6307043e8e0721004a7cbc71"
+  },
+  "characteristicID": {
+    "$oid": "62f8a00608544c53f8c3f9db"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661436214000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661436214000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6307813695bfb00041968d56"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6307043e8e0721004a7cbc71"
+  },
+  "characteristicID": {
+    "$oid": "62f89f9d08544c53f8c3f9d1"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661436214000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661436214000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6307813695bfb00041968d59"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6307043e8e0721004a7cbc71"
+  },
+  "characteristicID": {
+    "$oid": "62ff1c93c54009004611ee6c"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661436214000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661436214000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6307813695bfb00041968d58"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6307043e8e0721004a7cbc71"
+  },
+  "characteristicID": {
+    "$oid": "6304947575b50c00499448a0"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661436214000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661436214000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6307813695bfb00041968d55"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6307043e8e0721004a7cbc71"
+  },
+  "characteristicID": {
+    "$oid": "62f89f5e08544c53f8c3f9cf"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661436214000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661436214000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6307813695bfb00041968d5c"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6307043e8e0721004a7cbc71"
+  },
+  "characteristicID": {
+    "$oid": "62f8a09f08544c53f8c3f9e3"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661436214000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661436214000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6307813695bfb00041968d5a"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6307043e8e0721004a7cbc71"
+  },
+  "characteristicID": {
+    "$oid": "62f76b387510bf45bc30fd56"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661436214000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661436214000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6307813695bfb00041968d5b"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6307043e8e0721004a7cbc71"
+  },
+  "characteristicID": {
+    "$oid": "62f76b1c7510bf45bc30fd54"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661436214000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661436214000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6307842995bfb00041968daa"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6307842995bfb00041968da8"
+  },
+  "characteristicID": {
+    "$oid": "62f89f5e08544c53f8c3f9cf"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6307842995bfb00041968dab"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6307842995bfb00041968da8"
+  },
+  "characteristicID": {
+    "$oid": "62f89f9d08544c53f8c3f9d1"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6307842995bfb00041968dac"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6307842995bfb00041968da8"
+  },
+  "characteristicID": {
+    "$oid": "62f8a00608544c53f8c3f9db"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6307842995bfb00041968dae"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6307842995bfb00041968da8"
+  },
+  "characteristicID": {
+    "$oid": "62ff1c93c54009004611ee6c"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6307842995bfb00041968dad"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6307842995bfb00041968da8"
+  },
+  "characteristicID": {
+    "$oid": "6304947575b50c00499448a0"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6307842995bfb00041968db1"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6307842995bfb00041968da8"
+  },
+  "characteristicID": {
+    "$oid": "62f8a09f08544c53f8c3f9e3"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6307842995bfb00041968db2"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6307842995bfb00041968da8"
+  },
+  "characteristicID": {
+    "$oid": "62f8a0cc08544c53f8c3f9e5"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6307842995bfb00041968daf"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6307842995bfb00041968da8"
+  },
+  "characteristicID": {
+    "$oid": "62f76b1c7510bf45bc30fd54"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6307842995bfb00041968db3"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6307842995bfb00041968da8"
+  },
+  "characteristicID": {
+    "$oid": "62f8a0e008544c53f8c3f9e7"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6307842995bfb00041968db0"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6307842995bfb00041968da8"
+  },
+  "characteristicID": {
+    "$oid": "62f76b387510bf45bc30fd56"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6307842995bfb00041968db4"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6307842995bfb00041968da8"
+  },
+  "characteristicID": {
+    "$oid": "62f8a10408544c53f8c3f9e9"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6307842995bfb00041968db5"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6307842995bfb00041968da8"
+  },
+  "characteristicID": {
+    "$oid": "62f8a11508544c53f8c3f9eb"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661436969000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630b90271ee348003e28a6f6"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630b90271ee348003e28a6f4"
+  },
+  "characteristicID": {
+    "$oid": "62f89f5008544c53f8c3f9c9"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661702183000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661702183000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630b90271ee348003e28a6fa"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630b90271ee348003e28a6f4"
+  },
+  "characteristicID": {
+    "$oid": "62ff1c93c54009004611ee6c"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661702183000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661702183000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630b90271ee348003e28a6f7"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630b90271ee348003e28a6f4"
+  },
+  "characteristicID": {
+    "$oid": "62f89f9d08544c53f8c3f9d1"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661702183000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661702183000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630b90271ee348003e28a6f8"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630b90271ee348003e28a6f4"
+  },
+  "characteristicID": {
+    "$oid": "62f8a00608544c53f8c3f9db"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661702183000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661702183000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630b90271ee348003e28a6f9"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630b90271ee348003e28a6f4"
+  },
+  "characteristicID": {
+    "$oid": "6304947575b50c00499448a0"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661702183000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661702183000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630b90271ee348003e28a6fb"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630b90271ee348003e28a6f4"
+  },
+  "characteristicID": {
+    "$oid": "62f76b1c7510bf45bc30fd54"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661702183000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661702183000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630b90271ee348003e28a6ff"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630b90271ee348003e28a6f4"
+  },
+  "characteristicID": {
+    "$oid": "62f8a0e008544c53f8c3f9e7"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661702183000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661702183000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630b90271ee348003e28a6fd"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630b90271ee348003e28a6f4"
+  },
+  "characteristicID": {
+    "$oid": "62f8a09f08544c53f8c3f9e3"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661702183000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661702183000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630b90271ee348003e28a6fe"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630b90271ee348003e28a6f4"
+  },
+  "characteristicID": {
+    "$oid": "62f8a0cc08544c53f8c3f9e5"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661702183000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661702183000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "630b90271ee348003e28a6fc"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630b90271ee348003e28a6f4"
+  },
+  "characteristicID": {
+    "$oid": "62f76b387510bf45bc30fd56"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1661702183000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1661702183000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63138bef130a750038773c28"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63138bef130a750038773c23"
+  },
+  "characteristicID": {
+    "$oid": "62f89f9d08544c53f8c3f9d1"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662225391000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662225391000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63138bef130a750038773c25"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63138bef130a750038773c23"
+  },
+  "characteristicID": {
+    "$oid": "62f76b387510bf45bc30fd56"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662225391000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662225391000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63138bef130a750038773c27"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63138bef130a750038773c23"
+  },
+  "characteristicID": {
+    "$oid": "62f89f5008544c53f8c3f9c9"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662225391000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662225391000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63138bef130a750038773c26"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63138bef130a750038773c23"
+  },
+  "characteristicID": {
+    "$oid": "62f76b1c7510bf45bc30fd54"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662225391000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662225391000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63138bef130a750038773c29"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63138bef130a750038773c23"
+  },
+  "characteristicID": {
+    "$oid": "62f8a00608544c53f8c3f9db"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662225391000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662225391000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63138bef130a750038773c2c"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63138bef130a750038773c23"
+  },
+  "characteristicID": {
+    "$oid": "62f8a0e008544c53f8c3f9e7"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662225391000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662225391000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63138bef130a750038773c2a"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63138bef130a750038773c23"
+  },
+  "characteristicID": {
+    "$oid": "62f8a11508544c53f8c3f9eb"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662225391000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662225391000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63138bef130a750038773c2b"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63138bef130a750038773c23"
+  },
+  "characteristicID": {
+    "$oid": "62f8a10408544c53f8c3f9e9"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662225391000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662225391000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63138e9b130a750038773cfb"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63138e9b130a750038773cf6"
+  },
+  "characteristicID": {
+    "$oid": "62f89f9d08544c53f8c3f9d1"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662226075000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662226075000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63138e9b130a750038773cfc"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63138e9b130a750038773cf6"
+  },
+  "characteristicID": {
+    "$oid": "62f8a00608544c53f8c3f9db"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662226075000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662226075000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63138e9b130a750038773cfa"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63138e9b130a750038773cf6"
+  },
+  "characteristicID": {
+    "$oid": "62f89f5008544c53f8c3f9c9"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662226075000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662226075000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63138e9b130a750038773cf9"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63138e9b130a750038773cf6"
+  },
+  "characteristicID": {
+    "$oid": "62f76b1c7510bf45bc30fd54"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662226075000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662226075000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63138e9b130a750038773cf8"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63138e9b130a750038773cf6"
+  },
+  "characteristicID": {
+    "$oid": "62f76b387510bf45bc30fd56"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662226075000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662226075000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63138e9b130a750038773cff"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63138e9b130a750038773cf6"
+  },
+  "characteristicID": {
+    "$oid": "62f8a0e008544c53f8c3f9e7"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662226075000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662226075000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63138e9b130a750038773cfe"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63138e9b130a750038773cf6"
+  },
+  "characteristicID": {
+    "$oid": "62f8a10408544c53f8c3f9e9"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662226075000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662226075000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63138e9b130a750038773cfd"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63138e9b130a750038773cf6"
+  },
+  "characteristicID": {
+    "$oid": "62f8a11508544c53f8c3f9eb"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662226075000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662226075000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63141f873ac7a200469c2c80"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630705ec8e0721004a7cbd9a"
+  },
+  "characteristicID": {
+    "$oid": "62f89f9d08544c53f8c3f9d1"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662263175000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662263175000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63141f873ac7a200469c2c81"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630705ec8e0721004a7cbd9a"
+  },
+  "characteristicID": {
+    "$oid": "62f8a00608544c53f8c3f9db"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662263175000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662263175000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63141f873ac7a200469c2c7f"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630705ec8e0721004a7cbd9a"
+  },
+  "characteristicID": {
+    "$oid": "62f89f5008544c53f8c3f9c9"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662263175000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662263175000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63141f873ac7a200469c2c82"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630705ec8e0721004a7cbd9a"
+  },
+  "characteristicID": {
+    "$oid": "6304947575b50c00499448a0"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662263175000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662263175000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63141f873ac7a200469c2c83"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630705ec8e0721004a7cbd9a"
+  },
+  "characteristicID": {
+    "$oid": "62ff1c93c54009004611ee6c"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662263175000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662263175000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63141f873ac7a200469c2c84"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630705ec8e0721004a7cbd9a"
+  },
+  "characteristicID": {
+    "$oid": "62f76b1c7510bf45bc30fd54"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662263175000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662263175000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63141f873ac7a200469c2c85"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630705ec8e0721004a7cbd9a"
+  },
+  "characteristicID": {
+    "$oid": "62f76b387510bf45bc30fd56"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662263175000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662263175000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63141f873ac7a200469c2c86"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "630705ec8e0721004a7cbd9a"
+  },
+  "characteristicID": {
+    "$oid": "62f8a09f08544c53f8c3f9e3"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662263175000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662263175000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631426b63ac7a200469c2ce9"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631426b63ac7a200469c2ce5"
+  },
+  "characteristicID": {
+    "$oid": "62f8a01b08544c53f8c3f9df"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662265014000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662265014000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631426b63ac7a200469c2ce7"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631426b63ac7a200469c2ce5"
+  },
+  "characteristicID": {
+    "$oid": "62f89f5e08544c53f8c3f9cf"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662265014000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662265014000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631426b63ac7a200469c2cea"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631426b63ac7a200469c2ce5"
+  },
+  "characteristicID": {
+    "$oid": "6304946a75b50c004994489e"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662265014000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662265014000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631426b63ac7a200469c2ceb"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631426b63ac7a200469c2ce5"
+  },
+  "characteristicID": {
+    "$oid": "62ff1c93c54009004611ee6c"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662265014000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662265014000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631426b63ac7a200469c2ce8"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631426b63ac7a200469c2ce5"
+  },
+  "characteristicID": {
+    "$oid": "62f89f9d08544c53f8c3f9d1"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662265014000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662265014000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631426b63ac7a200469c2cec"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631426b63ac7a200469c2ce5"
+  },
+  "characteristicID": {
+    "$oid": "62f76b1c7510bf45bc30fd54"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662265014000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662265014000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631426b63ac7a200469c2cee"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631426b63ac7a200469c2ce5"
+  },
+  "characteristicID": {
+    "$oid": "62f8a09f08544c53f8c3f9e3"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662265014000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662265014000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631426b63ac7a200469c2ced"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631426b63ac7a200469c2ce5"
+  },
+  "characteristicID": {
+    "$oid": "62f76b387510bf45bc30fd56"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662265014000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662265014000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63144ffd1f437d004a62623f"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63144fa71f437d004a6261f0"
+  },
+  "characteristicID": {
+    "$oid": "62f8a01b08544c53f8c3f9df"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662275581000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662275581000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63144ffd1f437d004a62623e"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63144fa71f437d004a6261f0"
+  },
+  "characteristicID": {
+    "$oid": "62f89f9d08544c53f8c3f9d1"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662275581000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662275581000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63144ffd1f437d004a626240"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63144fa71f437d004a6261f0"
+  },
+  "characteristicID": {
+    "$oid": "6304947575b50c00499448a0"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662275581000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662275581000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63144ffd1f437d004a626241"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63144fa71f437d004a6261f0"
+  },
+  "characteristicID": {
+    "$oid": "62ff1c93c54009004611ee6c"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662275581000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662275581000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63144ffd1f437d004a626244"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63144fa71f437d004a6261f0"
+  },
+  "characteristicID": {
+    "$oid": "62f8a09f08544c53f8c3f9e3"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662275581000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662275581000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63144ffd1f437d004a626243"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63144fa71f437d004a6261f0"
+  },
+  "characteristicID": {
+    "$oid": "62f76b387510bf45bc30fd56"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662275581000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662275581000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63144ffd1f437d004a62623d"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63144fa71f437d004a6261f0"
+  },
+  "characteristicID": {
+    "$oid": "62f89f5e08544c53f8c3f9cf"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662275581000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662275581000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63144ffd1f437d004a626242"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63144fa71f437d004a6261f0"
+  },
+  "characteristicID": {
+    "$oid": "62f76b1c7510bf45bc30fd54"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662275581000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662275581000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6314599e1f437d004a62656e"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6314599e1f437d004a62656a"
+  },
+  "characteristicID": {
+    "$oid": "62f8a01b08544c53f8c3f9df"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662278046000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662278046000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6314599e1f437d004a62656d"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6314599e1f437d004a62656a"
+  },
+  "characteristicID": {
+    "$oid": "62f89f9d08544c53f8c3f9d1"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662278046000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662278046000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6314599e1f437d004a626570"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6314599e1f437d004a62656a"
+  },
+  "characteristicID": {
+    "$oid": "62ff1c93c54009004611ee6c"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662278046000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662278046000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6314599e1f437d004a62656f"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6314599e1f437d004a62656a"
+  },
+  "characteristicID": {
+    "$oid": "6304947575b50c00499448a0"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662278046000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662278046000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6314599e1f437d004a62656c"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6314599e1f437d004a62656a"
+  },
+  "characteristicID": {
+    "$oid": "62f89f5e08544c53f8c3f9cf"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662278046000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662278046000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6314599e1f437d004a626573"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6314599e1f437d004a62656a"
+  },
+  "characteristicID": {
+    "$oid": "62f8a09f08544c53f8c3f9e3"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662278046000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662278046000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6314599e1f437d004a626572"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6314599e1f437d004a62656a"
+  },
+  "characteristicID": {
+    "$oid": "62f76b387510bf45bc30fd56"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662278046000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662278046000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6314599e1f437d004a626571"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "6314599e1f437d004a62656a"
+  },
+  "characteristicID": {
+    "$oid": "62f76b1c7510bf45bc30fd54"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1662278046000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1662278046000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631f64ded10ad10047588e87"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631f64ded10ad10047588e83"
+  },
+  "characteristicID": {
+    "$oid": "62f8a00608544c53f8c3f9db"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1663001822000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1663001822000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631f64ded10ad10047588e89"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631f64ded10ad10047588e83"
+  },
+  "characteristicID": {
+    "$oid": "62ff1c93c54009004611ee6c"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1663001822000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1663001822000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631f64ded10ad10047588e86"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631f64ded10ad10047588e83"
+  },
+  "characteristicID": {
+    "$oid": "62f89f9d08544c53f8c3f9d1"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1663001822000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1663001822000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631f64ded10ad10047588e85"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631f64ded10ad10047588e83"
+  },
+  "characteristicID": {
+    "$oid": "62f89f5008544c53f8c3f9c9"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1663001822000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1663001822000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631f64ded10ad10047588e88"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631f64ded10ad10047588e83"
+  },
+  "characteristicID": {
+    "$oid": "6304947575b50c00499448a0"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1663001822000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1663001822000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631f64ded10ad10047588e8b"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631f64ded10ad10047588e83"
+  },
+  "characteristicID": {
+    "$oid": "62f76b387510bf45bc30fd56"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1663001822000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1663001822000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631f64ded10ad10047588e8a"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631f64ded10ad10047588e83"
+  },
+  "characteristicID": {
+    "$oid": "62f76b1c7510bf45bc30fd54"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1663001822000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1663001822000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631f64ded10ad10047588e8c"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631f64ded10ad10047588e83"
+  },
+  "characteristicID": {
+    "$oid": "62f8a09f08544c53f8c3f9e3"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1663001822000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1663001822000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631f6614d10ad10047588ef2"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631f6614d10ad10047588ef0"
+  },
+  "characteristicID": {
+    "$oid": "62f89f5008544c53f8c3f9c9"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1663002132000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1663002132000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631f6614d10ad10047588ef4"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631f6614d10ad10047588ef0"
+  },
+  "characteristicID": {
+    "$oid": "62f8a01b08544c53f8c3f9df"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1663002132000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1663002132000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631f6614d10ad10047588ef6"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631f6614d10ad10047588ef0"
+  },
+  "characteristicID": {
+    "$oid": "62ff1c93c54009004611ee6c"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1663002132000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1663002132000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631f6614d10ad10047588ef5"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631f6614d10ad10047588ef0"
+  },
+  "characteristicID": {
+    "$oid": "6304947575b50c00499448a0"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1663002132000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1663002132000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631f6614d10ad10047588ef3"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631f6614d10ad10047588ef0"
+  },
+  "characteristicID": {
+    "$oid": "62f89f9d08544c53f8c3f9d1"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1663002132000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1663002132000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631f6614d10ad10047588ef8"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631f6614d10ad10047588ef0"
+  },
+  "characteristicID": {
+    "$oid": "62f8a09f08544c53f8c3f9e3"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1663002132000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1663002132000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631f6614d10ad10047588ef7"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631f6614d10ad10047588ef0"
+  },
+  "characteristicID": {
+    "$oid": "62f76b1c7510bf45bc30fd54"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1663002132000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1663002132000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631f6614d10ad10047588ef9"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631f6614d10ad10047588ef0"
+  },
+  "characteristicID": {
+    "$oid": "62f8a11508544c53f8c3f9eb"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1663002132000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1663002132000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631f6614d10ad10047588efb"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631f6614d10ad10047588ef0"
+  },
+  "characteristicID": {
+    "$oid": "62f76b387510bf45bc30fd56"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1663002132000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1663002132000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631f6614d10ad10047588efa"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631f6614d10ad10047588ef0"
+  },
+  "characteristicID": {
+    "$oid": "62f8a10408544c53f8c3f9e9"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1663002132000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1663002132000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631f6614d10ad10047588efc"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "631f6614d10ad10047588ef0"
+  },
+  "characteristicID": {
+    "$oid": "62f8a0cc08544c53f8c3f9e5"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1663002132000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1663002132000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63424791d9dfb7004502b0eb"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63424791d9dfb7004502b0e7"
+  },
+  "characteristicID": {
+    "$oid": "62f8a01b08544c53f8c3f9df"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1665288081000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1665288081000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63424791d9dfb7004502b0e9"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63424791d9dfb7004502b0e7"
+  },
+  "characteristicID": {
+    "$oid": "62f89f5008544c53f8c3f9c9"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1665288081000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1665288081000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63424791d9dfb7004502b0ed"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63424791d9dfb7004502b0e7"
+  },
+  "characteristicID": {
+    "$oid": "62ff1c93c54009004611ee6c"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1665288081000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1665288081000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63424791d9dfb7004502b0ea"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63424791d9dfb7004502b0e7"
+  },
+  "characteristicID": {
+    "$oid": "62f89f9d08544c53f8c3f9d1"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1665288081000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1665288081000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63424791d9dfb7004502b0ec"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63424791d9dfb7004502b0e7"
+  },
+  "characteristicID": {
+    "$oid": "6304947575b50c00499448a0"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1665288081000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1665288081000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63424791d9dfb7004502b0ef"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63424791d9dfb7004502b0e7"
+  },
+  "characteristicID": {
+    "$oid": "62f76b387510bf45bc30fd56"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1665288081000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1665288081000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63424791d9dfb7004502b0f2"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63424791d9dfb7004502b0e7"
+  },
+  "characteristicID": {
+    "$oid": "62f8a11508544c53f8c3f9eb"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1665288081000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1665288081000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63424791d9dfb7004502b0f0"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63424791d9dfb7004502b0e7"
+  },
+  "characteristicID": {
+    "$oid": "62f8a09f08544c53f8c3f9e3"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1665288081000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1665288081000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63424791d9dfb7004502b0ee"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63424791d9dfb7004502b0e7"
+  },
+  "characteristicID": {
+    "$oid": "62f76b1c7510bf45bc30fd54"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1665288081000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1665288081000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63424791d9dfb7004502b0f1"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63424791d9dfb7004502b0e7"
+  },
+  "characteristicID": {
+    "$oid": "62f8a0e008544c53f8c3f9e7"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1665288081000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1665288081000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "634416860306f6003c14ebb8"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "634416860306f6003c14ebb4"
+  },
+  "characteristicID": {
+    "$oid": "62f8a00d08544c53f8c3f9dd"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1665406598000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1665406598000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "634416860306f6003c14ebb6"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "634416860306f6003c14ebb4"
+  },
+  "characteristicID": {
+    "$oid": "62f89f5008544c53f8c3f9c9"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1665406598000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1665406598000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "634416860306f6003c14ebb9"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "634416860306f6003c14ebb4"
+  },
+  "characteristicID": {
+    "$oid": "6304947575b50c00499448a0"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1665406598000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1665406598000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "634416860306f6003c14ebb7"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "634416860306f6003c14ebb4"
+  },
+  "characteristicID": {
+    "$oid": "62f89f9d08544c53f8c3f9d1"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1665406598000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1665406598000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "634416860306f6003c14ebba"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "634416860306f6003c14ebb4"
+  },
+  "characteristicID": {
+    "$oid": "62ff1c93c54009004611ee6c"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1665406598000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1665406598000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "634416860306f6003c14ebbc"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "634416860306f6003c14ebb4"
+  },
+  "characteristicID": {
+    "$oid": "62f76b387510bf45bc30fd56"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1665406598000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1665406598000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "634416860306f6003c14ebbd"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "634416860306f6003c14ebb4"
+  },
+  "characteristicID": {
+    "$oid": "62f8a09f08544c53f8c3f9e3"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1665406598000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1665406598000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "634416860306f6003c14ebbb"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "634416860306f6003c14ebb4"
+  },
+  "characteristicID": {
+    "$oid": "62f76b1c7510bf45bc30fd54"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1665406598000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1665406598000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "634c17ab5e71391728f08bba"
+  },
+  "characteristicID": {
+    "oid": "634c1652969fe90040b114e3"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "634416860306f6003c14ebb4"
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1665406598000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "634d7982b10b310038c13538"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "634d7981b10b310038c13533"
+  },
+  "characteristicID": {
+    "$oid": "6304947575b50c00499448a0"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "634d7982b10b310038c13539"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "634d7981b10b310038c13533"
+  },
+  "characteristicID": {
+    "$oid": "62ff1c93c54009004611ee6c"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "634d7982b10b310038c13535"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "634d7981b10b310038c13533"
+  },
+  "characteristicID": {
+    "$oid": "62f89f5008544c53f8c3f9c9"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "634d7982b10b310038c13536"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "634d7981b10b310038c13533"
+  },
+  "characteristicID": {
+    "$oid": "62f89f9d08544c53f8c3f9d1"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "634d7982b10b310038c13537"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "634d7981b10b310038c13533"
+  },
+  "characteristicID": {
+    "$oid": "62f8a00d08544c53f8c3f9dd"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "634d7982b10b310038c1353e"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "634d7981b10b310038c13533"
+  },
+  "characteristicID": {
+    "$oid": "62f8a09f08544c53f8c3f9e3"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "634d7982b10b310038c1353b"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "634d7981b10b310038c13533"
+  },
+  "characteristicID": {
+    "$oid": "634c1652969fe90040b114e3"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "634d7982b10b310038c1353c"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "634d7981b10b310038c13533"
+  },
+  "characteristicID": {
+    "$oid": "62f76b1c7510bf45bc30fd54"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "634d7982b10b310038c1353d"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "634d7981b10b310038c13533"
+  },
+  "characteristicID": {
+    "$oid": "62f76b387510bf45bc30fd56"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "634d7982b10b310038c1353a"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "634d7981b10b310038c13533"
+  },
+  "characteristicID": {
+    "$oid": "634c1633969fe90040b114db"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "634d7982b10b310038c1353f"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "634d7981b10b310038c13533"
+  },
+  "characteristicID": {
+    "$oid": "62f8a0e008544c53f8c3f9e7"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "634d7982b10b310038c13540"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "634d7981b10b310038c13533"
+  },
+  "characteristicID": {
+    "$oid": "62f8a0cc08544c53f8c3f9e5"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "634d7982b10b310038c13541"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "634d7981b10b310038c13533"
+  },
+  "characteristicID": {
+    "$oid": "62f8a10408544c53f8c3f9e9"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666021762000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635750ebf1599f0047212be0"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "633b9111501ff9004270a0f0"
+  },
+  "characteristicID": {
+    "$oid": "62f8a01b08544c53f8c3f9df"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666666731000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666666731000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635750ebf1599f0047212bde"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "633b9111501ff9004270a0f0"
+  },
+  "characteristicID": {
+    "$oid": "62f89f5008544c53f8c3f9c9"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666666731000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666666731000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635750ebf1599f0047212be1"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "633b9111501ff9004270a0f0"
+  },
+  "characteristicID": {
+    "$oid": "6304947575b50c00499448a0"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666666731000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666666731000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635750ebf1599f0047212bdf"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "633b9111501ff9004270a0f0"
+  },
+  "characteristicID": {
+    "$oid": "62f89f9d08544c53f8c3f9d1"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666666731000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666666731000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635750ebf1599f0047212be2"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "633b9111501ff9004270a0f0"
+  },
+  "characteristicID": {
+    "$oid": "62ff1c93c54009004611ee6c"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666666731000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666666731000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635750ebf1599f0047212be4"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "633b9111501ff9004270a0f0"
+  },
+  "characteristicID": {
+    "$oid": "634c1652969fe90040b114e3"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666666731000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666666731000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635750ebf1599f0047212be3"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "633b9111501ff9004270a0f0"
+  },
+  "characteristicID": {
+    "$oid": "634c1633969fe90040b114db"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666666731000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666666731000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635750ebf1599f0047212be5"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "633b9111501ff9004270a0f0"
+  },
+  "characteristicID": {
+    "$oid": "62f76b1c7510bf45bc30fd54"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666666731000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666666731000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635750ebf1599f0047212be7"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "633b9111501ff9004270a0f0"
+  },
+  "characteristicID": {
+    "$oid": "62f8a09f08544c53f8c3f9e3"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666666731000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666666731000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635750ebf1599f0047212be6"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "633b9111501ff9004270a0f0"
+  },
+  "characteristicID": {
+    "$oid": "62f76b387510bf45bc30fd56"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666666731000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666666731000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635751b6f1599f0047212d1f"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63555c2be13204004317bc56"
+  },
+  "characteristicID": {
+    "$oid": "62f8a00d08544c53f8c3f9dd"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635751b6f1599f0047212d20"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63555c2be13204004317bc56"
+  },
+  "characteristicID": {
+    "$oid": "6304947575b50c00499448a0"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635751b6f1599f0047212d1e"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63555c2be13204004317bc56"
+  },
+  "characteristicID": {
+    "$oid": "62f89faf08544c53f8c3f9d5"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635751b6f1599f0047212d21"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63555c2be13204004317bc56"
+  },
+  "characteristicID": {
+    "$oid": "62ff1c93c54009004611ee6c"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635751b6f1599f0047212d1d"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63555c2be13204004317bc56"
+  },
+  "characteristicID": {
+    "$oid": "62f89f5008544c53f8c3f9c9"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635751b6f1599f0047212d24"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63555c2be13204004317bc56"
+  },
+  "characteristicID": {
+    "$oid": "62f76b1c7510bf45bc30fd54"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635751b6f1599f0047212d22"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63555c2be13204004317bc56"
+  },
+  "characteristicID": {
+    "$oid": "634c1633969fe90040b114db"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635751b6f1599f0047212d25"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63555c2be13204004317bc56"
+  },
+  "characteristicID": {
+    "$oid": "62f76b387510bf45bc30fd56"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635751b6f1599f0047212d26"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63555c2be13204004317bc56"
+  },
+  "characteristicID": {
+    "$oid": "62f8a09f08544c53f8c3f9e3"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635751b6f1599f0047212d23"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63555c2be13204004317bc56"
+  },
+  "characteristicID": {
+    "$oid": "634c1652969fe90040b114e3"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635751b6f1599f0047212d27"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63555c2be13204004317bc56"
+  },
+  "characteristicID": {
+    "$oid": "62f8a0e008544c53f8c3f9e7"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635751b6f1599f0047212d28"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63555c2be13204004317bc56"
+  },
+  "characteristicID": {
+    "$oid": "62f8a0cc08544c53f8c3f9e5"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635751b6f1599f0047212d29"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63555c2be13204004317bc56"
+  },
+  "characteristicID": {
+    "$oid": "62f8a10408544c53f8c3f9e9"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635751b6f1599f0047212d2a"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63555c2be13204004317bc56"
+  },
+  "characteristicID": {
+    "$oid": "62f8a11508544c53f8c3f9eb"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666666934000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63575a1af1599f0047212df9"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63575a19f1599f0047212df4"
+  },
+  "characteristicID": {
+    "$oid": "6304947575b50c00499448a0"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666669082000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666669082000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63575a1af1599f0047212dfa"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63575a19f1599f0047212df4"
+  },
+  "characteristicID": {
+    "$oid": "62ff1c93c54009004611ee6c"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666669082000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666669082000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63575a1af1599f0047212df6"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63575a19f1599f0047212df4"
+  },
+  "characteristicID": {
+    "$oid": "62f89f5e08544c53f8c3f9cf"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666669082000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666669082000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63575a1af1599f0047212df8"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63575a19f1599f0047212df4"
+  },
+  "characteristicID": {
+    "$oid": "62f8a00608544c53f8c3f9db"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666669082000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666669082000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63575a1af1599f0047212df7"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63575a19f1599f0047212df4"
+  },
+  "characteristicID": {
+    "$oid": "62f89faf08544c53f8c3f9d5"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666669082000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666669082000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63575a1af1599f0047212dfb"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63575a19f1599f0047212df4"
+  },
+  "characteristicID": {
+    "$oid": "634c1633969fe90040b114db"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666669082000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666669082000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63575a1af1599f0047212dfc"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63575a19f1599f0047212df4"
+  },
+  "characteristicID": {
+    "$oid": "62f76b1c7510bf45bc30fd54"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666669082000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666669082000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63575a1af1599f0047212dff"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63575a19f1599f0047212df4"
+  },
+  "characteristicID": {
+    "$oid": "62f8a11508544c53f8c3f9eb"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666669082000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666669082000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63575a1af1599f0047212dfd"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63575a19f1599f0047212df4"
+  },
+  "characteristicID": {
+    "$oid": "62f8a09f08544c53f8c3f9e3"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666669082000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666669082000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63575a1af1599f0047212dfe"
+  },
+  "status": 1,
+  "carID": {
+    "$oid": "63575a19f1599f0047212df4"
+  },
+  "characteristicID": {
+    "$oid": "62f8a0cc08544c53f8c3f9e5"
+  },
+  "modifyAt": {
+    "$date": {
+      "$numberLong": "1666669082000"
+    }
+  },
+  "createAt": {
+    "$date": {
+      "$numberLong": "1666669082000"
+    }
+  },
+  "__v": 0
+}]

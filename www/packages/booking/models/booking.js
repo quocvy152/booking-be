@@ -472,7 +472,7 @@ class Model extends BaseModel {
     }
 
     // Lấy ra danh sách các chuyến xe khách hàng khác đang có nhu cầu thuê của mình
-    getListCustomerBookingMyCar({ user, type, name }){
+    getListCustomerBookingMyCar({ user, type, name, isActive }){
         return new Promise(async resolve => {
             try {
                 if(!ObjectID.isValid(user))
@@ -492,6 +492,12 @@ class Model extends BaseModel {
                 let condition = {
                     car: { $in: listIDSFromCarOfUser },
                     status: +type
+                }
+
+                if(isActive == 'active') {
+                    condition.startTime = { $gte: new Date() }
+                } else if(isActive == 'inactive') {
+                    condition.startTime = { $lt: new Date() }
                 }
 
                 let listCustomerBookingMyCar = await BOOKING_COLL
