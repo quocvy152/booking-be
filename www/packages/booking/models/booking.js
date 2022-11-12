@@ -631,7 +631,7 @@ class Model extends BaseModel {
 
                 let condition = {
                     car: carID,
-                    $or: [{ status: this.STATUS_ACTIVE, endTime: { $lte: new Date() } }, { status: this.STATUS_PAID }]
+                    $or: [{ $or: [ { status: this.STATUS_ACTIVE }, { status: this.STATUS_WAIT_GIVE_BACK } ], endTime: { $lte: new Date() } }, { status: this.STATUS_PAID }]
                 }
 
                 let listBookingDone = await BOOKING_COLL.find(condition);
