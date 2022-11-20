@@ -594,6 +594,11 @@ class Model extends BaseModel {
                         { status: this.STATUS_WAIT_GIVE_BACK },
                         { status: this.STATUS_ACTIVE },
                     ]
+                } else {
+                    condition.$or = [
+                        { status: this.STATUS_WAIT_GIVE_BACK },
+                        { status: this.STATUS_ACTIVE },
+                    ]
                 }
 
                 let listCustomerBookingMyCar = await BOOKING_COLL
