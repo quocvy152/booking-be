@@ -360,7 +360,7 @@ class Model extends BaseModel {
     }
 
     // Lấy ra danh sách các chuyến mà mình đang đặt lịch
-    getListMyBooking({ user, type, name }){
+    getListMyBooking({ user, type, name, isActive }){
         return new Promise(async resolve => {
             try {
                 if(!ObjectID.isValid(user))
@@ -377,6 +377,25 @@ class Model extends BaseModel {
                     user,
                     status: +type
                 };
+
+                if(+type == this.STATUS_WAIT_CONFIRM) {
+                    switch(isActive) {
+                        case 'active': {
+                            condition.startTime = {
+                                $gte: new Date()
+                            };
+                            break;
+                        }
+                        case 'inactive': {
+                            condition.startTime = {
+                                $lt: new Date()
+                            };
+                            break;
+                        }
+                        default: {
+                        }
+                    }
+                }
 
                 let listBooking = await BOOKING_COLL
                     .find(condition)
