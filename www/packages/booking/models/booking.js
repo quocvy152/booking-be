@@ -597,7 +597,7 @@ class Model extends BaseModel {
                 } else {
                     condition.$or = [
                         { status: this.STATUS_WAIT_GIVE_BACK },
-                        { status: this.STATUS_ACTIVE },
+                        { status: this.STATUS_ACTIVE, endTime: { $lt: new Date() } },
                     ]
                 }
 
