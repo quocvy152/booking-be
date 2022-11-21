@@ -397,6 +397,25 @@ class Model extends BaseModel {
                     }
                 }
 
+                if(+type == this.STATUS_WAIT_GIVE_BACK) {
+                    switch(isActive) {
+                        case 'active': {
+                            condition.endTime = {
+                                $gte: new Date()
+                            };
+                            break;
+                        }
+                        case 'inactive': {
+                            condition.endTime = {
+                                $lt: new Date()
+                            };
+                            break;
+                        }
+                        default: {
+                        }
+                    }
+                }
+
                 let listBooking = await BOOKING_COLL
                     .find(condition)
                     .populate({
