@@ -713,6 +713,9 @@ class Model extends BaseModel {
                             endTime: { $lte: new Date() }
                         }, { 
                             status: this.STATUS_PAID
+                        }, {
+                            status: this.STATUS_WAIT_GIVE_BACK,
+                            endTime: { $lt: new Date() }
                         }
                     ]
                 }
