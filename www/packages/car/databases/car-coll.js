@@ -73,6 +73,21 @@ module.exports = BASE_COLL('car', {
 		type: Number, 
 		default: 0
 	},
+	/**
+	 * Cập nhật mỗi khi có đánh giá
+	 */
+	totalRating: {
+		type: Number, 
+		default: 0
+	},
+	/**
+	 * Số sao hiện tạI
+	 * Mỗi lần có rating mới lấy số sao của rating đó + với số sao hiện tại này rồi chia 2
+	 */
+	rating: {
+		type: Number, 
+		default: 0
+	},
 	// biển số xe
 	licensePlates: {
 		type: String, 

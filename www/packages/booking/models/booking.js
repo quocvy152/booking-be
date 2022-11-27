@@ -378,6 +378,12 @@ class Model extends BaseModel {
                     status: +type
                 };
 
+                if(+type == this.STATUS_ACTIVE) {
+                    condition.endTime = {
+                        $gte: new Date()
+                    };
+                }
+
                 if(+type == this.STATUS_WAIT_CONFIRM) {
                     switch(isActive) {
                         case 'active': {
