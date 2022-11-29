@@ -82,29 +82,29 @@ class Model extends BaseModel {
                 if(isExistRatingThisBooking)
 					return resolve({ error: true, message: 'Bạn đã đánh giá chuyến đi này. Không thể đánh giá được nữa' });
 
-                /**
-                 * Bước cập nhật số đánh giá vào xe
-                 */
-                let resultGetInfoCarBooking = await CAR_MODEL.getInfo({ carID: carID });
-                if(resultGetInfoCarBooking.error)
-                    return resolve({ error: true, message: resultGetInfoCarBooking.message });
+                // /**
+                //  * Bước cập nhật số đánh giá vào xe
+                //  */
+                // let resultGetInfoCarBooking = await CAR_MODEL.getInfo({ carID: carID });
+                // if(resultGetInfoCarBooking.error)
+                //     return resolve({ error: true, message: resultGetInfoCarBooking.message });
 
-                let { totalRating, rating: ratingCar } = resultGetInfoCarBooking.data;
-                !totalRating && (totalRating = 0);
-                !ratingCar   && (ratingCar = 0);
+                // let { totalRating, rating: ratingCar } = resultGetInfoCarBooking.data;
+                // !totalRating && (totalRating = 0);
+                // !ratingCar   && (ratingCar = 0);
 
-                let numberAvarage = (totalRating == 0 && ratingCar == 0) ? 1 : 2;
+                // let numberAvarage = (totalRating == 0 && ratingCar == 0) ? 1 : 2;
 
-                let dataUpdateRating = {
-                    totalRating: totalRating + 1,
-                    rating: Math.ceil((ratingCar + rating) / numberAvarage)
-                }
+                // let dataUpdateRating = {
+                //     totalRating: totalRating + 1,
+                //     rating: Math.ceil((ratingCar + rating) / numberAvarage)
+                // }
 
-                let infoCarAfterUpdate = await CAR_COLL.findByIdAndUpdate({
-                    _id: carID
-                }, dataUpdateRating, { new: true });
-                if(!infoCarAfterUpdate)
-					return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình cập nhật' });
+                // let infoCarAfterUpdate = await CAR_COLL.findByIdAndUpdate({
+                //     _id: carID
+                // }, dataUpdateRating, { new: true });
+                // if(!infoCarAfterUpdate)
+				// 	return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình cập nhật' });
 
                 let dataInsert = {
                     booking: bookingID,
