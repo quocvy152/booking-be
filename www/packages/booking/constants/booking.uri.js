@@ -1,7 +1,9 @@
 const BASE_ROUTE = '/bookings';
+const BASE_ROUTE_BOOKING_RATING = '/bookings/booking-ratings';
 
 const CF_ROUTINGS_BOOKING = {
 	BOOKINGS: `${BASE_ROUTE}`,
+	BOOKING_RATINGS: `${BASE_ROUTE_BOOKING_RATING}`,
 	LIST_BOOKING_ADMIN: `${BASE_ROUTE}/list/admin`,
 	LIST_BOOKING_OF_CAR: `${BASE_ROUTE}/list/booking-of-car`,
 	LIST_BOOKING_FILTER: `${BASE_ROUTE}/list/booking-filter`,

@@ -15,7 +15,8 @@ const { CF_ROUTINGS_BOOKING } 				= require('../constants/booking.uri');
 /**
  * MODELS
  */
-const BOOKING_MODEL 	= require('../models/booking').MODEL;
+const BOOKING_MODEL 	    = require('../models/booking').MODEL;
+const BOOKING_RATING_MODEL 	= require('../models/booking_rating').MODEL;
 
 /**
  * COLLECTION
@@ -320,6 +321,28 @@ module.exports = class Auth extends ChildRouter {
                     get: [ async (req, res) => {
                         const resultTurnoverAndBooking = await BOOKING_MODEL.getTurnoverAndTotalBooking();
                         res.json(resultTurnoverAndBooking);
+                    }],
+                },
+            },
+
+            /**
+             * Function: 
+             *      + Add rating booking (API)
+             * Date: 28/11/2022
+             * Dev: VyPQ
+             */
+            [CF_ROUTINGS_BOOKING.BOOKING_RATINGS]: {
+                config: {
+                    auth: [ roles.role.user.bin ],
+                    type: 'json',
+                },
+                methods: {
+                    post: [ async (req, res) => {
+                        const { _id: customerID } = req.user;
+                        const { carID, bookingID, rating, ratingText, } = req.body;
+                        console.log("🚀 ~ file: booking.js ~ line 343 ~ Auth ~ post:[ ~ rating", rating)
+                        const resultRatingBooking = await BOOKING_RATING_MODEL.insert({ carID, customerID, bookingID, rating, ratingText });
+                        res.json(resultRatingBooking);
                     }],
                 },
             },
