@@ -346,6 +346,26 @@ module.exports = class Auth extends ChildRouter {
                     }],
                 },
             },
+
+            /**
+             * Function: 
+             *      + Add rating booking (API)
+             * Date: 28/11/2022
+             * Dev: VyPQ
+             */
+            [CF_ROUTINGS_BOOKING.GET_INFO_BOOKING_RATINGS]: {
+                config: {
+                    auth: [ roles.role.user.bin ],
+                    type: 'json',
+                },
+                methods: {
+                    get: [ async (req, res) => {
+                        const { bookingID } = req.query;
+                        const resultInfoRatingBooking = await BOOKING_RATING_MODEL.getInfoBooking({ bookingID });
+                        res.json(resultInfoRatingBooking);
+                    }],
+                },
+            },
         }
     }
 };

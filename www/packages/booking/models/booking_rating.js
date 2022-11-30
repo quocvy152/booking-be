@@ -46,7 +46,6 @@ class Model extends BaseModel {
      * TẠO ĐÁNH GIÁ
      */
 	insert({ carID, customerID, bookingID, rating, ratingText }) {
-        console.log("🚀 ~ file: booking_rating.js ~ line 49 ~ Model ~ insert ~ rating", rating)
         return new Promise(async resolve => {
             try {
 				if(!ObjectID.isValid(carID) || !ObjectID.isValid(bookingID) || !ObjectID.isValid(customerID))
@@ -118,6 +117,27 @@ class Model extends BaseModel {
 					return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình tạo đánh giá' });
 
 				return resolve({ error: false, data: infoAfterInsert });
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
+
+    getInfoBooking({ bookingID }) {
+        return new Promise(async resolve => {
+            try {
+                if(!ObjectID.isValid(bookingID))
+                    return resolve({ error: true, message: 'Tham số không hợp lệ. ID chuyến đi không hợp lệ' });
+
+                let infoBookingRating = await BOOKING_RATING_COLL
+                                            .findOne({ booking: bookingID })
+                                            .populate({
+                                                path: 'booking customer'
+                                            })
+                if(!infoBookingRating) 
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy thông tin đánh giá chuyến đi' });
+
+                return resolve({ error: false, data: infoBookingRating });
             } catch (error) {
                 return resolve({ error: true, message: error.message });
             }

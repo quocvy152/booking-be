@@ -3,7 +3,6 @@ const BASE_ROUTE_BOOKING_RATING = '/bookings/booking-ratings';
 
 const CF_ROUTINGS_BOOKING = {
 	BOOKINGS: `${BASE_ROUTE}`,
-	BOOKING_RATINGS: `${BASE_ROUTE_BOOKING_RATING}`,
 	LIST_BOOKING_ADMIN: `${BASE_ROUTE}/list/admin`,
 	LIST_BOOKING_OF_CAR: `${BASE_ROUTE}/list/booking-of-car`,
 	LIST_BOOKING_FILTER: `${BASE_ROUTE}/list/booking-filter`,
@@ -16,6 +15,10 @@ const CF_ROUTINGS_BOOKING = {
 	CANCEL_BOOKINGS: `${BASE_ROUTE}/action/cancel-booking`,
 	PAYED_BOOKINGS: `${BASE_ROUTE}/action/pay-booking`,
 	GET_TURNOVER_AND_TOTAL_BOOKING_OF_USER: `${BASE_ROUTE}/info/turnover-and-total-booking`,
+
+	// BOOKING RATING
+	BOOKING_RATINGS: `${BASE_ROUTE_BOOKING_RATING}`,
+	GET_INFO_BOOKING_RATINGS: `${BASE_ROUTE_BOOKING_RATING}/get-info`,
 
 	ORIGIN_APP: BASE_ROUTE
 }
