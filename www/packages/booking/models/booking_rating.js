@@ -119,6 +119,34 @@ class Model extends BaseModel {
             }
         })
     }
+
+    getListBookingRatingOfCar({ carID }) {
+        return new Promise(async resolve => {
+            try {
+                if(!ObjectID.isValid(carID))
+                    return resolve({ error: true, message: 'Tham số không hợp lệ. ID chuyến đi không hợp lệ' });
+
+                let listBookingOfCar = await BOOKING_COLL.find({ car: carID });
+
+                let listBookingRating = await BOOKING_RATING_COLL
+                                            .find({ 
+                                                booking: {
+                                                    $in: listBookingOfCar.map(booking => booking._id)
+                                                },
+                                                status: this.STATUS_ACTIVE 
+                                            })
+                                            .populate({
+                                                path: 'booking customer'
+                                            })
+                if(!listBookingRating) 
+                    return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy thông tin đánh giá chuyến đi' });
+
+                return resolve({ error: false, data: listBookingRating });
+            } catch (error) {
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
 }
 
 exports.MODEL = new Model;

@@ -347,11 +347,13 @@ class Model extends BaseModel {
                 for await (let car of listCar) {
                     let listCharacteristicOfCar = await CAR_CHARACTERISTIC_MODEL.getListByCar({ carID: car._id });
                     let listBooking = await BOOKING_MODEL.getListBookingDoneOfCar({ carID: car._id });
+                    let listBookingRating = await BOOKING_RATING_MODEL.getListBookingRatingOfCar({ carID: car._id });
 
                     listCarRes[listCarRes.length++] = {
                         infoCar: car,
                         details: listCharacteristicOfCar && listCharacteristicOfCar.data,
-                        booking: listBooking && listBooking.data
+                        booking: listBooking && listBooking.data,
+                        bookingRating: listBookingRating && listBookingRating.data
                     }
                 }
 
@@ -444,3 +446,4 @@ class Model extends BaseModel {
 exports.MODEL = new Model;
 
 var BOOKING_MODEL              = require('../../booking/models/booking').MODEL;
+var BOOKING_RATING_MODEL       = require('../../booking/models/booking_rating').MODEL;
