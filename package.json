@@ -72,6 +72,7 @@
     "node-gyp": "^3.6.2",
     "nodemailer": "^0.7.1",
     "nodemailer-ses-transport": "^1.5.1",
+    "nodemon": "^2.0.20",
     "number-format.js": "^2.0.9",
     "package": "^1.0.1",
     "passport": "^0.3.2",

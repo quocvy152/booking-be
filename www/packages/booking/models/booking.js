@@ -32,6 +32,8 @@ const CAR_CHARACTERISTIC_MODEL      = require('../../characteristic/models/car_c
  * COLLECTIONS, MODELS
  */
 const BOOKING_COLL  				= require('../databases/booking-coll');
+const BOOKING_RATING_COLL  			= require('../databases/booking_rating-coll');
+const CAR_COLL  			        = require('../../car/databases/car-coll');
 
 class Model extends BaseModel {
     constructor() {
@@ -338,12 +340,14 @@ class Model extends BaseModel {
         })
     }
 
-    acceptPaying({ bookingID }) {
+    acceptPaying({ bookingID, carID, rating }) {
         return new Promise(async resolve => {
             try {
-                if(!ObjectID.isValid(bookingID))
-                    return resolve({ error: true, message: "Tham số không hợp lệ" });
+                if(!ObjectID.isValid(bookingID) || !ObjectID.isValid(carID))
+                    return resolve({ error: true, message: "Tham số không hợp lệ. " });
 
+                rating = Number.isNaN(Number(rating)) ? 0 : Number(rating);
+                
                 let dataUpdateToCancel = { status: this.STATUS_PAID };
 
 				let infoAfterPayed = await BOOKING_COLL.findByIdAndUpdate(bookingID, dataUpdateToCancel, {
@@ -351,6 +355,36 @@ class Model extends BaseModel {
                 });
                 if(!infoAfterPayed) 
                     return resolve({ error: true, message: "Xảy ra lỗi trong quá trình chấp nhận thanh toán chuyến xe" });
+
+                /**
+                 * Bước cập nhật số đánh giá vào xe
+                 */
+                let resultGetInfoCarBooking = await CAR_MODEL.getInfo({ carID: carID });
+                if(resultGetInfoCarBooking.error)
+                    return resolve({ error: true, message: resultGetInfoCarBooking.message });
+
+                let { totalRating, rating: ratingCar } = resultGetInfoCarBooking.data;
+                !totalRating && (totalRating = 0);
+                !ratingCar   && (ratingCar = 0);
+
+                let numberAvarage = (totalRating == 0 && ratingCar == 0) ? 1 : 2;
+
+                let dataUpdateRating = {
+                    totalRating: totalRating + 1,
+                    rating: Math.ceil((ratingCar + rating) / numberAvarage)
+                }
+
+                let infoCarAfterUpdate = await CAR_COLL.findByIdAndUpdate({
+                    _id: carID
+                }, dataUpdateRating, { new: true });
+                if(!infoCarAfterUpdate)
+					return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình cập nhật' });
+
+                let infoRatingBookingAfterUpdate = await BOOKING_RATING_COLL.findOneAndUpdate({ booking: bookingID }, {
+                    status: this.STATUS_ACTIVE
+                });
+                if(!infoRatingBookingAfterUpdate)
+					return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình cập nhật đánh giá chuyến đi' });
 
                 return resolve({ error: false, data: infoAfterPayed });
             } catch (error) {

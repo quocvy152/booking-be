@@ -195,8 +195,8 @@ module.exports = class Auth extends ChildRouter {
                 },
                 methods: {
                     put: [ async (req, res) => {
-                        const { bookingID } = req.query;
-                        const resultAcceptPaying = await BOOKING_MODEL.acceptPaying({ bookingID });
+                        const { bookingID, carID, rating } = req.query;
+                        const resultAcceptPaying = await BOOKING_MODEL.acceptPaying({ bookingID, carID, rating });
                         res.json(resultAcceptPaying);
                     }],
                 },
