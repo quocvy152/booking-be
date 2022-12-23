@@ -81,12 +81,26 @@ class Model extends BaseModel {
 
                 let conditionCheckHadBooking = {
                     car: carID,
-                    startTime: { $lte: new Date(startTime) },
-                    endTime:   { $gte: new Date(startTime) },
-                    $and: [
-                        {status: { $ne: this.STATUS_INACTIVE }},
-                        {status: { $ne: this.STATUS_CANCELED }}
-                    ] 
+                    $or: [
+                        // khoảng thời gian đang thuê nằm trọn trong một khoảng thời gian đã thuê
+                        {
+                            startTime: { $lte: new Date(startTime) },
+                            endTime: { $gte: new Date(endTime) }
+                        } , 
+                        // khoảng thời gian đang thuê bao hết khoảng thời gian đã thuê
+                        {
+                            startTime: { $gte: new Date(startTime) },
+                            endTime: { $lte: new Date(endTime) }
+                        } , 
+                        // khoảng thời gian đang thuê nằm trong khoảng thơi gian đã thuê
+                        {
+                            $or: [
+                                { startTime: { $lte: new Date(startTime) }, endTime: { $gte: new Date(startTime) } },
+                                { startTime: { $lte: new Date(endTime) }, endTime: { $gte: new Date(endTime) } },
+                            ]
+                        }
+                    ],
+                    status: { $nin: [ this.STATUS_INACTIVE, this.STATUS_CANCELED ] }
                 }
                 let isHadBookingInThisTime = await BOOKING_COLL.findOne(conditionCheckHadBooking);
                 if(isHadBookingInThisTime)
