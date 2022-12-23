@@ -136,7 +136,15 @@ class Model extends BaseModel {
                                                 status: this.STATUS_ACTIVE 
                                             })
                                             .populate({
-                                                path: 'booking customer'
+                                                path: 'booking',
+                                            })
+                                            .populate({
+                                                path: 'customer',
+                                                select: 'firstName lastName avatar',
+                                                populate: {
+                                                    path: 'avatar',
+                                                    select: 'name size path'
+                                                }
                                             })
                 if(!listBookingRating) 
                     return resolve({ error: true, message: 'Xảy ra lỗi trong quá trình lấy thông tin đánh giá chuyến đi' });
